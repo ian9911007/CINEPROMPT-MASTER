@@ -153,7 +153,7 @@
                     { id: 'specular', name: 'Specular ｜ 鏡面高光', desc: '定義金屬與精密物件質感。', prompt: 'intense specular highlights' },
                     { id: 'chiaroscuro', name: 'Chiaroscuro ｜ 明暗對照', desc: '劇性光影，模仿古典畫作。', prompt: 'chiaroscuro lighting, dramatic contrast' },
                     { id: 'rembrandt', name: 'Rembrandt ｜ 林布蘭光', desc: '最強肖像層次感。', prompt: 'Rembrandt lighting, triangle cheek highlight' },
-                    { id: 'butterfly', name: 'Butterfly Lighting ｜ 蝴蝶光', desc: '時尚攝影標配。', prompt: 'butterfly lighting, glamour shadow, fashion style' },
+                    { id: 'butterfly', name: 'Butterfly Lighting ｜ 蝴蝶光', desc: '時尚攝影標配。', prompt: 'butterfly lighting, fashion style' },
                     { id: 'lowkey', name: 'Low-Key ｜ 低暗調', desc: '神祕與戲劇感強烈。', prompt: 'low-key lighting, heavy shadows, high contrast drama' },
                     { id: 'split_lit', name: 'Split Lighting ｜ 側向切光', desc: '側向硬光，強調輪廓。', prompt: 'split lighting setup, dramatic side light' },
                     { id: 'rimlight', name: 'Rim Light ｜ 輪廓光', desc: '勾勒邊緣，抽離背景。', prompt: 'powerful rim lighting, glowing edges' },
@@ -195,7 +195,7 @@
                     // --- 色彩 LUT 排序：單色調 ---
                     { id: 'sepia', name: 'Sepia Tone ｜ 懷舊褐', desc: '老照片棕褐色調，古拙且懷舊。', prompt: 'sepia tone vintage photograph, nostalgic monochrome' },
                     { id: 'cyanotype', name: 'Cyanotype ｜ 藍曬法', desc: '深藍色單色影像，工程藍圖美感。', prompt: 'cyanotype alternative process, monochromatic Prussian blue' },
-                    { id: 'infrared', name: 'Rollei Infrared 400 ｜ 紅外線', desc: '非現實光譜感，雪白植被與漆黑天空。', prompt: 'infrared photography, Rollei Infrared 400 look, wood effect' },
+                    { id: 'infrared', name: 'Rollei Infrared 400 ｜ 紅外線', desc: '非現實光譜感，呈現雪白植被與漆黑天空。', prompt: 'infrared photography, Rollei Infrared 400 look, wood effect' },
                     { id: 'goldtone', name: 'Gold Tone ｜ 金色單色', desc: '琥珀質感的金色單色效果。', prompt: 'gold toned monochrome photography, warm yellow-gold highlights, deep amber shadows' },
                     // --- 色彩 LUT 排序：黑白 ---
                     { id: 'hp5', name: 'Ilford HP5 Plus ｜ 經典黑白', desc: '傳統黑白紀實質感，有機顆粒明顯。', prompt: 'Ilford HP5 Plus black and white film, grainy texture' },
@@ -247,7 +247,7 @@
                 aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
             };
 
-            const STORAGE_KEY = 'cine_v13_3_final';
+            const STORAGE_KEY = 'cine_v13_4_tags';
             const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_list') || '[]'));
             const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_cfg') || JSON.stringify({
                 action: '', camera: 'phaseone', focal: '35mm', aperture: 'none', lens: 'otus55', 
@@ -350,7 +350,7 @@
                                     <div className="bg-blue-600 p-2 rounded-xl shadow-lg"><Icon name="Smartphone" size={20} className="text-white" /></div>
                                     <div>
                                         <h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none">CinePrompt Master</h1>
-                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.3 | PRODUCTION MASTER</p>
+                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.4 | FULL TAG SYSTEM</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[8px] text-green-400 bg-green-400/5 px-2 py-1 rounded-full border border-green-400/20 font-bold"><Icon name="Brain" size={10} /> RAW 24-BIT OPTIC ENGINE</div>
@@ -461,7 +461,7 @@
                                 <div className="flex gap-4">
                                     <button onClick={handleReset} className="text-[10px] font-bold text-gray-500 hover:text-white flex items-center gap-1 transition-colors"><Icon name="RotateCcw" size={14}/> RESET</button>
                                     <button onClick={handleClear} className="text-[10px] font-bold text-red-500/80 hover:text-red-500 flex items-center gap-1 transition-colors"><Icon name="Trash2" size={14}/> CLEAR</button>
-                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${i+1},"${s.action}","${s.camera}|${s.focal}","${s.prompt}"\n`); const blob = new Blob([csv], { type: 'text/csv' }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `Ian_ShotList.csv`; link.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
+                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${i+1},"${s.action}","${s.camera}|${s.lens}|${s.focal}","${s.prompt}"\n`); const blob = new Blob([csv], { type: 'text/csv' }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `Ian_ShotList.csv`; link.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
                                 </div>
                             </div>
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl flex-1 overflow-hidden shadow-inner flex flex-col">
@@ -478,11 +478,17 @@
                                                         <td className="px-5 py-6 text-gray-600 font-bold text-center align-middle">{idx + 1}</td>
                                                         <td className="px-5 py-6">
                                                             <div className="font-black text-gray-100 mb-1.5 leading-tight text-sm">{s.action}</div>
-                                                            <div className="flex flex-wrap gap-1.5 mb-2">
-                                                                <span className="text-[8px] bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded-lg border border-blue-900/30 font-bold uppercase">{s.shotType}</span>
-                                                                <span className="text-[8px] bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded-lg font-bold uppercase">{s.focal}</span>
-                                                                <span className="text-[8px] bg-yellow-900/20 text-yellow-500 px-1.5 py-0.5 rounded-lg border border-yellow-900/30 font-bold uppercase font-serif italic">{s.aperture}</span>
-                                                                <span className="text-[8px] bg-white/5 text-gray-500 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase">{s.aspect}</span>
+                                                            {/* --- 全維度標籤系統：攝影機｜鏡頭｜焦距｜光圈｜色彩｜景別｜視角｜燈光｜比例 --- */}
+                                                            <div className="flex flex-wrap gap-1.5 mb-2.5">
+                                                                <span className="text-[8px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="攝影機系統">{config.cameras.find(c => c.id === s.camera)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="鏡頭系列">{config.lenses.find(l => l.id === s.lens)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded-lg font-bold uppercase" title="焦距">{s.focal}</span>
+                                                                <span className="text-[8px] bg-yellow-900/20 text-yellow-500 px-1.5 py-0.5 rounded-lg border border-yellow-900/30 font-bold uppercase font-serif italic" title="光圈">{s.aperture}</span>
+                                                                <span className="text-[8px] bg-purple-900/20 text-purple-400 px-1.5 py-0.5 rounded-lg border border-purple-900/30 font-bold uppercase" title="色彩風格">{config.luts.find(l => l.id === s.lut)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded-lg border border-blue-900/30 font-bold uppercase" title="景別">{s.shotType}</span>
+                                                                <span className="text-[8px] bg-blue-900/20 text-blue-300 px-1.5 py-0.5 rounded-lg border border-blue-900/10 font-bold uppercase" title="拍攝視角">{s.perspective}</span>
+                                                                <span className="text-[8px] bg-orange-900/20 text-orange-400 px-1.5 py-0.5 rounded-lg border border-orange-900/30 font-bold uppercase" title="燈光設定">{config.lighting.find(l => l.id === s.lighting)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-white/5 text-gray-500 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="比例">{s.aspect}</span>
                                                             </div>
                                                             <div className="text-[10px] text-blue-500/60 font-mono line-clamp-2 italic">{s.prompt}</div>
                                                         </td>
