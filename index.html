@@ -35,6 +35,11 @@
             padding-right: 2.5rem !important;
             font-size: 13px !important; 
             line-height: 1.5;
+            transition: all 0.2s ease;
+        }
+
+        select:focus {
+            background-color: #1c1c1e;
         }
 
         input[type="checkbox"] {
@@ -175,7 +180,7 @@
                     { id: 'portra400', name: 'Kodak Portra 400 ｜ 柯達人像', desc: '人像首選，膚色溫潤細膩，顆粒優雅。', prompt: 'Kodak Portra 400 film stock emulation, natural skin tones' },
                     { id: 'ektar100', name: 'Kodak Ektar 100 ｜ 極致鮮豔', desc: '世界最高飽和度的彩色負片質感。', prompt: 'Kodak Ektar 100 film emulation, ultra-vivid colors, extremely fine grain, high saturation' },
                     { id: 'cinestill800', name: 'CineStill 800T ｜ 藍調底片', desc: '夜景首選，高光處有迷人的紅色光暈。', prompt: 'CineStill 800T, tungsten balanced, red halation highlights' },
-                    { id: 'eterna', name: 'Fujifilm Eterna ｜ 富士電影', desc: '低反差、低飽和的柔和電影感。', prompt: 'Fujifilm Eterna film stock, low contrast, soft filmic look' },
+                    { id: 'eterna', name: 'Fujifilm Eterna ｜ 富士電影', desc: '低反差、低飽和的柔和底片質感。', prompt: 'Fujifilm Eterna film stock, low contrast, soft filmic look' },
                     { id: 'velvia', name: 'Fujifilm Velvia 50 ｜ 富士鮮豔', desc: '風景首選，極高飽和度與高反差。', prompt: 'Fujifilm Velvia 50, ultra-saturated vivid landscape colors' },
                     { id: 'lomo', name: 'LOMO ｜ 洛莫風格', desc: '高飽和、強暗角，隨性的膠片美學。', prompt: 'Lomography aesthetic, high saturation, heavy vignetting' },
                     { id: 'holga', name: 'Holga ｜ 賀加 Lo-Fi', desc: '塑膠鏡頭質感，漏光且具備模糊邊緣。', prompt: 'Holga photography style, light leaks, soft focus blur' },
@@ -239,7 +244,7 @@
                 aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
             };
 
-            const STORAGE_KEY = 'cine_v13_5_size';
+            const STORAGE_KEY = 'cine_v13_6_visual';
             const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_list') || '[]'));
             const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_cfg') || JSON.stringify({
                 action: '', camera: 'phaseone', focal: '35mm', aperture: 'none', lens: 'otus55', 
@@ -340,10 +345,11 @@
                         <div className="xl:col-span-5 space-y-4">
                             <header className="flex items-center justify-between px-2 pt-2">
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-blue-600 p-2 rounded-xl shadow-lg"><Icon name="Smartphone" size={24} className="text-white" /></div>
+                                    {/* 更新圖標背景與尺寸 */}
+                                    <div className="bg-blue-600 p-2 rounded-xl shadow-lg border border-blue-400/20"><Icon name="Clapperboard" size={24} className="text-white" /></div>
                                     <div>
                                         <h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none">CinePrompt Master</h1>
-                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.5 | VISUAL COMFORT EDITION</p>
+                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.6 | VISUAL ENGINE EDITION</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[8px] text-green-400 bg-green-400/5 px-2 py-1 rounded-full border border-green-400/20 font-bold"><Icon name="Brain" size={10} /> RAW 24-BIT OPTIC ENGINE</div>
@@ -352,7 +358,7 @@
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl p-4 md:p-6 shadow-2xl space-y-5">
                                 <div className="space-y-1.5">
                                     <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-2 tracking-widest"><Icon name="ChevronRight" className="text-blue-500" size={16} /> Visual Beat 畫面描述</label>
-                                    <textarea value={current.action} onChange={(e) => setCurrent({...current, action: e.target.value})} placeholder="把你心中所想的寫出來... （已啟用動態偵測技術）" className="w-full bg-[#18181b] border border-gray-800 rounded-2xl p-4 text-sm focus:ring-1 focus:ring-blue-500 outline-none h-28 transition-all resize-none" />
+                                    <textarea value={current.action} onChange={(e) => setCurrent({...current, action: e.target.value})} placeholder="把你心中所想的寫出來... （已啟用動態偵測技術）" className="w-full bg-[#18181b] border border-gray-800 rounded-2xl p-4 text-sm focus:ring-1 focus:ring-blue-500 outline-none h-28 transition-all resize-none shadow-inner" />
                                 </div>
 
                                 <div className="bg-[#18181b] border border-gray-800/50 rounded-2xl p-4 space-y-3 shadow-inner">
@@ -369,67 +375,73 @@
                                 </div>
 
                                 <div className="space-y-5">
+                                    {/* 第一列：Cameras | Focal Length | Aperture */}
                                     <div className="grid grid-cols-3 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Camera" size={14}/> 攝影機</label>
-                                            <select value={current.camera} onChange={(e) => setCurrent({...current, camera: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-sky-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Camera" size={14}/> Cameras</label>
+                                            <select value={current.camera} onChange={(e) => setCurrent({...current, camera: e.target.value})} className="w-full bg-[#1c1c1e] border border-sky-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
                                                 {config.cameras.map(c => <option key={c.id} value={c.id} title={c.desc}>{c.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Focus" size={14}/> 焦距</label>
-                                            <select value={current.focal} onChange={(e) => setCurrent({...current, focal: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
-                                                {config.focals.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
+                                            <label className="mobile-label text-[12px] font-black text-emerald-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Focus" size={14}/> Focal Length</label>
+                                            <select value={current.focal} onChange={(e) => setCurrent({...current, focal: e.target.value})} className="w-full bg-[#1c1c1e] border border-emerald-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                                {config.focals.map(f => <option key={f.id} value={f.id} title={f.desc}>{f.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Zap" size={14}/> 光圈</label>
-                                            <select value={current.aperture} onChange={(e) => setCurrent({...current, aperture: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer font-serif italic">
-                                                {config.apertures.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
+                                            <label className="mobile-label text-[12px] font-black text-orange-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Aperture" size={14}/> Aperture</label>
+                                            <select value={current.aperture} onChange={(e) => setCurrent({...current, aperture: e.target.value})} className="w-full bg-[#1c1c1e] border border-orange-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer font-serif italic">
+                                                {config.apertures.map(a => <option key={a.id} value={a.id} title={a.desc}>{a.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
+                                    {/* 第二列：Lens Series | Color LUTs */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Maximize" size={14}/> 鏡頭系列</label>
-                                            <select value={current.lens} onChange={(e) => setCurrent({...current, lens: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-indigo-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Disc" size={14}/> Lens Series</label>
+                                            <select value={current.lens} onChange={(e) => setCurrent({...current, lens: e.target.value})} className="w-full bg-[#1c1c1e] border border-indigo-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
                                                 {config.lenses.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Palette" size={14}/> 色彩風格</label>
-                                            <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-rose-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Palette" size={14}/> Color LUTs</label>
+                                            <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-rose-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
                                                 {config.luts.map(u => <option key={u.id} value={u.id} title={u.desc}>{u.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
+                                    {/* 第三列：Shot Types | Perspectives */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Eye" size={14}/> 景別規格</label>
-                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-blue-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Eye" size={14}/> Shot Types</label>
+                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-blue-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
                                                 {config.shotTypes.map(s => <option key={s.id} value={s.id} title={s.desc}>{s.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Layers" size={14}/> 拍攝視角</label>
-                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-teal-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Maximize" size={14}/> Perspectives</label>
+                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-teal-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
                                                 {config.perspectives.map(p => <option key={p.id} value={p.id} title={p.desc}>{p.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
+                                    {/* 第四列：Lighting | Aspect Ratio */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-yellow-500 uppercase flex items-center gap-1 tracking-wider"><Icon name="Sun" size={14}/> 燈光設定</label>
-                                            <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/20 rounded-xl h-11 px-3 outline-none text-yellow-500/80 cursor-pointer">
+                                            <label className="mobile-label text-[12px] font-black text-yellow-500 uppercase flex items-center gap-1 tracking-wider"><Icon name="Sun" size={14}/> Lighting</label>
+                                            <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/30 rounded-xl h-11 px-3 outline-none text-yellow-500/80 cursor-pointer">
                                                 {config.lighting.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Monitor" size={14}/> 輸出比例</label>
-                                            <select value={current.aspect} onChange={(e) => setCurrent({...current, aspect: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 outline-none cursor-pointer">{config.aspectRatios.map(r => <option key={r} value={r}>{r}</option>)}</select>
+                                            <label className="mobile-label text-[12px] font-black text-slate-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Monitor" size={14}/> Aspect Ratio</label>
+                                            <select value={current.aspect} onChange={(e) => setCurrent({...current, aspect: e.target.value})} className="w-full bg-[#1c1c1e] border border-slate-800 rounded-xl h-11 px-3 outline-none cursor-pointer text-slate-400">
+                                                {config.aspectRatios.map(r => <option key={r} value={r}>{r}</option>)}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -471,16 +483,17 @@
                                                         <td className="px-5 py-6 text-gray-600 font-bold text-center align-middle">{idx + 1}</td>
                                                         <td className="px-5 py-6">
                                                             <div className="font-black text-gray-100 mb-1.5 leading-tight text-sm">{s.action}</div>
+                                                            {/* --- 全維度標籤系統：攝影機｜鏡頭｜焦距｜光圈｜色彩｜景別｜視角｜燈光｜比例 --- */}
                                                             <div className="flex flex-wrap gap-1.5 mb-2.5">
-                                                                <span className="text-[8px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="攝影機系統">{config.cameras.find(c => c.id === s.camera)?.name.split('｜')[0].trim()}</span>
-                                                                <span className="text-[8px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="鏡頭系列">{config.lenses.find(l => l.id === s.lens)?.name.split('｜')[0].trim()}</span>
-                                                                <span className="text-[8px] bg-gray-800 text-gray-400 px-1.5 py-0.5 rounded-lg font-bold uppercase" title="焦距">{s.focal}</span>
-                                                                <span className="text-[8px] bg-yellow-900/20 text-yellow-500 px-1.5 py-0.5 rounded-lg border border-yellow-900/30 font-bold uppercase font-serif italic" title="光圈">{s.aperture}</span>
-                                                                <span className="text-[8px] bg-purple-900/20 text-purple-400 px-1.5 py-0.5 rounded-lg border border-purple-900/30 font-bold uppercase" title="色彩風格">{config.luts.find(l => l.id === s.lut)?.name.split('｜')[0].trim()}</span>
-                                                                <span className="text-[8px] bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded-lg border border-blue-900/30 font-bold uppercase" title="景別">{s.shotType}</span>
-                                                                <span className="text-[8px] bg-blue-900/20 text-blue-300 px-1.5 py-0.5 rounded-lg border border-blue-900/10 font-bold uppercase" title="拍攝視角">{s.perspective}</span>
-                                                                <span className="text-[8px] bg-orange-900/20 text-orange-400 px-1.5 py-0.5 rounded-lg border border-orange-900/30 font-bold uppercase" title="燈光設定">{config.lighting.find(l => l.id === s.lighting)?.name.split('｜')[0].trim()}</span>
-                                                                <span className="text-[8px] bg-white/5 text-gray-500 px-1.5 py-0.5 rounded-lg border border-white/10 font-bold uppercase" title="比例">{s.aspect}</span>
+                                                                <span className="text-[8px] bg-sky-900/10 text-sky-400 px-1.5 py-0.5 rounded-lg border border-sky-900/30 font-bold uppercase" title="Cameras系統">{config.cameras.find(c => c.id === s.camera)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-indigo-900/10 text-indigo-400 px-1.5 py-0.5 rounded-lg border border-indigo-900/30 font-bold uppercase" title="Lens Series">{config.lenses.find(l => l.id === s.lens)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-emerald-900/10 text-emerald-400 px-1.5 py-0.5 rounded-lg border border-emerald-900/30 font-bold uppercase" title="Focal Length">{s.focal}</span>
+                                                                <span className="text-[8px] bg-orange-900/20 text-orange-500 px-1.5 py-0.5 rounded-lg border border-orange-900/30 font-bold uppercase font-serif italic" title="Aperture">{s.aperture}</span>
+                                                                <span className="text-[8px] bg-rose-900/20 text-rose-400 px-1.5 py-0.5 rounded-lg border border-rose-900/30 font-bold uppercase" title="Color LUTs風格">{config.luts.find(l => l.id === s.lut)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded-lg border border-blue-900/30 font-bold uppercase" title="Shot Types">{s.shotType}</span>
+                                                                <span className="text-[8px] bg-teal-900/20 text-teal-300 px-1.5 py-0.5 rounded-lg border border-teal-900/10 font-bold uppercase" title="Perspectives視角">{s.perspective}</span>
+                                                                <span className="text-[8px] bg-yellow-900/20 text-yellow-500 px-1.5 py-0.5 rounded-lg border border-yellow-900/30 font-bold uppercase" title="Lighting設定">{config.lighting.find(l => l.id === s.lighting)?.name.split('｜')[0].trim()}</span>
+                                                                <span className="text-[8px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded-lg border border-slate-700 font-bold uppercase" title="Aspect Ratio">{s.aspect}</span>
                                                             </div>
                                                             <div className="text-[10px] text-blue-500/60 font-mono line-clamp-2 italic">{s.prompt}</div>
                                                         </td>
