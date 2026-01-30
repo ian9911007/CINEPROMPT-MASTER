@@ -111,6 +111,7 @@
                 ],
                 lenses: [
                     { id: 'none', name: 'None ｜ 不指定', desc: '不指定鏡頭參數，保留空白。', prompt: '' },
+                    // --- 鏡頭排序：商業高品質 ---
                     { id: 'otus55', name: 'Zeiss Otus 55mm ｜ 蔡司', desc: '無視像差，極致物理正確，光學素質之巔。', prompt: 'Zeiss Otus 55mm f/1.4, apochromatic precision, flawless resolution' },
                     { id: 'sigma14', name: 'Sigma 14mm ｜ 廣角王', desc: '壯闊星空與建築，邊緣畫質極度銳利。', prompt: 'Sigma 14mm f/1.4 DG DN Art lens, wide perspective, high corner-to-corner sharpness' },
                     { id: 'canon85L', name: 'Canon 85mm ｜ 傳奇人像', desc: '夢幻奶油散景，捕捉細膩眼神光。', prompt: 'Canon EF 85mm f/1.2L II USM, legendary creamy bokeh, portrait compression' },
@@ -120,6 +121,7 @@
                     { id: 'nikkor24', name: 'Nikkor 24mm ｜ 標準廣角', desc: '極致解像力，邊緣畫質無懈可擊。', prompt: 'Nikkor 24mm f/1.4G ED lens, sharp wide angle, professional optics' },
                     { id: 'tele70200', name: 'Canon 70-200mm ｜ 長焦標配', desc: '傳奇小白砲，專業級背景壓縮，主體分離感極強。', prompt: 'Canon EF 70-200mm f/2.8L IS III USM, professional white-lens telephoto compression' },
                     { id: 'canon600', name: 'Canon 600mm ｜ 極遠長焦', desc: '頂級白砲，競技與動物攝影標配，強大的背景貼近感。', prompt: 'Canon EF 600mm f/4L IS III USM, extreme professional subject isolation' },
+                    // --- 鏡頭排序：電影鏡 ---
                     { id: 'arrisig', name: 'ARRI Signature 47mm ｜ 電影鏡', desc: '自然膚色渲染之巔，極致溫潤質感。', prompt: 'ARRI Signature Prime lens, LPL mount, naturalistic rendering, creamy texture' },
                     { id: 'xtal', name: 'JDC Xtal 50mm ｜ 變形鏡', desc: '傳奇電影變形鏡，獨特橢圓散景與耀光。', prompt: 'JDC Xtal Xpress Anamorphic lens, Joe Dunton vintage glass, legendary anamorphic flare' },
                     { id: 'hawkvlite', name: 'Hawk V-Lite 55mm ｜ 變形鏡', desc: '現代變形鏡標竿，緊湊且對比鮮明。', prompt: 'Hawk V-Lite Anamorphic lens, modern cinematic anamorphic look' },
@@ -128,9 +130,11 @@
                     { id: 'leicalux', name: 'Leica 35mm ｜ 頂級光學', desc: '高微反差，銳利通透，極致還原細節。', prompt: 'Leica Summilux-C, high micro-contrast, optical clarity' },
                     { id: 'zeisssup', name: 'Zeiss Supreme 50mm ｜ 蔡司電影', desc: '現代且科技感強，呈現冷峻專業感。', prompt: 'Zeiss Supreme Prime, clean modern rendering' },
                     { id: 'angenieux', name: 'Angénieux Optimo ｜ 安琴', desc: '極致滑順的電影變焦感。', prompt: 'Angénieux Optimo zoom, creamy cinema texture' },
+                    // --- 鏡頭排序：底片鏡 (Vintage) ---
                     { id: 'zeiss35', name: 'Zeiss Distagon 35mm ｜ 蔡司人文', desc: '經典人文視角，具備 3D 立體感與底片微反差。', prompt: 'Zeiss Distagon T* 35mm f/1.4, micro-contrast, 3D pop aesthetic' },
                     { id: 'k35', name: 'Canon K-35 35mm ｜ 復古鏡', desc: '暖調低反差，經典 70 年代電影質感。', prompt: 'vintage Canon K-35 prime, nostalgic warm bloom, low contrast' },
                     { id: 'helios', name: 'Helios 44-2 58mm ｜ 八羽怪', desc: '底片鏡：強烈的旋轉散景效果。', prompt: 'Helios 44-2 lens, extreme swirly radial bokeh, organic vintage feel' },
+                    // --- 鏡頭排序：特效鏡 ---
                     { id: 'nikon1700', name: 'Nikkor 1200-1700mm ｜ 1700mm 遠望', desc: '1700mm 極限長焦，定義監視與遠望質感。', prompt: 'Nikkor 1200-1700mm f/5.6-8.0P ED IF lens, super telephoto zoom, extreme spatial flattening' },
                     { id: 'canon800', name: 'Canon 800mm ｜ 長焦之巔', desc: '捕捉野性或競技瞬間，極致背景抽離。', prompt: 'Canon EF 800mm f/5.6L IS USM, maximum telephoto reach, ultra-sharp isolation' },
                     { id: 'canon1200', name: 'Canon 1200mm ｜ 超視距', desc: '衛星級望遠鏡頭，極致空間扁平感。', prompt: 'Canon EF 1200mm f/5.6L USM, extreme telephoto compression, super distance' },
@@ -139,7 +143,7 @@
                     { id: 'nikkor8mm', name: 'Nikkor 8mm ｜ 標準魚眼', desc: '180度視角，標準魚眼變形感。', prompt: 'Nikkor 8mm f/2.8 fisheye lens, 180-degree circular perspective' },
                     { id: 'probe', name: 'Laowa 24mm ｜ 探針鏡', desc: '蟲視角微距，穿梭於物體內部。', prompt: 'Laowa 24mm Probe lens, bug-eye perspective, tubular macro depth' },
                     { id: 'tiltshift', name: 'Tilt-Shift Lens ｜ 移軸', desc: '微縮模型效果，或修正建築透視。', prompt: 'tilt-shift lens effect, miniature model aesthetic' },
-                    { id: 'split', name: 'Split Diopter ｜ 雙焦鏡', desc: '前景與背景同時清晰，超現實感。', prompt: 'split diopter shot, dual focus planes' },
+                    { id: 'split diopter', name: 'Split Diopter ｜ 雙焦鏡', desc: '前景與背景同時清晰，超現實感。', prompt: 'split diopter shot, dual focus planes' },
                     { id: 'petzval', name: 'Petzval Art ｜ 藝術鏡', desc: '中心銳利，邊緣強烈旋轉模糊。', prompt: 'Petzval art lens, swirly bokeh' },
                     { id: 'fisheye', name: 'Fisheye Lens ｜ 廣域魚眼', desc: '廣視角魚眼效果，球體變形感。', prompt: 'extreme fisheye distortion' },
                     { id: 'noct095', name: 'Noctilux 𝑓/0.95 ｜ 夜神', desc: '極薄深焦，夢幻般的焦外虛化。', prompt: 'Noctilux 𝑓/0.95 lens, paper-thin depth of field' },
@@ -172,15 +176,17 @@
                 ],
                 luts: [
                     { id: 'none', name: 'None ｜ 不指定', desc: '不指定色彩風格，保留空白。', prompt: '' },
+                    // --- 色彩 LUT 排序：標準商業高品質 ---
                     { id: 'correct', name: 'Color Accurate ｜ 色彩準確', desc: '精準還原物理色彩，專業參考級中性配置。', prompt: 'calibrated color accuracy, neutral reference profile' },
                     { id: 'commercial', name: 'Commercial ｜ 頂級商攝', desc: '高端商業廣告色彩科學，通透且高級。', prompt: 'high-end commercial editorial color science, standard white balance' },
                     { id: 'provia', name: 'Fujifilm Provia 100F ｜ 準確正片', desc: '公認色彩還原最精準的正片風格。', prompt: 'Fujifilm Provia 100F (RDPIII), accurate slide film colors' },
                     { id: 'reala', name: 'Fujifilm Reala 500D ｜ 自然膚色', desc: '寬容度極高，呈現極自然的動態範圍。', prompt: 'Fujifilm Reala 500D film stock, exceptional skin tones' },
                     { id: 'technicolor', name: 'Technicolor ｜ 經典彩色', desc: '模擬三膠片噴墨技術，飽和度極高。', prompt: 'vibrant Technicolor 3-strip process, saturated primary colors, historical cinema aesthetic' },
+                    // --- 色彩 LUT 排序：創意色彩 ---
                     { id: 'portra400', name: 'Kodak Portra 400 ｜ 柯達人像', desc: '人像首選，膚色溫潤細膩，顆粒優雅。', prompt: 'Kodak Portra 400 film stock emulation, natural skin tones' },
                     { id: 'ektar100', name: 'Kodak Ektar 100 ｜ 極致鮮豔', desc: '世界最高飽和度的彩色負片質感。', prompt: 'Kodak Ektar 100 film emulation, ultra-vivid colors, extremely fine grain, high saturation' },
                     { id: 'cinestill800', name: 'CineStill 800T ｜ 藍調底片', desc: '夜景首選，高光處有迷人的紅色光暈。', prompt: 'CineStill 800T, tungsten balanced, red halation highlights' },
-                    { id: 'eterna', name: 'Fujifilm Eterna ｜ 富士電影', desc: '低反差、低飽和的柔和底片質感。', prompt: 'Fujifilm Eterna film stock, low contrast, soft filmic look' },
+                    { id: 'eterna', name: 'Fujifilm Eterna ｜ 富士電影', desc: '低反差、低飽和的柔和電影感。', prompt: 'Fujifilm Eterna film stock, low contrast, soft filmic look' },
                     { id: 'velvia', name: 'Fujifilm Velvia 50 ｜ 富士鮮豔', desc: '風景首選，極高飽和度與高反差。', prompt: 'Fujifilm Velvia 50, ultra-saturated vivid landscape colors' },
                     { id: 'lomo', name: 'LOMO ｜ 洛莫風格', desc: '高飽和、強暗角，隨性的膠片美學。', prompt: 'Lomography aesthetic, high saturation, heavy vignetting' },
                     { id: 'holga', name: 'Holga ｜ 賀加 Lo-Fi', desc: '塑膠鏡頭質感，漏光且具備模糊邊緣。', prompt: 'Holga photography style, light leaks, soft focus blur' },
@@ -191,10 +197,12 @@
                     { id: 'crossproc', name: 'Cross Processing ｜ 負沖', desc: '色彩偏移，不可預測的高反差偏色。', prompt: 'cross processed film look, color shift, high contrast' },
                     { id: 'tealorange', name: 'Teal & Orange ｜ 商業大片', desc: '好萊塢電影配色，暖調膚色與冷調陰影。', prompt: 'blockbuster teal and orange color grade, high contrast, warm skin tones, cool shadows' },
                     { id: 'bleachbypass', name: 'Bleach Bypass ｜ 跳銀處理', desc: '高反差、低飽和的粗獷金屬質感。', prompt: 'bleach bypass film process, high contrast, desaturated colors, gritty metallic texture' },
+                    // --- 色彩 LUT 排序：單色調 ---
                     { id: 'sepia', name: 'Sepia Tone ｜ 懷舊褐', desc: '老照片棕褐色調，古拙且懷舊。', prompt: 'sepia tone vintage photograph, nostalgic monochrome' },
                     { id: 'cyanotype', name: 'Cyanotype ｜ 藍曬法', desc: '深藍色單色影像，工程藍圖美感。', prompt: 'cyanotype alternative process, monochromatic Prussian blue' },
                     { id: 'infrared', name: 'Rollei Infrared 400 ｜ 紅外線', desc: '非現實光譜感，呈現雪白植被與漆黑天空。', prompt: 'infrared photography, Rollei Infrared 400 look, wood effect' },
                     { id: 'goldtone', name: 'Gold Tone ｜ 金色單色', desc: '琥珀質感的金色單色效果。', prompt: 'gold toned monochrome photography, warm yellow-gold highlights, deep amber shadows' },
+                    // --- 色彩 LUT 排序：黑白 ---
                     { id: 'hp5', name: 'Ilford HP5 Plus ｜ 經典黑白', desc: '傳統黑白紀實質感，有機顆粒明顯。', prompt: 'Ilford HP5 Plus black and white film, grainy texture' },
                     { id: 'tmax', name: 'Kodak T-MAX ｜ 紀錄黑白', desc: '現代黑白，灰階過渡極其細膩。', prompt: 'Kodak T-MAX 400 film, fine grain B&W, sharp details' },
                     { id: 'trix400', name: 'Kodak Tri-X 400 ｜ 強力黑白', desc: '高反差黑白，粗獷有力，紀實標竿。', prompt: 'Kodak Tri-X 400 film, high contrast B&W, gritty grain' },
@@ -244,7 +252,7 @@
                 aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
             };
 
-            const STORAGE_KEY = 'cine_v13_6_visual';
+            const STORAGE_KEY = 'cine_v13_7_chroma';
             const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_list') || '[]'));
             const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_cfg') || JSON.stringify({
                 action: '', camera: 'phaseone', focal: '35mm', aperture: 'none', lens: 'otus55', 
@@ -345,11 +353,10 @@
                         <div className="xl:col-span-5 space-y-4">
                             <header className="flex items-center justify-between px-2 pt-2">
                                 <div className="flex items-center gap-3">
-                                    {/* 更新圖標背景與尺寸 */}
                                     <div className="bg-blue-600 p-2 rounded-xl shadow-lg border border-blue-400/20"><Icon name="Clapperboard" size={24} className="text-white" /></div>
                                     <div>
                                         <h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none">CinePrompt Master</h1>
-                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.6 | VISUAL ENGINE EDITION</p>
+                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V13.7 | CHROMATIC EDITION</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[8px] text-green-400 bg-green-400/5 px-2 py-1 rounded-full border border-green-400/20 font-bold"><Icon name="Brain" size={10} /> RAW 24-BIT OPTIC ENGINE</div>
@@ -375,65 +382,65 @@
                                 </div>
 
                                 <div className="space-y-5">
-                                    {/* 第一列：Cameras | Focal Length | Aperture */}
+                                    {/* 第一列：Cameras | Focal Length | Aperture (文字色彩同步) */}
                                     <div className="grid grid-cols-3 gap-3">
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-sky-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Camera" size={14}/> Cameras</label>
-                                            <select value={current.camera} onChange={(e) => setCurrent({...current, camera: e.target.value})} className="w-full bg-[#1c1c1e] border border-sky-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.camera} onChange={(e) => setCurrent({...current, camera: e.target.value})} className="w-full bg-[#1c1c1e] border border-sky-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-sky-400">
                                                 {config.cameras.map(c => <option key={c.id} value={c.id} title={c.desc}>{c.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-emerald-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Focus" size={14}/> Focal Length</label>
-                                            <select value={current.focal} onChange={(e) => setCurrent({...current, focal: e.target.value})} className="w-full bg-[#1c1c1e] border border-emerald-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.focal} onChange={(e) => setCurrent({...current, focal: e.target.value})} className="w-full bg-[#1c1c1e] border border-emerald-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-emerald-400">
                                                 {config.focals.map(f => <option key={f.id} value={f.id} title={f.desc}>{f.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-orange-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Aperture" size={14}/> Aperture</label>
-                                            <select value={current.aperture} onChange={(e) => setCurrent({...current, aperture: e.target.value})} className="w-full bg-[#1c1c1e] border border-orange-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer font-serif italic">
+                                            <select value={current.aperture} onChange={(e) => setCurrent({...current, aperture: e.target.value})} className="w-full bg-[#1c1c1e] border border-orange-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer font-serif italic text-orange-400">
                                                 {config.apertures.map(a => <option key={a.id} value={a.id} title={a.desc}>{a.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
-                                    {/* 第二列：Lens Series | Color LUTs */}
+                                    {/* 第二列：Lens Series | Color LUTs (文字色彩同步) */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-indigo-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Disc" size={14}/> Lens Series</label>
-                                            <select value={current.lens} onChange={(e) => setCurrent({...current, lens: e.target.value})} className="w-full bg-[#1c1c1e] border border-indigo-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.lens} onChange={(e) => setCurrent({...current, lens: e.target.value})} className="w-full bg-[#1c1c1e] border border-indigo-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-indigo-400">
                                                 {config.lenses.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-rose-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Palette" size={14}/> Color LUTs</label>
-                                            <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-rose-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-rose-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-rose-400">
                                                 {config.luts.map(u => <option key={u.id} value={u.id} title={u.desc}>{u.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
-                                    {/* 第三列：Shot Types | Perspectives */}
+                                    {/* 第三列：Shot Types | Perspectives (文字色彩同步) */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-blue-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Eye" size={14}/> Shot Types</label>
-                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-blue-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-blue-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-blue-400">
                                                 {config.shotTypes.map(s => <option key={s.id} value={s.id} title={s.desc}>{s.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-teal-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Maximize" size={14}/> Perspectives</label>
-                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-teal-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer">
+                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-teal-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-teal-400">
                                                 {config.perspectives.map(p => <option key={p.id} value={p.id} title={p.desc}>{p.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
 
-                                    {/* 第四列：Lighting | Aspect Ratio */}
+                                    {/* 第四列：Lighting | Aspect Ratio (文字色彩同步) */}
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
                                             <label className="mobile-label text-[12px] font-black text-yellow-500 uppercase flex items-center gap-1 tracking-wider"><Icon name="Sun" size={14}/> Lighting</label>
-                                            <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/30 rounded-xl h-11 px-3 outline-none text-yellow-500/80 cursor-pointer">
+                                            <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/20 rounded-xl h-11 px-3 outline-none text-yellow-500 cursor-pointer">
                                                 {config.lighting.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
