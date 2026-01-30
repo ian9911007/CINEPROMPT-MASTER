@@ -205,13 +205,13 @@
                     { id: 'slash', name: 'Slash Lighting ｜ 條狀光', desc: '窄長硬光，定義焦點。', prompt: 'slash lighting, strip of hard light' },
                     { id: 'negfill', name: 'Negative Fill ｜ 負補光', desc: '強化陰影，增加厚度。', prompt: 'negative fill, deep rich shadows' },
                     { id: 'silhouette', name: 'Silhouette ｜ 剪影', desc: '強背光，純黑輪廓。', prompt: 'silhouette photography, strong backlight' },
-                    { id: 'natural_ambient', name: 'Natural Ambient ｜ 自然環境光', desc: '真實物理反射，自然柔和光感。', prompt: 'natural environment ambient light, soft natural fill, realistic bounced light' },
+                    { id: 'natural_ambient', name: 'Natural Ambient ｜ 自然環境光', desc: '真實物理反射，自然傳導光感。', prompt: 'natural environment ambient light, soft natural fill, realistic bounced light' },
                     { id: 'volumetric', name: 'Volumetric ｜ 體積光', desc: '環境光：光束路徑可見，空氣感強。', prompt: 'volumetric lighting, visible light beams' },
                     { id: 'candle', name: 'Candlelight ｜ 燭光', desc: '環境光：暖色溫營造氛圍。', prompt: '1800K candlelight, warm amber glow' },
-                    { id: 'golden', name: 'Golden Hour ｜ 黃金時刻', desc: '環境光：日落暖金。', prompt: 'natural golden hour sun, warm glow, 3500K backlighting' },
-                    { id: 'blue', name: 'Blue Hour ｜ 藍調時刻', desc: '日落冷藍。', prompt: 'cold blue hour lighting, sapphire reflection' },
-                    { id: 'neon', name: 'Neon Noir ｜ 霓虹黑色', desc: '高對比配色，科幻未來感。', prompt: 'neon noir lighting, cyan and magenta color cast' },
-                    { id: 'tyndall', name: 'Tyndall Effect ｜ 丁達爾', desc: '神聖光束感，大氣散射。', prompt: 'Tyndall effect, divine god rays' }
+                    { id: 'golden', name: 'Golden Hour ｜ 黃金時刻', desc: '環境光：日落暖金。', prompt: 'natural golden hour sun, warm glow' },
+                    { id: 'blue', name: 'Blue Hour ｜ 藍調時刻', desc: '環境光：日落冷藍。', prompt: 'cold blue hour lighting, sapphire reflection' },
+                    { id: 'neon', name: 'Neon Noir ｜ 霓虹黑色', desc: '環境光：霓虹未來感。', prompt: 'neon noir lighting, cyan and magenta color cast' },
+                    { id: 'tyndall', name: 'Tyndall Effect ｜ 丁達爾', desc: '環境光：神聖光束感。', prompt: 'Tyndall effect, divine god rays' }
                 ],
                 luts: [
                     { id: 'none', name: 'None ｜ 不指定', desc: '不指定色彩風格，保留空白。', prompt: '' },
@@ -234,7 +234,7 @@
                 aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
             };
 
-            const STORAGE_KEY = 'cine_v12_5_drag';
+            const STORAGE_KEY = 'cine_v12_5_drag_final';
             const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_list') || '[]'));
             const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_cfg') || JSON.stringify({
                 action: '', camera: 'phaseone', focal: '35mm', aperture: 'none', lens: 'otus55', 
@@ -262,13 +262,15 @@
             };
 
             const finalPrompt = useMemo(() => {
-                if (!current.action) return "把你心中所想的寫出來...（RAW 24-BIT 引擎已就緒）";
+                // --- 修改這裡：當描述為空時顯示的灰字 ---
+                if (!current.action) return "Prompts are generated here.";
+                
                 const findP = (cat, id) => {
                     if (id === 'none') return '';
                     const item = config[cat].find(i => i.id === id);
                     if (!item) return '';
                     if (cat === 'focals') return `focal length ${id}`;
-                    if (cat === 'apertures') return `aperture ${id.replace('𝑓/', 'f/')}`; // 輸出保持標準格式
+                    if (cat === 'apertures') return `aperture ${id.replace('𝑓/', 'f/')}`; 
                     return item.prompt || item.name;
                 };
 
@@ -320,7 +322,6 @@
 
             const handleClear = () => { if (window.confirm("確定要清除所有分鏡紀錄嗎？")) setShots([]); };
 
-            // --- 排序邏輯 ---
             const handleSort = () => {
                 const newShots = [...shots];
                 const draggedItemContent = newShots.splice(dragItemIndex.current, 1)[0];
@@ -349,7 +350,13 @@
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl p-4 md:p-6 shadow-2xl space-y-5">
                                 <div className="space-y-1.5">
                                     <label className="mobile-label text-[10px] font-black text-gray-500 uppercase flex items-center gap-2 tracking-widest"><Icon name="ChevronRight" className="text-blue-500" size={14} /> Visual Beat 畫面描述</label>
-                                    <textarea value={current.action} onChange={(e) => setCurrent({...current, action: e.target.value})} placeholder="例如：一位穿著西裝的男士，在雨後的東京街頭行走..." className="w-full bg-[#18181b] border border-gray-800 rounded-2xl p-4 text-sm focus:ring-1 focus:ring-blue-500 outline-none h-28 transition-all resize-none" />
+                                    {/* --- 修改這裡：Placeholder 內容 --- */}
+                                    <textarea 
+                                        value={current.action} 
+                                        onChange={(e) => setCurrent({...current, action: e.target.value})} 
+                                        placeholder="把你心中所想的寫出來... （已啟用動態偵測技術）" 
+                                        className="w-full bg-[#18181b] border border-gray-800 rounded-2xl p-4 text-sm focus:ring-1 focus:ring-blue-500 outline-none h-28 transition-all resize-none" 
+                                    />
                                 </div>
 
                                 <div className="bg-[#18181b] border border-gray-800/50 rounded-2xl p-4 space-y-3 shadow-inner">
