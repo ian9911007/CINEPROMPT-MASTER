@@ -44,6 +44,8 @@
         const App = () => {
             const config = {
                 cameras: [
+                    // --- None 選項 ---
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定攝影機參數，保留空白。', prompt: '' },
                     // --- 一般商業高品質 ---
                     { id: 'phaseone', name: 'Phase One XF IQ4 ｜ 飛思一億', desc: '商業高品質：極致商業靜物攝影，紋理細節爆棚。', prompt: 'shot on Phase One XF IQ4 150MP, medium format clarity, commercial macro precision' },
                     { id: 'h6d', name: 'Hasselblad H6D-100c ｜ 哈蘇中幅', desc: '商業高品質：色彩深度極高，適合高級產品與人像。', prompt: 'shot on Hasselblad H6D-100c, high color depth, elite commercial aesthetic' },
@@ -73,6 +75,8 @@
                     { id: 'nightvision', name: 'Night Vision ｜ 夜視鏡', desc: '創意特效：綠色螢光單色調，充滿噪點。', prompt: 'shot through military night vision goggles, monochromatic green phosphor glow' }
                 ],
                 lenses: [
+                    // --- None 選項 ---
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定鏡頭參數，保留空白。', prompt: '' },
                     // --- 一般商業高品質 ---
                     { id: 'otus55', name: 'Zeiss Otus 55mm f/1.4 ｜ 50mm', desc: '商攝高品質：無視像差，極致物理正確。', prompt: 'Zeiss Otus 55mm f/1.4, apochromatic precision, flawless resolution' },
                     { id: 'sigma14', name: 'Sigma 14mm f/1.4 Art ｜ 14mm', desc: '商攝高品質：壯闊星空與建築，極致解析度。', prompt: 'Sigma 14mm f/1.4 DG DN Art lens, wide perspective, high corner-to-corner sharpness' },
@@ -80,7 +84,7 @@
                     { id: 'macro100', name: 'Macro 100mm ｜ 100mm', desc: '商攝高品質：極致特寫，顯微紋理。', prompt: '100mm macro lens, surface details' },
                     { id: 'zeiss35', name: 'Zeiss Distagon 35mm ｜ 35mm', desc: '商攝高品質：經典人文視角，色彩油潤立體。', prompt: 'Zeiss Distagon T* 35mm f/1.4, micro-contrast, 3D pop aesthetic' },
                     { id: 'canon1124', name: 'Canon EF 11-24mm f/4L ｜ 12mm', desc: '商攝高品質：全球最廣直線透視，無魚眼畸變。', prompt: 'Canon EF 11-24mm f/4L USM lens, rectilinear ultra-wide perspective, minimal distortion' },
-                    { id: 'nikon1424', name: 'Nikkor 14-24mm f/2.8G ｜ 14mm', desc: '商攝高品質：風景攝影傳奇，壯闊空間感。', prompt: 'Nikkor 14-24mm f/2.8G ED lens, expansive wide-angle field of view, superior contrast' },
+                    { id: 'nikon1424', name: 'Nikkor 14-24mm f/2.8G ｜ 14mm', desc: '商攝高品質：風景攝影傳記，壯闊空間感。', prompt: 'Nikkor 14-24mm f/2.8G ED lens, expansive wide-angle field of view, superior contrast' },
                     { id: 'nikkor24', name: 'Nikkor 24mm f/1.4G ｜ 24mm', desc: '商攝高品質：極致解像與邊緣畫質。', prompt: 'Nikkor 24mm f/1.4G ED lens, sharp wide angle, professional optics' },
                     { id: 'canon70200', name: 'Canon EF 70-200mm f/2.8L ｜ 200mm', desc: '商攝高品質：背景強烈貼近，細膩的分離感。', prompt: 'Canon EF 70-200mm f/2.8L IS III USM, professional telephoto compression' },
                     { id: 'canon600', name: 'Canon EF 600mm f/4L ｜ 600mm', desc: '商攝高品質：野生動物與競技捕捉首選。', prompt: 'Canon EF 600mm f/4L IS III USM, extreme telephoto range, ultra-sharp isolation' },
@@ -114,6 +118,8 @@
                     { id: 'lensbaby', name: 'Lensbaby Composer ｜ 創意鏡', desc: '特殊鏡頭：手動焦點，周圍拉伸模糊。', prompt: 'Lensbaby Composer, selective focus' }
                 ],
                 lighting: [
+                    // --- None 選項 ---
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定燈光參數，保留空白。', prompt: '' },
                     // --- 商業打光 ---
                     { id: 'threepoint', name: 'Three-Point Lighting ｜ 三點照明', desc: '商業打光：標準商攝架構，建立立體感。', prompt: 'professional three-point lighting (key, fill, back)' },
                     { id: 'highkey', name: 'High-Key ｜ 高明調', desc: '商業打光：明亮少影，高端美妝風格。', prompt: 'high-key lighting, bright airy aesthetic, minimal shadows' },
@@ -142,8 +148,11 @@
                     { id: 'tyndall', name: 'Tyndall Effect ｜ 丁達爾', desc: '環境光：神聖光束感。', prompt: 'Tyndall effect, divine god rays' }
                 ],
                 luts: [
+                    // --- None 選項 ---
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定色彩風格，保留空白。', prompt: '' },
+                    // --- 標準色彩 ---
                     { id: 'correct', name: 'Color Accurate ｜ 色彩準確', desc: '標準色彩：精準還原色彩，中性參考。', prompt: 'calibrated color accuracy, neutral reference profile' },
-                    { id: 'commercial', name: 'Commercial ｜ 頂級商攝', desc: '標準色彩：高端商業感。', prompt: 'high-end commercial editorial color science, standard white balance' },
+                    { id: 'commercial', name: 'Commercial ｜ 頂級商攝', desc: '標準色彩：標準白平衡，高端商業感。', prompt: 'high-end commercial editorial color science, standard white balance' },
                     { id: 'provia', name: 'Fujifilm Provia 100F ｜ 準確正片', desc: '標準色彩：色彩還原最準的正片。', prompt: 'Fujifilm Provia 100F (RDPIII), accurate slide film colors' },
                     { id: 'reala', name: 'Fujifilm Reala 500D ｜ 自然膚色', desc: '標準色彩：寬容度高，呈現自然。', prompt: 'Fujifilm Reala 500D film stock, exceptional skin tones' },
                     { id: 'portra400', name: 'Kodak Portra 400 ｜ 柯達', desc: '創意風格：人像首選，溫潤細膩。', prompt: 'Kodak Portra 400 film stock emulation, natural skin tones' },
@@ -159,6 +168,7 @@
                     { id: 'tmax', name: 'Kodak T-MAX ｜ 紀錄黑白', desc: '黑白：細膩灰階層次。', prompt: 'Kodak T-MAX 400 film' }
                 ],
                 focals: [
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定焦距。' },
                     { id: '6mm', name: '6mm ｜ 極廣魚眼', desc: '220度魚眼。' }, { id: '8mm', name: '8mm ｜ 180魚眼', desc: '標準魚眼。' },
                     { id: '12mm', name: '12mm ｜ 超級廣角', desc: '壯闊透視。' }, { id: '14mm', name: '14mm ｜ 超廣角', desc: '壯闊風景。' },
                     { id: '18mm', name: '18mm ｜ 電影廣角', desc: '經典廣角。' }, { id: '24mm', name: '24mm ｜ 標準廣角', desc: '生活紀實。' },
@@ -171,6 +181,7 @@
                     { id: '5200mm', name: '5200mm ｜ 地球極限', desc: '最強光學望遠。' }
                 ],
                 apertures: [
+                    { id: 'none', name: 'None ｜ 不指定', desc: '不指定光圈。' },
                     { id: 'T0.95', name: 'T0.95 ｜ 夜神光圈', desc: '夢幻極淺景深。' }, { id: 'T1.2', name: 'T1.2 ｜ 極淺景深', desc: '人像分離。' },
                     { id: 'T1.4', name: 'T1.4 ｜ 超大光圈', desc: '專業電影質感。' }, { id: 'T1.8', name: 'T1.8 ｜ 大光圈', desc: '淺景深分離。' },
                     { id: 'T2.0', name: 'T2.0 ｜ 專業光圈', desc: '解析平衡。' }, { id: 'T2.8', name: 'T2.8 ｜ 商業標準', desc: '穩定畫質。' },
@@ -195,15 +206,15 @@
                 aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
             };
 
-            const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem('cine_shots_v11_8') || '[]'));
-            const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem('cine_config_v11_8') || JSON.stringify({
+            const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem('cine_shots_v11_8_none') || '[]'));
+            const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem('cine_config_v11_8_none') || JSON.stringify({
                 action: '', camera: 'phaseone', focal: '35mm', aperture: 'T2.8', lens: 'zeiss35', 
                 perspective: 'eye', shotType: 'MCU', lighting: 'threepoint', lut: 'correct', aspect: '16:9'
             })));
             const [copyId, setCopyId] = useState(null);
 
-            useEffect(() => localStorage.setItem('cine_shots_v11_8', JSON.stringify(shots)), [shots]);
-            useEffect(() => localStorage.setItem('cine_config_v11_8', JSON.stringify(current)), [current]);
+            useEffect(() => localStorage.setItem('cine_shots_v11_8_none', JSON.stringify(shots)), [shots]);
+            useEffect(() => localStorage.setItem('cine_config_v11_8_none', JSON.stringify(current)), [current]);
 
             const analyzeSubjectBoost = (text) => {
                 if (!text) return "";
@@ -224,10 +235,14 @@
             const finalPrompt = useMemo(() => {
                 if (!current.action) return "把你心中所想的寫出來...（啟用動態偵測技術）";
                 const findP = (cat, id) => {
+                    if (id === 'none') return '';
                     const item = config[cat].find(i => i.id === id);
-                    if (!item) return id;
+                    if (!item) return '';
+                    if (cat === 'focals') return `focal length ${id}`;
+                    if (cat === 'apertures') return `aperture ${id}`;
                     return item.prompt || item.name;
                 };
+
                 const techChain = [
                     findP('shotTypes', current.shotType),
                     findP('perspectives', current.perspective),
@@ -235,10 +250,11 @@
                     findP('cameras', current.camera),
                     findP('lenses', current.lens),
                     findP('lighting', current.lighting),
-                    `focal length ${current.focal}`,
-                    `aperture ${current.aperture}`,
+                    findP('focals', current.focal),
+                    findP('apertures', current.aperture),
                     findP('luts', current.lut)
-                ];
+                ].filter(val => val && val.trim() !== '');
+
                 const boost = analyzeSubjectBoost(current.action);
                 const quality = "hyper-realistic, 16K resolution, unreal engine 5.4, octane render, physically based rendering (PBR), global illumination, ray-tracing, depth of field";
                 const aspect = `--ar ${current.aspect.replace(':', ':')}`;
@@ -313,7 +329,7 @@
                                         <div className="space-y-1">
                                             <label className="text-[9px] font-black text-gray-400 uppercase flex items-center gap-1"><Icon name="Palette" size={10}/> 色彩 Lut</label>
                                             <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl p-2 text-[10px] outline-none cursor-pointer">
-                                                {config.luts.map(u => <option key={u.id} value={u.id} title={u.desc}>{u.name} ｜ {u.desc.split('：')[0]}</option>)}
+                                                {config.luts.map(u => <option key={u.id} value={u.id} title={u.desc}>{u.name}</option>)}
                                             </select>
                                         </div>
                                     </div>
@@ -335,7 +351,7 @@
                                         <div className="space-y-1">
                                             <label className="text-[9px] font-black text-yellow-500 uppercase flex items-center gap-1"><Icon name="Sun" size={10}/> 燈光設定</label>
                                             <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/20 rounded-xl p-2 text-[10px] outline-none text-yellow-500/80 cursor-pointer">
-                                                {config.lighting.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name} ｜ {l.desc.split('：')[0]}</option>)}
+                                                {config.lighting.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1">
@@ -364,7 +380,7 @@
                                 <div className="flex gap-4">
                                     <button onClick={handleReset} className="text-[10px] font-bold text-gray-500 hover:text-white flex items-center gap-1 transition-colors"><Icon name="RotateCcw" size={14}/> RESET</button>
                                     <button onClick={handleClear} className="text-[10px] font-bold text-red-500/80 hover:text-red-500 flex items-center gap-1 transition-colors"><Icon name="Trash2" size={14}/> CLEAR</button>
-                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${shots.length-i},"${s.action}","${s.camera}|${s.lens}","${s.prompt}"\n`); const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `Ian_Production_ShotList.csv`; link.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
+                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${shots.length-i},"${s.action}","${s.camera}|${s.focal}","${s.prompt}"\n`); const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' }); const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = `Ian_Production_ShotList.csv`; link.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
                                 </div>
                             </div>
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl flex-1 overflow-hidden shadow-inner flex flex-col">
