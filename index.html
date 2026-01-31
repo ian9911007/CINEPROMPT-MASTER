@@ -75,7 +75,7 @@
 
         @media (max-width: 640px) { 
             select, textarea, button { font-size: 16px !important; } 
-            .mobile-label { font-size: 12px !important; }
+            .mobile-label { font-size: 11px !important; }
         }
     </style>
 </head>
@@ -86,217 +86,343 @@
         const { useState, useMemo, useEffect, useRef } = React;
 
         const Icon = ({ name, size = 16, className = "" }) => {
-            useEffect(() => {
-                if (window.lucide) { window.lucide.createIcons(); }
-            }, [name]);
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
             return <i data-lucide={name.toLowerCase()} style={{ width: size, height: size }} className={`inline-block ${className}`}></i>;
         };
 
         const config = {
             cameras: [
-                { id: 'none', name: 'None ｜ 不指定', desc: '不指定攝影機參數。', prompt: '' },
-                { id: 'phaseone', name: 'Phase One XF IQ4 ｜ 飛思一億', desc: '極致商業靜物攝影，紋理細節爆棚。', prompt: 'shot on Phase One XF IQ4 150MP, medium format clarity, commercial macro precision' },
-                { id: 'h6d', name: 'Hasselblad H6D-100c ｜ 哈蘇中幅', desc: '色彩深度極高，高端廣告標配。', prompt: 'shot on Hasselblad H6D-100c, high color depth, elite commercial aesthetic' },
-                { id: 'gfx100', name: 'Fujifilm GFX 100 II ｜ 富士中幅', desc: '底片模擬色彩，現代中片幅平衡。', prompt: 'shot on Fujifilm GFX 100 II, medium format depth, film simulation colors' },
-                { id: '5d4', name: 'Canon EOS 5D Mark IV ｜ 佳能 5D4', desc: '標準單眼質感，色彩討喜溫潤。', prompt: 'shot on Canon EOS 5D Mark IV, standard DSLR look, vibrant warm tones' },
-                { id: 'venice2', name: 'Sony VENICE 2 ｜ 索尼威尼斯', desc: '頂級電影色彩，膚色渲染自然，動態範圍極大。', prompt: 'shot on Sony VENICE 2, CineAlta color science, natural skin tones, high ISO purity' },
-                { id: 'arri35', name: 'ARRI Alexa 35 ｜ 阿萊 35', desc: '最新 ALEV 4 感光元件，影視工業最高畫質標準。', prompt: 'shot on ARRI Alexa 35, ALEV 4 sensor, cinematic textures, superior color science' },
-                { id: 'arri65', name: 'ARRI Alexa 65 ｜ 阿萊 65', desc: '神級電影感，極致大畫幅質感。', prompt: 'shot on ARRI Alexa 65, ALEV 3 A3X sensor, legendary cinematic dynamic range' },
-                { id: 'aaton', name: 'Aaton Penelope ｜ 亞通 35mm', desc: '傳奇靜音底片機，極具顆粒美感。', prompt: 'shot on Aaton Penelope 35mm, organic film grain, cinema texture' },
-                { id: 'panaflex', name: 'Panaflex Gold ｜ 帕那維申', desc: '好萊塢工業標準底片機，經典底片色調。', prompt: 'shot on Panavision Panaflex Gold II, 35mm film aesthetic' },
-                { id: 'imax70', name: 'IMAX 15/70mm ｜ IMAX 底片', desc: '巨大的畫幅，極致解析度。', prompt: 'shot on IMAX 15/70mm film, massive 18k resolution, ultra-wide gate' },
-                { id: 'raptor', name: 'RED V-Raptor XL ｜ RED 猛禽', desc: '極度銳利、高反差。', prompt: 'shot on RED V-Raptor XL, 8K VistaVision, sharp modern commercial contrast' },
-                { id: 'dxl2', name: 'Panavision Millennium DXL2', desc: '帕那維申：好萊塢大片質感。', prompt: 'shot on Panavision Millennium DXL2, 8K Large Format' },
-                { id: 'h500cm', name: 'Hasselblad 500C/M ｜ 哈蘇底片', desc: '經典 6x6 正方形中幅構圖美學。', prompt: 'shot on Hasselblad 500C/M, medium format film look, Carl Zeiss optics' },
-                { id: 'leicam6', name: 'Leica M6 ｜ 徠卡底片', desc: '傳奇人文質感，微反差強。', prompt: 'shot on Leica M6, 35mm street photography film aesthetic, high micro-contrast' },
-                { id: 'contaxg2', name: 'Contax G2 ｜ 康泰時', desc: '頂級蔡司鍍膜，色彩純淨通透。', prompt: 'shot on Contax G2, Zeiss T* optics, crisp film colors' },
-                { id: 'ursa12k', name: 'Blackmagic URSA 12K ｜ BMD', desc: '極致數位細節。', prompt: 'shot on Blackmagic URSA Mini Pro 12K, high resolution detail' },
-                { id: 'm11m', name: 'Leica M11 Monochrom ｜ 徠卡黑白', desc: '純粹黑白灰階，高對比與銳利度。', prompt: 'shot on Leica M11 Monochrom, pure B&W photography, high contrast grayscale' },
-                { id: 'nkonf3', name: 'Nikon F3 ｜ 尼康 F3', desc: '經典新聞攝影質感，樸實剛硬。', prompt: 'shot on Nikon F3, robust analog look' },
-                { id: 'iphone', name: 'iPhone 16 Pro ｜ 蘋果手機', desc: '計算攝影感，高銳度。', prompt: 'shot on iPhone 16 Pro, mobile cinematography, realistic lens texture' },
-                { id: 'arri16sr', name: 'Arriflex 16SR ｜ 傳奇 16mm', desc: '經典紀錄片質感。', prompt: 'shot on Arriflex 16SR 16mm film, nostalgic vintage texture' },
-                { id: 'phantom', name: 'Phantom Flex4K ｜ 慢動作機', desc: '觸發液體凍結特效。', prompt: 'shot on Phantom Flex4K, high-speed photography, liquid splash freeze' },
-                { id: 'bolex', name: '16mm Bolex H16 ｜ 16釐米', desc: '獨立電影感，邊緣柔和。', prompt: 'shot on 16mm Bolex H16, vintage film grain' },
-                { id: 'super8', name: 'Super 8mm Film ｜ 超8底片', desc: '懷舊家庭錄影帶質感。', prompt: 'shot on Super 8mm film, nostalgic grainy home video aesthetic' },
-                { id: 'gopro', name: 'GoPro Hero 12 ｜ 運動機', desc: '超廣角、魚眼變形。', prompt: 'shot on GoPro Hero 12, wide fisheye lens, action camera perspective' },
-                { id: 'mavic3', name: 'DJI Mavic 3 Cine ｜ 航拍機', desc: '鳥瞰視角，平穩空拍。', prompt: 'shot on DJI Mavic 3 Cine, aerial drone perspective, sweeping landscape' },
-                { id: 'sx70', name: 'Polaroid SX-70 ｜ 寶麗來', desc: '柔焦、偏色、白色邊框。', prompt: 'shot on Polaroid SX-70, instant film aesthetic, soft focus' },
-                // --- 特殊顯像技術 ---
-                { id: 'xray', name: 'X-Ray Imaging ｜ X光顯像', desc: '展現骨骼、半透明質感。', prompt: 'X-ray imaging style, skeletal structure visibility, monochromatic semi-transparent texture' },
-                { id: 'ctscan', name: 'CT Scan ｜ 斷層掃描', desc: '展現不同密度的 3D 切片視覺。', prompt: 'CT scan medical imaging style, axial tomography perspective' },
-                { id: 'mri', name: 'MRI Scan ｜ 核磁共振', desc: '針對軟組織或複雜結構的空間建模感。', prompt: 'MRI magnetic resonance imaging style, complex organic soft tissue textures' },
-                { id: 'uwb', name: 'UWB Scan ｜ 穿牆雷達', desc: '呈現點雲或熱點軌跡。', prompt: 'UWB through-wall radar scan, point cloud human detection' },
-                { id: 'thermal_img', name: 'Thermal Imaging ｜ 熱成象', desc: '主打紅藍/白熱色調，展現熱輻射。', prompt: 'professional thermal imaging, heat signature visualization' },
-                { id: 'cherenkov', name: 'Cherenkov Radiation ｜ 切倫科夫輻射', desc: '強烈科幻感深藍輝光。', prompt: 'Cherenkov radiation effect, nuclear reactor core blue glow' },
-                { id: 'kirlian', name: 'Kirlian Photography ｜ 克里安攝影', desc: '展現似閃電的光影電暈。', prompt: 'Kirlian photography style, electric bio-luminescence' },
-                { id: 'schlieren', name: 'Schlieren Photography ｜ 紋影攝影', desc: '將空氣密度氣流視覺化。', prompt: 'Schlieren photography, optical airflow visualization' },
-                { id: 'cross_polarized', name: 'Cross-Polarized ｜ 偏振光成像', desc: '展現透明材質內部的應力彩虹紋路。', prompt: 'cross-polarized light photography, rainbow spectral artifacts' },
-                { id: 'uv_img', name: 'UV Imaging ｜ 紫外線感應', desc: '展現螢光反應或老化。', prompt: 'UV ultraviolet imaging, fluorescence reaction' },
-                { id: 'sem', name: 'SEM ｜ 掃描式電子顯微鏡', desc: '高對比、淺景深，展現微觀世界。', prompt: 'Scanning Electron Microscope (SEM) style, ultra-high micro-detail' },
-                { id: 'fluorescence', name: 'Fluorescence ｜ 螢光顯微', desc: '黑背景下高飽和發光。', prompt: 'Fluorescence microscopy, bioluminescent neural network' },
-                { id: 'starlight_nv', name: 'Starlight NV ｜ 星光夜視', desc: '軍用綠色磷光，具備數位噪點。', prompt: 'military starlight night vision, green phosphor glow' },
-                { id: 'point_cloud', name: 'Point Cloud ｜ 點雲顯像', desc: 'LiDAR 掃描出的粒子化空間。', prompt: '3D point cloud visualization, LiDAR laser scanning particles' },
-                { id: 'sonar', name: 'Sonar Imaging ｜ 聲納成像', desc: '聲波回傳產生的波紋感成像。', prompt: 'sonar acoustic imaging, underwater sound wave ripples' }
+                { id: 'none', name: 'None ｜ 不指定', desc: '不指定攝影機系統。', prompt: '' },
+                // --- 一、頂級商業與人像 ---
+                { id: 'phaseone', name: 'Phase One XF IQ4 ｜ 飛思中幅', desc: '極致解析度、商業修圖級質感、豐富細節。', prompt: 'shot on Phase One XF IQ4 150MP, 16k resolution, medium format sensor look' },
+                { id: 'h6d', name: 'Hasselblad H6D-100c ｜ 哈蘇中幅', desc: '經典哈蘇色調、頂級人像膚色還原、棚拍感。', prompt: 'shot on Hasselblad H6D-100c, high color depth, elite commercial aesthetic' },
+                { id: 'gfx100', name: 'Fujifilm GFX 100 II ｜ 富士中幅', desc: '現代中片幅、高動態範圍、日系色彩科學。', prompt: 'shot on Fujifilm GFX 100 II, medium format depth, film simulation colors' },
+                { id: 'leicas3', name: 'Leica S3 ｜ 徠卡中幅', desc: '德系光學銳度、油潤焦外(Bokeh)、立體感。', prompt: 'shot on Leica S3, medium format DSLR, high micro-contrast, Leica look' },
+                { id: '5d4', name: 'Canon EOS 5D Mark IV ｜ 佳能5D4', desc: '數位單眼標準、溫潤膚色、廣泛通用的商業質感。', prompt: 'shot on Canon EOS 5D Mark IV, standard DSLR look, vibrant warm tones' },
+                { id: 'a7r5', name: 'Sony A7R V ｜ 索尼A7R5', desc: '極致銳利、現代數位感、高對比清晰度。', prompt: 'shot on Sony A7R V, razor sharp digital clarity, high contrast' },
+                // --- 二、電影級攝影機 ---
+                { id: 'imax70', name: 'IMAX 15/70mm ｜ IMAX底片', desc: '史詩級視野、極淺景深、膠卷顆粒與超高解析。', prompt: 'shot on IMAX 15/70mm film, massive 18k resolution, ultra-wide gate' },
+                { id: 'arri65', name: 'ARRI Alexa 65 ｜ 阿萊65', desc: '好萊塢頂規、極致寬容度、柔和高光滾降。', prompt: 'shot on ARRI Alexa 65, ALEV 3 A3X sensor, legendary cinematic dynamic range' },
+                { id: 'arri35', name: 'ARRI Alexa 35 ｜ 阿萊35', desc: '現代電影質感、色彩科學標竿、暗部細節豐富。', prompt: 'shot on ARRI Alexa 35, ALEV 4 sensor, superior color science' },
+                { id: 'venice2', name: 'Sony VENICE 2 ｜ 威尼斯2', desc: '雙原生 ISO、純淨低光表現、現代電影色調。', prompt: 'shot on Sony VENICE 2, CineAlta color science, natural skin tones, high ISO purity' },
+                { id: 'panadxl2', name: 'Panavision DXL2 ｜ 帕那維申', desc: 'Light Iron 色調、變形寬螢幕質感(Anamorphic)。', prompt: 'shot on Panavision Millennium DXL2, 8K Large Format' },
+                { id: 'raptor', name: 'RED V-Raptor XL ｜ RED猛禽', desc: '高幀率慢動作、極度銳利、高飽和度風格。', prompt: 'shot on RED V-Raptor XL, 8K VistaVision, sharp modern commercial contrast' },
+                { id: 'ursa12k', name: 'Blackmagic URSA 12K ｜ BMD 12K', desc: '數位感強烈、超採樣銳度、生動色彩。', prompt: 'shot on Blackmagic URSA Mini Pro 12K, high resolution detail' },
+                { id: 'aaton', name: 'Aaton Penelope ｜ 亞通35mm', desc: '法國電影機、獨特顆粒感、手持攝影呼吸感。', prompt: 'shot on Aaton Penelope 35mm, organic film grain, cinema texture' },
+                { id: 'panaflex', name: 'Panaflex Gold ｜ 帕那黃金機', desc: '經典 80-90年代好萊塢電影風、暖調膠卷感。', prompt: 'shot on Panavision Panaflex Gold II, 35mm film aesthetic' },
+                { id: 'technicolor', name: 'Technicolor 3-Strip ｜ 特藝三帶', desc: '30-50年代黃金好萊塢、極高飽和度(紅綠藍分離)。', prompt: 'vibrant Technicolor 3-strip process, saturated primary colors' },
+                // --- 三、底片、復古與玩具 ---
+                { id: 'm11m', name: 'Leica M11 Monochrom ｜ 徠卡黑白', desc: '純粹黑白、高對比、無色彩雜訊的灰階過渡。', prompt: 'shot on Leica M11 Monochrom, pure B&W photography, high contrast grayscale' },
+                { id: 'h500cm', name: 'Hasselblad 500C/M ｜ 哈蘇經典', desc: '6x6 正方形構圖、腰平視角、經典底片質感。', prompt: 'shot on Hasselblad 500C/M, medium format film look, Carl Zeiss optics' },
+                { id: 'leicam6', name: 'Leica M6 ｜ 徠卡M6', desc: '街頭攝影風格、旁軸取景、紀實感。', prompt: 'shot on Leica M6, 35mm street photography film aesthetic, high micro-contrast' },
+                { id: 'contaxg2', name: 'Contax G2 ｜ 康泰時G2', desc: '時尚攝影愛用、蔡司鏡頭銳度、香檳金屬質感。', prompt: 'shot on Contax G2, Zeiss T* optics, crisp film colors' },
+                { id: 'f3', name: 'Nikon F3 ｜ 尼康F3', desc: '戰地記者風格、堅硬冷靜、新聞紀實感。', prompt: 'shot on Nikon F3, robust analog look' },
+                { id: 'xpan', name: 'Hasselblad XPan ｜ 哈蘇寬幅', desc: '21:9 超寬電影比例、敘事性全景、併接感。', prompt: 'shot on Hasselblad XPan, panoramic 35mm film, wide narrative perspective' },
+                { id: 'largeformat', name: 'Large Format ｜ 大畫幅座機', desc: '極淺景深(移軸效果)、微縮模型感、極致細節。', prompt: 'shot on 4x5 large format camera, view camera bellows, extreme detail' },
+                { id: 'arri16sr', name: 'Arriflex 16SR ｜ 傳奇16mm', desc: '16mm 粗顆粒、獨立電影質感、復古文藝片風。', prompt: 'shot on Arriflex 16SR 16mm film, nostalgic vintage texture' },
+                { id: 'bolex', name: '16mm Bolex H16 ｜ 16釐米', desc: '實驗電影、手搖鏡頭感、邊緣模糊暗角。', prompt: 'shot on 16mm Bolex H16, vintage film grain, soft edges' },
+                { id: 'super8', name: 'Super 8mm Film ｜ 超8底片', desc: '懷舊家庭錄影帶、暖色調、高噪點、漏光效果。', prompt: 'shot on Super 8mm film, nostalgic grainy home video aesthetic' },
+                { id: 'lomo', name: 'Lomo LC-A+/Holga ｜ 玩具機', desc: '強烈暗角、隨機漏光、高飽和偏色、塑膠感。', prompt: 'Lomography LC-A style, plastic lens flares, heavy vignetting' },
+                { id: 'sx70', name: 'Polaroid SX-70 ｜ 寶麗來', desc: '拍立得邊框、化學顯影色偏、柔焦夢幻感。', prompt: 'shot on Polaroid SX-70, instant film aesthetic, square white border' },
+                { id: 'aerochrome', name: 'Kodak Aerochrome ｜ 紅外線底片', desc: '植被呈現粉紅/紅色、超現實軍用偵察風格。', prompt: 'Kodak Aerochrome, infrared film aesthetic, pink foliage' },
+                { id: 'nishika', name: 'Nishika N8000 ｜ 四眼3D機', desc: '垂直視差錯位、Lo-Fi 3D感。', prompt: 'Nishika N8000 3D wigglegram style, quadruple lens parallax' },
+                // --- 四、特殊視角與數位錄像 ---
+                { id: 'iphone', name: 'iPhone 16 Pro ｜ 蘋果手機', desc: '計算攝影質感、Deep Fusion 銳化。', prompt: 'shot on iPhone 16 Pro, mobile cinematography' },
+                { id: 'gopro', name: 'GoPro Hero 12 ｜ 運動相機', desc: '超廣角魚眼、高飽和、極限運動第一人稱。', prompt: 'shot on GoPro Hero 12, action camera perspective, fisheye' },
+                { id: 'mavic3', name: 'DJI Mavic 3 Cine ｜ 航拍機', desc: '上帝視角(God\'s Eye View)、廣闊地景。', prompt: 'shot on DJI Mavic 3 Cine, aerial drone perspective' },
+                { id: 'phantom', name: 'Phantom Flex4K ｜ 慢動作機', desc: '液體凝固瞬間、高速攝影、時間凍結感。', prompt: 'shot on Phantom Flex4K, high-speed photography, time freeze' },
+                { id: 'vx1000', name: 'Sony VX1000 ｜ 索尼VX', desc: '90年代滑板影片風、數位磁帶雜訊。', prompt: 'shot on Sony DCR-VX1000, miniDV tape noise, skate aesthetic' },
+                { id: 'vhs', name: 'Vintage VHS ｜ 復古錄影', desc: '80年代錄影帶、磁帶追蹤紋、色彩滲漏。', prompt: 'vintage VHS camcorder, magnetic tape noise, color bleeding' },
+                { id: 'pxl2000', name: 'PXL-2000 ｜ 像素玩具機', desc: '極低解析度黑白、錄音帶錄像質感。', prompt: 'shot on Fisher-Price PXL-2000, low resolution black and white' },
+                // --- 五、科學、醫療與抽象 ---
+                { id: 'nasa', name: 'NASA Hasselblad ｜ 月球相機', desc: '極高對比、漆黑太空、十字座標線。', prompt: 'shot on NASA Hasselblad Data Camera, réseau plate crosshairs' },
+                { id: 'thermal', name: 'Thermal Imaging ｜ 熱成像', desc: '紅橙藍溫度色譜、生命體探測。', prompt: 'thermal imaging camera, infrared heat signature, predator vision' },
+                { id: 'xray', name: 'X-Ray Imaging ｜ X光顯像', desc: '透視內部結構、骨骼金屬顯現。', prompt: 'X-ray imaging style, skeletal structure visibility' },
+                { id: 'mri', name: 'MRI Scan ｜ 核磁共振', desc: '軟組織切片視圖、醫學解剖感。', prompt: 'MRI magnetic resonance imaging style, soft tissue scan' },
+                { id: 'ctscan', name: 'CT Scan ｜ 斷層掃描', desc: '3D 內部結構重組、科技透視。', prompt: 'CT scan medical imaging, axial tomography perspective' },
+                { id: 'sem', name: 'SEM ｜ 掃描電子顯微鏡', desc: '微觀世界、極致細節、黑白高銳度。', prompt: 'Scanning Electron Microscope (SEM) style, ultra-high micro-detail' },
+                { id: 'fluorescence', name: 'Fluorescence ｜ 螢光顯微', desc: '黑背景下高飽和度發光細胞。', prompt: 'Fluorescence microscopy, bioluminescent neural network' },
+                { id: 'uv_img', name: 'UV Imaging ｜ 紫外線感應', desc: '隱藏斑點顯現、鑑識科學感。', prompt: 'UV ultraviolet imaging, fluorescence reaction' },
+                { id: 'schlieren', name: 'Schlieren ｜ 紋影攝影', desc: '捕捉氣流/衝擊波、空氣密度視覺化。', prompt: 'Schlieren photography, optical airflow visualization' },
+                { id: 'kirlian', name: 'Kirlian ｜ 克里安攝影', desc: '物體周圍電暈放電、氣場光環。', prompt: 'Kirlian photography style, coronal discharge aura' },
+                { id: 'cherenkov', name: 'Cherenkov ｜ 切倫科夫', desc: '核反應堆藍光、高能粒子視覺。', prompt: 'Cherenkov radiation effect, nuclear reactor blue glow' },
+                { id: 'bubble', name: 'Bubble Chamber ｜ 氣泡室', desc: '亞原子粒子軌跡、復古科幻螺旋。', prompt: 'Bubble chamber particle tracks, cosmic ray visualization' },
+                { id: 'hyper', name: 'Hyperspectral ｜ 高光譜', desc: '偽色彩(False Color) 地質圖。', prompt: 'hyperspectral imaging, false color terrain mapping' },
+                { id: 'pointcloud', name: 'Point Cloud ｜ 點雲顯像', desc: '數位粒子構成、Lidar 掃描質感。', prompt: '3D point cloud visualization, LiDAR laser particles' },
+                { id: 'sonar', name: 'Sonar Imaging ｜ 聲納成像', desc: '海底地形、綠/黃單色掃描波紋。', prompt: 'sonar acoustic imaging, underwater sound wave ripples' },
+                { id: 'uwb', name: 'UWB Scan ｜ 穿牆雷達', desc: '模糊信號、無線電波視覺化。', prompt: 'UWB through-wall radar scan, pulse imaging' },
+                { id: 'polarized', name: 'Cross-Polarized ｜ 偏振光', desc: '去除表面反光、應力分析。', prompt: 'cross-polarized light photography, birefringence patterns' },
+                { id: 'starlight', name: 'Starlight NV ｜ 星光夜視', desc: '綠色螢光雜訊、高增益。', prompt: 'military starlight night vision, green phosphor glow' }
             ],
             lenses: [
-                { id: 'none', name: 'None ｜ 不指定', desc: '不指定鏡頭。', prompt: '' },
-                // --- 商業高品質 ---
-                { id: 'otus55', name: 'Zeiss Otus 55mm ｜ 蔡司', desc: '無視像差，極致物理正確。', prompt: 'Zeiss Otus 55mm f/1.4, flawless resolution' },
-                { id: 'otus85', name: 'ZEISS Otus 85mm ｜ 蔡司巔峰', desc: '3D Pop-up 感，極致乾淨散景，光學設計頂點。', prompt: 'ZEISS Otus 85mm f/1.4, extreme 3D pop-up effect, ultra-clean harmonious bokeh, flawless optics' },
-                { id: 'sigma14', name: 'Sigma 14mm ｜ 廣角王', desc: '邊緣極度銳利。', prompt: 'Sigma 14mm f/1.4 Art, wide perspective' },
-                { id: 'canon85L', name: 'Canon 85mm ｜ 傳奇人像', desc: '奶油般散景，溫潤細膩。', prompt: 'Canon EF 85mm f/1.2L, creamy bokeh' },
-                { id: 'macro100', name: 'Macro 100mm ｜ 微距鏡', desc: '捕捉顯微物理紋理。', prompt: '100mm macro lens, surface details, micro texture' },
-                { id: 'zeiss35d', name: 'Zeiss Distagon 35mm ｜ 蔡司人文', desc: '3D 立體感與微反差。', prompt: 'Zeiss Distagon T* 35mm f/1.4, 3D pop' },
-                { id: 'canon1124', name: 'Canon 11-24mm ｜ 廣角之王', desc: '全球最廣直線透視。', prompt: 'Canon EF 11-24mm f/4L, rectilinear' },
-                { id: 'nikon1424', name: 'Nikkor 14-24mm ｜ 風景標竿', desc: '高對比壯闊空間。', prompt: 'Nikkor 14-24mm f/2.8G, superior contrast' },
-                { id: 'nikkor24', name: 'Nikkor 24mm ｜ 標準廣角', desc: '極致解像力。', prompt: 'Nikkor 24mm f/1.4G, sharp wide' },
-                { id: 'tele70200', name: 'Canon 70-200mm ｜ 長焦標配', desc: '傳奇小白砲，背景壓縮強。', prompt: 'Canon EF 70-200mm f/2.8L, white-lens compression' },
-                { id: 'canon600', name: 'Canon 600mm ｜ 極遠長焦', desc: '競技與動物標配。', prompt: 'Canon EF 600mm f/4L, subject isolation' },
-                // --- 電影與變形鏡 ---
-                { id: 'arrisig', name: 'ARRI Signature 47mm ｜ 電影鏡', desc: '自然膚色渲染之巔。', prompt: 'ARRI Signature Prime, natural rendering, creamy texture' },
-                { id: 'panat', name: 'Panavision T-Series ｜ 現代變形', desc: '現代標竿，優雅水平耀光。', prompt: 'Panavision T-Series Anamorphic lens, modern cinematic squeeze, elegant flares' },
-                { id: 'panac', name: 'Panavision C-Series ｜ 經典變形', desc: '傳奇耀光與電影味。', prompt: 'Panavision C-Series Anamorphic lens, vintage blue flares, classic oval bokeh' },
-                { id: 'xtal', name: 'JDC Xtal 50mm ｜ 變形鏡', desc: '傳奇電影變形鏡。', prompt: 'JDC Xtal Xpress Anamorphic lens, legendary cinematic flare' },
-                { id: 'hawkvlite', name: 'Hawk V-Lite 55mm ｜ 變形鏡', desc: '現代變形標竿，緊湊鮮明。', prompt: 'Hawk V-Lite Anamorphic lens' },
-                { id: 'cooke', name: 'Cooke S4/i 35mm ｜ 庫克鏡', desc: '著名的 "Cooke Look"，層次細膩。', prompt: 'Cooke S4/i Prime lens, warm highlights' },
-                { id: 'leicalux', name: 'Leica 35mm ｜ 頂級光學', desc: '極致通透銳利，高微反差。', prompt: 'Leica Summilux-C, high clarity' },
-                { id: 'summilux50', name: 'Leica Summilux-M 50mm ｜ 奶油標竿', desc: '奶油散景定義者，極高微對比，焦內銳利如刀。', prompt: 'Leica Summilux-M 50mm f/1.4 ASPH, legendary micro-contrast, creamy bokeh transition, razor sharp focus' },
-                { id: 'zeisssup', name: 'Zeiss Supreme 50mm ｜ 蔡司電影', desc: '現代科技感，冷峻專業。', prompt: 'Zeiss Supreme Prime, clean rendering' },
-                { id: 'angenieux', name: 'Angénieux Optimo ｜ 安琴', desc: '極致滑順的電影變焦感。', prompt: 'Angénieux Optimo zoom, cinema texture' },
-                { id: 'superspeed', name: 'Zeiss Super Speed ｜ 蔡司銘鏡', desc: '迷人的光學呼吸感與低光層次。', prompt: 'Zeiss Super Speed Mk II, T1.3 glow, vintage blooming highlights' },
-                { id: 'baltar', name: 'Super-Baltar ｜ 鮑旭勞倫', desc: '《教父》質感，厚實溫暖。', prompt: 'Bausch & Lomb Super-Baltar lens, classic warm Hollywood look, vintage halation' },
-                // --- 底片與特殊缺陷 ---
-                { id: 'xenon50', name: 'Schneider Xenon 50mm ｜ 德味奶油', desc: '頂級德系光學，極致平滑的中性渲染。', prompt: 'Schneider-Kreuznach Xenon 50mm f/1.9 lens, pure German rendering, neutral smooth textures' },
-                { id: 'k35', name: 'Canon K-35 35mm ｜ 復古鏡', desc: '暖調低反差，經典 70 年代感。', prompt: 'vintage Canon K-35 prime, nostalgic warm bloom, low contrast' },
-                { id: 'soviet', name: 'Vintage Soviet ｜ 蘇聯銘鏡', desc: '放射狀耀光與邊緣失光瑕疵。', prompt: 'Vintage Soviet MIR-1B lens, chromatic aberration, heavy vignetting' },
-                { id: 'helios', name: 'Helios 44-2 58mm ｜ 八羽怪', desc: '強烈的旋轉散景效果。', prompt: 'Helios 44-2 lens, extreme swirly radial bokeh' },
-                { id: 'biotar75', name: 'Carl Zeiss Biotar 75mm ｜ 旋焦始祖', desc: '旋轉散景之王，提供強烈的視覺衝擊。', prompt: 'Carl Zeiss Jena Biotar 75mm f/1.5, king of swirly bokeh, rotating background highlights' },
-                { id: 'trioplan100', name: 'Meyer Optik Trioplan ｜ 肥皂泡', desc: '著名的肥皂泡散景 (Soap Bubble Bokeh)。', prompt: 'Meyer Optik Görlitz Trioplan 100mm f/2.8, soap bubble bokeh, bright-edged highlights' },
-                { id: 'stf135', name: 'Minolta STF 135mm ｜ 散景之王', desc: '物理極限的柔美虛化。', prompt: 'Minolta 135mm STF, ultimate silky bokeh, perfect defocus' },
-                { id: 'tair11a', name: 'Tair-11A 135mm ｜ 圓型散景怪獸', desc: '20片光圈葉片，極致圓潤散景，無二線性。', prompt: 'Tair-11A 135mm f/2.8 lens, 20-blade circular aperture, ultimate creamy bokeh, smooth rendering' },
-                { id: 'dreamagon', name: 'Dreamagon ｜ 柔焦幻鏡', desc: '物理擴散朦朧美感。', prompt: 'Dreamagon soft focus lens, dreamy diffused highlights' },
-                // --- 特效與特殊 ---
-                { id: 'nikon1700', name: 'Nikkor 1700mm ｜ 長焦之王', desc: '極致空間扁平感與望遠視野。', prompt: 'Nikkor 1200-1700mm f/5.6-8.0P ED IF lens, super telephoto zoom' },
-                { id: 'canon800', name: 'Canon 800mm ｜ 長焦之巔', desc: '捕捉野性瞬間。', prompt: 'Canon EF 800mm f/5.6L' },
-                { id: 'canon1200', name: 'Canon 1200mm ｜ 超視距', desc: '衛星級望遠能力。', prompt: 'Canon EF 1200mm f/5.6L' },
-                { id: 'canon5200', name: 'Canon 5200mm ｜ 地球極限', desc: '天文級壓縮。', prompt: 'Canon 5200mm f/14 mirror lens, astronomical scale' },
-                { id: 'nikkor6mm', name: 'Nikkor 6mm ｜ 全球最廣魚眼', desc: '220度極限球型視角。', prompt: 'Nikkor 6mm f/2.8 fisheye lens, 220-degree circular distortion' },
-                { id: 'nikkor8mm', name: 'Nikkor 8mm ｜ 標準魚眼', desc: '180度視角。', prompt: 'Nikkor 8mm f/2.8 fisheye' },
-                { id: 'probe', name: 'Laowa 24mm ｜ 探針鏡', desc: '蟲眼穿梭於物體內部的特異微距。', prompt: 'Laowa 24mm Probe lens, bug-eye perspective' },
-                { id: 'tiltshift', name: 'Tilt-Shift Lens ｜ 移軸鏡', desc: '微縮模型效果或修正透視。', prompt: 'tilt-shift lens effect, miniature model aesthetic' },
-                { id: 'split', name: 'Split Diopter ｜ 雙焦鏡', desc: '前後清晰超現實感。', prompt: 'split diopter shot, dual focus planes' },
-                { id: 'petzval', name: 'Petzval Art ｜ 藝術鏡', desc: '強烈邊緣旋轉。', prompt: 'Petzval art lens, swirly bokeh' },
-                { id: 'fisheye', name: 'Fisheye Lens ｜ 廣域魚眼', desc: '球體變形感。', prompt: 'extreme fisheye distortion' },
-                { id: 'noctilux50', name: 'Leica Noctilux-M 50mm ｜ 暗夜之王', desc: '融化的黃油，極淺景深，油畫般的色塊過渡。', prompt: 'Leica Noctilux-M 50mm f/0.95 ASPH, paper-thin depth of field, melted butter bokeh' },
-                { id: 'jupiter9', name: 'Jupiter-9 85mm ｜ 人像柔光', desc: '經典蘇聯 Sonar 結構，全開時自帶天然柔光濾鏡感。', prompt: 'Jupiter-9 85mm f/2 lens, Sonnar optics, natural soft focus effect, creamy portrait rendering' },
-                { id: 'noct095', name: 'Noctilux 𝑓/0.95 ｜ 夜神', desc: '夢幻般的焦外虛化。', prompt: 'Noctilux 𝑓/0.95, paper-thin field' },
-                { id: 'promist', name: 'Pro-Mist Filter ｜ 柔光', desc: '高光溢出降低銳度。', prompt: '1/4 black pro-mist filter, highlight bloom' },
-                { id: 'lensbaby', name: 'Lensbaby Composer ｜ 創意鏡', desc: '焦點移動周圍拉伸。', prompt: 'Lensbaby Composer, selective focus' }
+                { id: 'none', name: 'None ｜ 不指定', desc: '不指定鏡頭系統。', prompt: '' },
+                // --- 現代商業 ---
+                { id: 'phaseone_back', name: 'Phase One Back ｜ 飛思數位', desc: '億萬畫素級質感、極高動態範圍。', prompt: 'Phase One digital back, 16k resolution, medium format look' },
+                { id: 'schneider', name: 'Schneider LS ｜ 施奈德鏡間', desc: '鏡間快門鏡頭、極其乾淨、無瑕疵。', prompt: 'Schneider Kreuznach LS lens, clinical sharpness, product photography' },
+                { id: 'otus55', name: 'Zeiss Otus 55mm ｜ 蔡司55', desc: '零像差、極致銳利、解像力之王。', prompt: 'Zeiss Otus 55mm f/1.4, zero aberration, extreme sharpness' },
+                { id: 'otus85', name: 'Zeiss Otus 85mm ｜ 蔡司85', desc: '人像視角、零色散、3D Pop-up 感。', prompt: 'Zeiss Otus 85mm f/1.4, zero chromatic aberration, razor sharp' },
+                { id: 'summilux50', name: 'Leica Summilux 50 ｜ 奶油標竿', desc: '焦內銳利、焦外奶油般化開。', prompt: 'Leica Summilux-M 50mm f/1.4 ASPH, creamy bokeh' },
+                { id: 'noctilux50', name: 'Leica Noctilux 50 ｜ 徠卡夜神', desc: 'f/0.95 極致大光圈、超淺景深。', prompt: 'Leica Noctilux-M 50mm f/0.95 ASPH, paper-thin field' },
+                { id: 'canon85L', name: 'Canon 85mm L ｜ 佳能85L', desc: '人像鏡皇、膚色粉嫩、柔美背景。', prompt: 'Canon EF 85mm f/1.2L II USM, flattering skin tones' },
+                { id: 'canon70200', name: 'Canon 70-200 ｜ 佳能長焦', desc: '空間壓縮感、背景隔離感。', prompt: 'Canon EF 70-200mm f/2.8L, telephoto compression' },
+                { id: 'canon1124', name: 'Canon 11-24 ｜ 佳能超廣', desc: '超廣角之王、變形控制佳。', prompt: 'Canon EF 11-24mm f/4L, rectilinear ultra-wide' },
+                { id: 'sigma14', name: 'Sigma 14mm Art ｜ 適馬14', desc: '星空與建築首選、極高解析度。', prompt: 'Sigma 14mm f/1.4 Art lens, architecture sharp' },
+                { id: 'nikon1424', name: 'Nikkor 14-24 ｜ 尼康風景', desc: '風景標竿、邊緣銳利、色彩飽和。', prompt: 'Nikkor 14-24mm f/2.8G, epic landscape clarity' },
+                { id: 'nikkor24', name: 'Nikkor 24mm ｜ 尼康24', desc: '標準廣角、自然視角、變形極低。', prompt: 'Nikkor 24mm f/1.4G, standard wide angle' },
+                { id: 'rodenstock', name: 'Rodenstock ｜ 羅德斯敦', desc: '絕對垂直線條、無變形、建築修正。', prompt: 'Rodenstock Grandagon lens, architectural precision' },
+                { id: 'symmar', name: 'Schneider Symmar ｜ 施奈德棚鏡', desc: '商攝棚標準、中性色彩、高傳真。', prompt: 'Schneider Symmar lens, neutral color, high fidelity' },
+                // --- 中片幅與電影 ---
+                { id: 'planar80', name: 'Hasselblad 80mm ｜ 哈蘇80', desc: '極致還原、莊重平衡散景、登月感。', prompt: 'Hasselblad Planar 80mm, medium format bokeh' },
+                { id: 'mamiya80', name: 'Mamiya 80mm ｜ 瑪米亞80', desc: '散景怪獸、奶油過渡。', prompt: 'Mamiya Sekor C 80mm f/1.9, medium format bokeh' },
+                { id: 'pentax105', name: 'Pentax 105mm ｜ 賓得105', desc: '空氣切割機、強烈 3D Pop 感。', prompt: 'Pentax 67 105mm f/2.4 lens, 3d pop effect' },
+                { id: 'arrisig_lens', name: 'ARRI Signature ｜ 阿萊簽名', desc: '現代最高標準、膚色自然、散景柔。', prompt: 'ARRI Signature Prime, natural rendering, clean image' },
+                { id: 'arrimaster', name: 'ARRI Master Prime ｜ 阿萊大師', desc: '絕對銳利、零呼吸效應、高反差。', prompt: 'ARRI Master Prime, high contrast cinematic' },
+                { id: 'zeisssup_lens', name: 'Zeiss Supreme ｜ 蔡司至尊', desc: '全片幅電影鏡、通透感強、現代銳。', prompt: 'Zeiss Supreme Prime, transparent look' },
+                { id: 'cooke_lens', name: 'Cooke S4/i ｜ 庫克鏡頭', desc: 'Cooke Look (溫潤、立體感)。', prompt: 'Cooke S4 lens, warm cinematic rendering' },
+                { id: 'optimo', name: 'Angénieux Optimo ｜ 安琴變焦', desc: '好萊塢變焦質感、滑順過渡。', prompt: 'Angénieux Optimo zoom, Hollywood cinematic style' },
+                { id: 'superspeed_lens', name: 'Zeiss Super Speed ｜ 蔡司三角形', desc: '著名的三角形散景、夜景銳。', prompt: 'Zeiss B-Speed, triangular bokeh, taxi driver aesthetic' },
+                { id: 'canonk35_lens', name: 'Canon K-35 ｜ 佳能K35', desc: '70s低反差、冷色調、鬼影魅力。', prompt: 'Canon K-35 vintage glass, cool tones, spectral ghosting' },
+                { id: 'fd55', name: 'Canon FD 55mm ｜ 佳能FD', desc: '色彩濃郁、紅色鍍膜反光。', prompt: 'Canon FD 55mm s.s.c lens, rich colors, vintage flare' },
+                { id: 'baltar_lens', name: 'Super Baltar ｜ 鮑旭勞倫', desc: '《教父》質感、溫暖、高光絲綢。', prompt: 'Bausch & Lomb Super Baltar, warm skin tones, Godfather style' },
+                { id: 'xenon_lens', name: 'Schneider Xenon ｜ 德味鏡頭', desc: '德味濃厚、層次豐富、過渡自然。', prompt: 'Schneider Xenon, German optics, rich gradation' },
+                // --- 變形寬螢幕 ---
+                { id: 'panat', name: 'Panavision T-Series ｜ Pana T', desc: '現代銳利藍色耀光、高對比。', prompt: 'Panavision T-Series Anamorphic, sharp blue flares' },
+                { id: 'panac', name: 'Panavision C-Series ｜ Pana C', desc: '經典好萊塢、藍色拉絲耀光、桶變。', prompt: 'Panavision C-Series, blue streak flare, anamorphic bokeh' },
+                { id: 'panahigh', name: 'Panavision HighSpeed ｜ 夜戰王', desc: '夜拍專用、夢幻暈開(Glow)。', prompt: 'Panavision High Speed lens, dreamy glow, soft edges' },
+                { id: 'panasuper', name: 'Pana Super Panavitar ｜ 史詩變形', desc: '史詩級廣角變形、張力極大。', prompt: 'Panavision Super Panavitar, extreme edge distortion' },
+                { id: 'panaauto', name: 'Panavision Auto ｜ 原始變形', desc: '不穩定對焦、雙重成像、粗糙感。', prompt: 'Vintage Panavision Anamorphic, double imaging artifacts' },
+                { id: 'hawkv_lens', name: 'Hawk V-Lite ｜ Hawk 變形', desc: '緊湊變形鏡、畫質乾淨。', prompt: 'Hawk V-Lite Anamorphic, cinematic widescreen' },
+                { id: 'xtal_lens', name: 'JDC Xtal Express ｜ 水晶變形', desc: '「水晶」質感、Nolan 愛用款。', prompt: 'JDC Xtal Express, luxurious bokeh' },
+                { id: 'technovision', name: 'Technovision ｜ 浪漫變形', desc: '奶油橢圓散景、色彩豐富。', prompt: 'Technovision anamorphic, creamy oval bokeh' },
+                { id: 'toddao', name: 'Todd-AO 35 ｜ 復古變形', desc: '高光溢出(Blooming)、洋紅耀光。', prompt: 'Todd-AO 35 lens, magenta flares, retro futuristic' },
+                { id: 'kowa', name: 'Kowa Anamorphic ｜ 金色變形', desc: '金色/暖色耀光、低反差懷舊。', prompt: 'Kowa Prominar anamorphic, golden lens flare' },
+                { id: 'atlas', name: 'Atlas Orion ｜ 賽博變形', desc: '強烈藍色拉絲、Cyberpunk。', prompt: 'Atlas Orion anamorphic, blue horizontal flares' },
+                { id: 'lomo_round', name: 'LOMO Round ｜ 蘇聯圓變', desc: '呼吸強、黃綠色偏、混沌散景。', prompt: 'LOMO Round Front anamorphic, green tint, chaotic bokeh' },
+                { id: 'lomo_square', name: 'LOMO Square ｜ 蘇聯方變', desc: '工業廢墟感、邊緣崩壞。', prompt: 'LOMO Square Front anamorphic, industrial decay style' },
+                // --- 歷史與風格 ---
+                { id: 'tessar', name: 'Zeiss Tessar ｜ 鷹之眼', desc: '中心極銳利、復古暗角、高反差。', prompt: 'Zeiss Tessar, eagle eye sharpness, high contrast' },
+                { id: 'heliar', name: 'Voigtländer Heliar ｜ 絲綢人像', desc: '絲綢般滑順、黑白質感。', prompt: 'Voigtländer Heliar, silky smoothness, rich mid-tones' },
+                { id: 'supersix', name: 'Dallmeyer SuperSix ｜ 夢幻英國', desc: '魚鱗狀旋轉散景、夢幻高光。', prompt: 'Dallmeyer Super Six, swirly bokeh, glowing highlights' },
+                { id: 'pinkham', name: 'Pinkham & Smith ｜ 天使柔焦', desc: '畫意核心、天使光暈(Glow)。', prompt: 'Pinkham & Smith soft focus lens, ethereal glow' },
+                { id: 'dagor', name: 'Goerz Dagor ｜ 深景廣角', desc: '大畫幅廣角、零變形、極深景深。', prompt: 'Goerz Dagor lens, zero distortion, deep depth of field' },
+                { id: 'kinoptik', name: 'Kinoptik ｜ 法國旋焦', desc: '旋轉散景、色彩鮮豔、庫柏力克愛用。', prompt: 'Kinoptik lens, vibrant colors, distinctive swirl' },
+                { id: 'berthiot', name: 'SOM Berthiot ｜ 水彩渲染', desc: '水彩畫渲染、淡雅色彩。', prompt: 'SOM Berthiot Flor, painterly bokeh, watercolor effect' },
+                { id: 'aeroektar', name: 'Kodak Aero Ektar ｜ 航空鏡', desc: '放射性暖黃色調、高光發光。', prompt: 'Kodak Aero Ektar 178mm, warm cast, radioactive glass' },
+                { id: 'supertakumar', name: 'Super-Takumar ｜ 放射黃鏡', desc: '放射性黃鏡、逆光光斑。', prompt: 'Super Takumar lens, golden hour look, radio-decay' },
+                { id: 'zuiko', name: 'Olympus Zuiko ｜ 輕盈通透', desc: '通透感、層次豐、小巧。', prompt: 'Olympus Zuiko lens, transparent shadows, airy feel' },
+                { id: 'hexanon', name: 'Konica Hexanon ｜ 手術刀', desc: '臨床級銳利度、色彩精準。', prompt: 'Konica Hexanon AR, clinical sharpness' },
+                { id: 'rokkor', name: 'Minolta Rokkor ｜ 濃郁膚色', desc: '色彩濃厚、綠色與膚色極佳。', prompt: 'Minolta Rokkor MC/MD, beautiful skin tones, emerald greens' },
+                { id: 'gplanar', name: 'Contax G Planar ｜ 旁軸經典', desc: 'T*鍍膜、標準視角、立體感強。', prompt: 'Contax G Planar, Zeiss T coating, 3D pop' },
+                { id: 'gbiogon', name: 'Contax G Biogon ｜ 廣角奇蹟', desc: 'T*鍍膜、變形極低、邊緣銳。', prompt: 'Contax G Biogon, zero wide distortion' },
+                { id: 'helios_lens', name: 'Helios 44-2 ｜ 旋焦怪物', desc: '背景像漩渦、復古個性強。', prompt: 'Helios 44-2, heavy swirly bokeh, vortex background' },
+                { id: 'biotar_lens', name: 'Zeiss Biotar 75 ｜ 螺旋始祖', desc: '螺旋散景原型、比 Helios 細緻。', prompt: 'Carl Zeiss Jena Biotar 75mm, original swirl bokeh' },
+                { id: 'trioplan_lens', name: 'Meyer Trioplan ｜ 肥皂泡', desc: '著名的邊緣銳利泡泡散景。', prompt: 'Meyer Optik Trioplan 100mm, soap bubble bokeh' },
+                { id: 'stf_lens', name: 'Minolta STF 135 ｜ 散景之王', desc: 'APD濾鏡、極致平滑過渡。', prompt: 'Minolta STF, smooth trans focus, perfect bokeh' },
+                { id: 'tair_lens', name: 'Tair-11A 135 ｜ 圓散怪物', desc: '20片葉片、絕對圓形。', prompt: 'Tair-11A 135mm, 20 aperture blades' },
+                { id: 'jupiter_lens', name: 'Jupiter-9 85 ｜ 人像柔光', desc: '柔和調性、像差美、蘇聯經典。', prompt: 'Jupiter-9 85mm, soft portrait soviet lens' },
+                { id: 'petzval_lens', name: 'Petzval Art ｜ 佩茲瓦爾', desc: '像場彎曲、四周極度旋轉模糊。', prompt: 'Petzval art lens, swirly blur edges' },
+                { id: 'dreamagon_lens', name: 'Dreamagon ｜ 柔焦幻鏡', desc: '柔焦、夢幻氛圍。', prompt: 'Dreamagon lens, soft focus, dream effect' },
+                { id: 'lensbaby_lens', name: 'Lensbaby ｜ 創意移軸', desc: '甜點對焦、拉伸模糊。', prompt: 'Lensbaby Composer, creative tilt blur' },
+                // --- 極限與科學 ---
+                { id: 'nikon1200', name: 'Nikkor 1700mm ｜ 長焦王', desc: '極度壓縮、熱擾動感明顯。', prompt: 'Nikkor 1200-1700mm lens, extreme telephoto' },
+                { id: 'zeiss1700', name: 'Zeiss 1700mm ｜ 特規怪獸', desc: '全球最大民用長焦(256kg)。', prompt: 'Zeiss Apo Sonnar 1700mm, massive lens compression' },
+                { id: 'leica1600', name: 'Leica 1600mm ｜ 奢華長焦', desc: '極致銳利與奶油散景結合。', prompt: 'Leica APO-Telyt-R 1600mm, safari style' },
+                { id: 'sigzilla', name: 'Sigma 200-500 ｜ 綠色怪獸', desc: '大光圈、肌肉感、綠砲。', prompt: 'Sigma 200-500mm f/2.8, Sigzilla' },
+                { id: 'nikon2000', name: 'Nikkor 2000mm ｜ 反射長焦', desc: '甜甜圈散景(Donut Bokeh)。', prompt: 'Nikkor 2000mm reflex lens, donut bokeh' },
+                { id: 'canon5200_lens', name: 'Canon 5200mm ｜ 地球極限', desc: '天文級別、空氣擾動、極限。', prompt: 'Canon 5200mm mirror lens, telescope view' },
+                { id: 'canon1200_lens', name: 'Canon 1200mm L ｜ 奧運神鏡', desc: '超高解析、極其稀有。', prompt: 'Canon EF 1200mm L lens, sports ultra-telephoto' },
+                { id: 'canon600_lens', name: 'Canon 600mm ｜ 生態壓縮', desc: '背景極度壓縮、平面化。', prompt: 'Canon 600mm super telephoto, wildlife shot' },
+                { id: 'hubble', name: 'Hubble Space ｜ 哈伯太空', desc: '十字星芒(4-Point)、高對比。', prompt: 'Hubble Space Telescope style, deep field, nebula' },
+                { id: 'jwst', name: 'James Webb ｜ 韋伯太空', desc: '紅外線美學、六芒星(6-Point)。', prompt: 'James Webb Space Telescope, hexagonal bokeh' },
+                { id: 'solar_tele', name: 'Solar Telescope ｜ 太陽鏡', desc: '紅色太陽、日珥細節。', prompt: 'Solar telescope H-Alpha, surface granulation' },
+                { id: 'macro100_lens', name: 'Macro 100mm ｜ 百微', desc: '1:1 放大、細膩紋理。', prompt: '100mm macro lens, intricate texture' },
+                { id: 'mp_e65', name: 'Canon MP-E 65 ｜ 5倍微距', desc: '1x-5x 放大、複眼細節。', prompt: 'Canon MP-E 65mm, 5x super macro, compound eye' },
+                { id: 'probe_lens', name: 'Probe Lens ｜ 探針微距', desc: '蟲眼視角、穿梭狹窄。', prompt: 'Laowa 24mm Probe lens, bug eye view' },
+                { id: 'sem_lens', name: 'Electron SEM ｜ 電子顯微', desc: '奈米級細節、黑白灰度。', prompt: 'Scanning Electron Microscope imaging, SEM texture' },
+                { id: 'optical_micro', name: 'Optical Micro ｜ 400x 顯微', desc: '細胞壁、微生物、透明感。', prompt: 'Optical microscope 400x view, petri dish' },
+                { id: 'confocal', name: 'Confocal ｜ 螢光共軛', desc: '發光細胞、黑色背景。', prompt: 'Confocal microscopy, fluorescent colors' },
+                { id: 'rbiotar', name: 'Zeiss R-Biotar ｜ X光極限', desc: 'f/0.85 超大光圈、背景融化。', prompt: 'f/0.85 Zeiss R-Biotar, melted background' },
+                { id: 'rayxar', name: 'Rayxar f/0.75 ｜ 超現實', desc: '像場極小、邊緣崩壞。', prompt: 'Rayxar f/0.75 lens, extreme vignette, center spot' },
+                { id: 'nasa_07', name: 'NASA 100mm f/0.7 ｜ 燭光機', desc: '登月特製、燭光拍攝極限。', prompt: 'Zeiss 100mm f/0.7 NASA lens, Barry Lyndon style' },
+                { id: 'flir', name: 'FLIR Thermal ｜ 熱像系統', desc: '紅橙藍溫度可視化。', prompt: 'FLIR thermal camera imaging, heat map' },
+                { id: 'uv_lens', name: 'UV Quartz ｜ 紫外線鏡', desc: '黑白高反差、隱藏紋理。', prompt: 'UV photography, quartz lens, hidden skin detail' },
+                { id: 'pinhole_lens', name: 'Pinhole ｜ 針孔透視', desc: '無限景深、柔和原始。', prompt: 'Pinhole photography, infinite depth of field' },
+                { id: 'endoscope_lens', name: 'Endoscope ｜ 內視鏡', desc: '體內視角、廣角扭曲。', prompt: 'Medical endoscope view, internal organic tunnel' },
+                { id: 'funlens_lens', name: 'Nikon FunFun ｜ 玩具光學', desc: '故意像差、Lo-fi 邊緣。', prompt: 'Nikon Fun Fun lens, playful optics' },
+                { id: 'promist_lens', name: 'Pro-Mist ｜ 柔光濾鏡', desc: '柔化高光、降銳度。', prompt: 'Pro-Mist filter, bloomed highlights, diffusion' },
+                { id: 'nikkor6', name: 'Nikkor 6mm ｜ 220度魚眼', desc: '全球最廣、球型衝擊感。', prompt: 'Nikkor 6mm fisheye, 220 degree circular view' },
+                { id: 'nikkor8', name: 'Nikkor 8mm ｜ 圓形魚眼', desc: '全圓形成像、地球感。', prompt: 'Nikkor 8mm circular fisheye' }
             ],
             lighting: [
                 { id: 'none', name: 'None ｜ 不指定', desc: '不指定燈光。', prompt: '' },
-                { id: 'threepoint', name: 'Three-Point Lighting ｜ 三點照明', desc: '標準商攝架構。', prompt: 'professional three-point lighting (key, fill, back)' },
-                { id: 'highkey', name: 'High-Key ｜ 高明調', desc: '明亮極少陰影。', prompt: 'high-key lighting, bright airy aesthetic' },
-                { id: 'softbox', name: 'Softbox Lighting ｜ 柔光箱', desc: '均勻漫射無硬影。', prompt: 'softbox diffused lighting' },
-                { id: 'specular', name: 'Specular ｜ 鏡面高光', desc: '定義金屬精密質感。', prompt: 'intense specular highlights' },
-                { id: 'chiaroscuro', name: 'Chiaroscuro ｜ 明暗對照', desc: '古典劇性光影。', prompt: 'chiaroscuro lighting, dramatic contrast' },
-                { id: 'rembrandt', name: 'Rembrandt ｜ 林布蘭光', desc: '肖像最強層次。', prompt: 'Rembrandt lighting, triangle highlight' },
-                { id: 'butterfly', name: 'Butterfly Lighting ｜ 蝴蝶光', desc: '時尚攝影標配。', prompt: 'butterfly lighting, glamour shadow' },
-                { id: 'lowkey', name: 'Low-Key ｜ 低暗調', desc: '神祕與戲劇感強烈。', prompt: 'low-key lighting, heavy shadows' },
-                { id: 'split_lit', name: 'Split Lighting ｜ 側向切光', desc: '側向硬光強調輪廓。', prompt: 'split lighting setup, side light' },
-                { id: 'rimlight', name: 'Rim Light ｜ 輪廓光', desc: '勾勒邊緣抽離背景。', prompt: 'powerful rim lighting, glowing edges' },
-                { id: 'gobo', name: 'Gobo Projection ｜ 遮光投影', desc: '投射陰影圖案。', prompt: 'gobo lighting, shadow patterns' },
-                { id: 'slash', name: 'Slash Lighting ｜ 條狀光', desc: '窄長硬光精準定位。', prompt: 'slash lighting, thin strip light' },
-                { id: 'negfill', name: 'Negative Fill ｜ 負補光', desc: '吸光板強化陰影厚度。', prompt: 'negative fill, rich shadows' },
-                { id: 'silhouette', name: 'Silhouette ｜ 剪影', desc: '強烈背光黑影輪廓. ', prompt: 'silhouette photography, strong backlight' },
-                { id: 'natural_ambient', name: 'Natural Ambient ｜ 自然環境光', desc: '真實物理反射採光。', prompt: 'natural environment ambient light' },
-                { id: 'volumetric', name: 'Volumetric ｜ 體積光', desc: '空氣路徑光束感。', prompt: 'volumetric lighting, visible light beams' },
-                { id: 'candle', name: 'Candlelight ｜ 燭光', desc: '暖色溫營造氣氛。', prompt: '1800K candlelight, amber glow' },
-                { id: 'golden', name: 'Golden Hour ｜ 黃金時刻', desc: '日落暖金。', prompt: 'natural golden hour sun' },
-                { id: 'blue', name: 'Blue Hour ｜ 藍調時刻', desc: '日落冷藍。', prompt: 'cold blue hour lighting' },
-                { id: 'neon', name: 'Neon Noir ｜ 霓虹黑色', desc: '未來科幻配色。', prompt: 'neon noir lighting, cyan magenta cast' },
-                { id: 'tyndall', name: 'Tyndall Effect ｜ 丁達爾', desc: '神適的光束感。', prompt: 'Tyndall effect, divine god rays' }
+                // --- 商業燈光 ---
+                { id: 'threepoint', name: 'Three-Point ｜ 三點照明', desc: '業界標準(主+補+背),立體細節。', prompt: 'professional three-point lighting (key, fill, back)' },
+                { id: 'rembrandt', name: 'Rembrandt ｜ 林布蘭光', desc: '經典倒三角形臉頰光。', prompt: 'Rembrandt lighting, triangle cheek highlight' },
+                { id: 'butterfly', name: 'Butterfly ｜ 蝴蝶光', desc: '主光上方,鼻下蝶影,顯臉小。', prompt: 'butterfly lighting, glamour shadow, fashion style' },
+                { id: 'highkey', name: 'High-Key ｜ 高明調', desc: '明亮潔淨低對比,化妝品常用。', prompt: 'high-key lighting, bright airy, minimal shadows' },
+                { id: 'lowkey', name: 'Low-Key ｜ 低暗調', desc: '暗部為主,強調輪廓,神秘感。', prompt: 'low-key lighting, high contrast drama, heavy shadows' },
+                { id: 'softbox', name: 'Softbox ｜ 柔光箱', desc: '擴散漫射,消除生硬陰影。', prompt: 'softbox diffused lighting, smooth gradients' },
+                { id: 'scrim', name: 'Scrim ｜ 柔光屏', desc: '巨大柔光面,製造連續高光。', prompt: 'scrim diffused lighting, large soft source' },
+                { id: 'booklight', name: 'Book Light ｜ 書本光', desc: '反射再擴散,極致柔和。', prompt: 'book light setup, bounced and diffused softness' },
+                { id: 'specular', name: 'Specular ｜ 鏡面高光', desc: '金屬/玻璃/液體表現關鍵點。', prompt: 'intense specular highlights, glossy material' },
+                { id: 'negfill', name: 'Negative Fill ｜ 負補光', desc: '吸光加深陰影,強化輪廓。', prompt: 'negative fill, rich shadows, defined profile' },
+                { id: 'rimlight', name: 'Rim Light ｜ 輪廓光', desc: '後方打光分離背景,邊緣發光。', prompt: 'powerful rim lighting, separation, glowing edges' },
+                { id: 'edgelight', name: 'Edge Light ｜ 踢腳光', desc: '側面後方強光,強化稜角。', prompt: 'edge light kicker, directional structure highlight' },
+                { id: 'fresnel', name: 'Fresnel ｜ 菲涅爾光', desc: '光束集中邊緣柔,老電影感。', prompt: 'fresnel cinematic lighting, old Hollywood style' },
+                { id: 'accent', name: 'Accent Light ｜ 點綴光', desc: '局部加亮,引導視覺焦點。', prompt: 'precise localized accent highlight' },
+                { id: 'broad', name: 'Broad ｜ 闊光佈局', desc: '照亮面鏡臉頰,親切顯胖。', prompt: 'broad face lighting, illuminating camera side' },
+                { id: 'short', name: 'Short ｜ 窄光佈局', desc: '照亮背鏡臉頰,顯瘦個性。', prompt: 'short face lighting, illuminating far side' },
+                { id: 'catchlight', name: 'Catchlight ｜ 眼神光', desc: '瞳孔反光點,賦予生命力。', prompt: 'sparkle catchlight in eyes' },
+                { id: 'ringlight', name: 'Ring Light ｜ 環形光', desc: '正面無陰影,瞳孔呈環狀。', prompt: 'ring light shadowless illumination' },
+                { id: 'directflash', name: 'Direct Flash ｜ 直打閃光', desc: '硬光反差時尚感。', prompt: 'direct on-camera flash, hard fashion shadow' },
+                { id: 'bounceflash', name: 'Bounce Flash ｜ 跳閃反射', desc: '利用天花板反射,模擬室內光。', prompt: 'bounced flash, soft indirect fill' },
+                { id: 'clarity_light', name: 'Clarity ｜ 高對比清晰', desc: '強化紋理,力量感視覺。', prompt: 'high contrast clarity, enhanced micro-contrast' },
+                // --- 環境與敘事 ---
+                { id: 'natural', name: 'Natural ｜ 自然環境光', desc: '模擬現場既有自然光線。', prompt: 'natural environment ambient light' },
+                { id: 'golden', name: 'Golden Hour ｜ 黃金時刻', desc: '日落暖黃,氛圍浪漫。', prompt: 'natural golden hour sun, warm glow' },
+                { id: 'blue_hr', name: 'Blue Hour ｜ 藍調時刻', desc: '城市夜景冷藍氛圍。', prompt: 'cold blue hour, sapphire sky reflection' },
+                { id: 'motivated', name: 'Motivated ｜ 源動光', desc: '模擬畫面內檯燈/窗戶。', prompt: 'motivated realistic logical illumination' },
+                { id: 'practical', name: 'Practical ｜ 道具光', desc: '發光體霓虹燈/手機。', prompt: 'practical emissive light sources' },
+                { id: 'top_light', name: 'Top Light ｜ 頂光', desc: '眼窩陰影,壓抑或神聖感。', prompt: 'dramatic top lighting, overhead' },
+                { id: 'split', name: 'Split / Side ｜ 側光', desc: '正側面「陰陽臉」,戲劇性。', prompt: 'side split lighting, extreme contrast' },
+                { id: 'chiaroscuro', name: 'Chiaroscuro ｜ 明暗對照', desc: '油畫風強烈對比。', prompt: 'Caravaggio chiaroscuro lighting style' },
+                { id: 'silhouette', name: 'Silhouette ｜ 剪影效果', desc: '主體全黑保留輪廓。', prompt: 'silhouette photography, backlight' },
+                // --- 特效光 ---
+                { id: 'volumetric', name: 'Volumetric ｜ 體積光', desc: '穿過霧氣的「上帝之光」。', prompt: 'volumetric visible light beams, cinematic haze' },
+                { id: 'tyndall', name: 'Tyndall ｜ 丁達爾效應', desc: '膠體微粒散射光束。', prompt: 'Tyndall effect god rays' },
+                { id: 'caustics', name: 'Caustics ｜ 焦散波紋', desc: '穿過液體聚焦的光斑。', prompt: 'optical caustics, water light patterns' },
+                { id: 'gobo', name: 'Gobo ｜ 遮光投影', desc: '投射窗框/樹影圖案。', prompt: 'gobo projection shadow patterns' },
+                { id: 'cookie', name: 'Cucoloris ｜ 破碎光影', desc: '自然破碎斑駁光影。', prompt: 'Cucoloris cookie lighting patterns' },
+                { id: 'slash', name: 'Slash ｜ 條狀切光', desc: '銳利光束切過眼睛/畫面。', prompt: 'slash lighting, thin hard light beam' },
+                { id: 'gradient_l', name: 'Gradient ｜ 漸層色光', desc: '平滑色彩/亮度過渡。', prompt: 'gradient color lighting, smooth transitions' },
+                { id: 'neon', name: 'Neon Noir ｜ 霓虹黑色', desc: '暗調中高飽和霓虹色。', prompt: 'neon noir, cyan and magenta glow' },
+                { id: 'cyberpunk', name: 'Cyberpunk ｜ 賽博雙色', desc: '經典青/洋紅對比色。', prompt: 'cyberpunk complementary bi-color scheme' }
             ],
             luts: [
-                { id: 'none', name: 'None ｜ 不指定', desc: '不指定色彩風格。', prompt: '' },
-                { id: 'correct', name: 'Color Accurate ｜ 色彩準確', desc: '精準中性配置。', prompt: 'calibrated color accuracy, neutral reference profile' },
-                { id: 'commercial', name: 'Commercial ｜ 頂級商攝', desc: '廣告色彩科學。', prompt: 'high-end commercial editorial color science, standard white balance' },
-                { id: 'provia', name: 'Fujifilm Provia 100F ｜ 準確正片', desc: '色彩還原最準。', prompt: 'Fujifilm Provia 100F' },
-                { id: 'reala', name: 'Fujifilm Reala 500D ｜ 自然膚色', desc: '極寬容度。', prompt: 'Fujifilm Reala 500D' },
-                { id: 'technicolor', name: 'Technicolor ｜ 經典彩色', desc: '三膠片飽和感。', prompt: 'vibrant Technicolor 3-strip process' },
-                { id: 'portra400', name: 'Kodak Portra 400 ｜ 柯達人像', desc: '膚色優雅細膩。', prompt: 'Kodak Portra 400 film stock' },
-                { id: 'ektar100', name: 'Kodak Ektar 100 ｜ 極致鮮豔', desc: '彩色負片之王，極高飽和。', prompt: 'Kodak Ektar 100, ultra-vivid' },
-                { id: 'cinestill800', name: 'CineStill 800T ｜ 藍調底片', desc: '夜景紅暈效果。', prompt: 'CineStill 800T, red halation' },
-                { id: 'eterna', name: 'Fujifilm Eterna ｜ 富士電影', desc: '低反差柔和。', prompt: 'Fujifilm Eterna film stock' },
-                { id: 'velvia', name: 'Fujifilm Velvia 50 ｜ 富士鮮豔', desc: '風景首選。', prompt: 'Fujifilm Velvia 50, high saturation' },
-                { id: 'lomo', name: 'LOMO ｜ 洛莫風格', desc: '隨性強暗角。', prompt: 'Lomography aesthetic' },
-                { id: 'holga', name: 'Holga ｜ 賀加 Lo-Fi', desc: '漏光模糊。', prompt: 'Holga photography style' },
-                { id: 'lomopurple', name: 'LomoChrome Purple ｜ 紫色世界', desc: '異色現實。', prompt: 'LomoChrome Purple, surreal infrared' },
-                { id: 'vista400', name: 'Agfa Vista 400 ｜ 愛克發', desc: '鮮豔配色感。', prompt: 'Agfa Vista 400, vibrant street photography colors' },
-                { id: 'agfaprecisa', name: 'Agfa Precisa ｜ 愛克發正片', desc: '青藍反差。', prompt: 'Agfa Precisa 100' },
-                { id: 'expired', name: 'Expired Film ｜ 過期底片', desc: '褪色故事感。', prompt: 'expired film aesthetic' },
-                { id: 'crossproc', name: 'Cross Processing ｜ 負沖', desc: '不可預測偏色。', prompt: 'cross processed film look' },
-                { id: 'tealorange', name: 'Teal & Orange ｜ 商業大片', desc: '好萊塢配色。', prompt: 'blockbuster teal and orange' },
-                { id: 'bleachbypass', name: 'Bleach Bypass ｜ 跳銀處理', desc: '金屬粗獷感。', prompt: 'bleach bypass film process' },
-                { id: 'sepia', name: 'Sepia Tone ｜ 懷舊褐', desc: '老照片色調。', prompt: 'sepia tone vintage photograph' },
-                { id: 'cyanotype', name: 'Cyanotype ｜ 藍曬法', desc: '工程藍圖感。', prompt: 'cyanotype process' },
-                { id: 'infrared', name: 'Rollei Infrared 400 ｜ 紅外線', desc: '非現實視覺。', prompt: 'Rollei Infrared 400 look' },
-                { id: 'goldtone', name: 'Gold Tone ｜ 金色單色', desc: '琥珀質地高光。', prompt: 'gold toned monochrome' },
-                { id: 'hp5', name: 'Ilford HP5 Plus ｜ 經典黑白', desc: '傳統顆粒感。', prompt: 'Ilford HP5 Plus' },
-                { id: 'tmax', name: 'Kodak T-MAX ｜ 紀錄黑白', desc: '細膩層次。', prompt: 'Kodak T-MAX 400' },
-                { id: 'trix400', name: 'Kodak Tri-X 400 ｜ 強力黑白', desc: '粗獷標竿。', prompt: 'Kodak Tri-X 400' },
-                { id: 'doublex', name: 'Double-X 5222 ｜ 電影黑白', desc: '傳奇電影膠片。', prompt: 'Kodak Double-X 5222' },
-                { id: 'wetplate', name: 'Wet Plate ｜ 濕版攝影', desc: '邊緣腐蝕質感。', prompt: 'antique wet plate collodion' }
+                { id: 'none', name: 'None ｜ 不指定', desc: '預設值。', prompt: '' },
+                // --- 頂級商業與色準 ---
+                { id: 'correct', name: 'Standard ｜ 色彩準確', desc: '標準校核,無底片偏色。', prompt: 'calibrated color accuracy' },
+                { id: 'hasselblad', name: 'Hasselblad ｜ 哈蘇色彩', desc: '極致色準珠寶精品(Vision Pro 感)。', prompt: 'Hasselblad Natural Colour Solution, HNCS' },
+                { id: 'phaseone_l', name: 'Phase One ｜ 飛思渲染', desc: '數位機背細膩高光,昂貴感。', prompt: 'Phase One digital back rendering' },
+                { id: 'commercial_l', name: 'Commercial ｜ 頂級商攝', desc: '優化產品與光影層次。', prompt: 'high-end commercial color science' },
+                { id: 'astia', name: 'Astia 100F ｜ 柔和膚色', desc: '人像正片首選,美妝廣告。', prompt: 'Fujifilm Astia 100F, soft skin tones' },
+                { id: 'provia_l', name: 'Provia 100F ｜ 準確正片', desc: '通用發色自然。', prompt: 'Fujifilm Provia 100F' },
+                { id: 'ektachrome', name: 'Ektachrome ｜ 現代中性', desc: '清脆冷調,適合電子產品。', prompt: 'Kodak Ektachrome E100' },
+                { id: 'agfarsx', name: 'Agfa RSX ｜ 德系精準', desc: '不偏色穩定感,建築工業用。', prompt: 'Agfa RSX II 100, precise German colors' },
+                // --- 柯達專業 ---
+                { id: 'kodak2383', name: 'Kodak 2383 ｜ 電影拷貝', desc: '電影魂,極深黑色,好萊塢標。', prompt: 'Kodak 2383 print emulation, cinematic density' },
+                { id: 'portra160', name: 'Portra 160 ｜ 精細人像', desc: '極細顆粒,柔和膚色。', prompt: 'Kodak Portra 160' },
+                { id: 'portra400_l', name: 'Portra 400 ｜ 柯達人像', desc: '經典偏暖,人像標準。', prompt: 'Kodak Portra 400 film stock' },
+                { id: 'portra800_l', name: 'Portra 800 ｜ 高感人像', desc: '低光層次豐富。', prompt: 'Kodak Portra 800, rich shadows' },
+                { id: 'ektar100_l', name: 'Ektar 100 ｜ 極致鮮豔', desc: '飽和風景靜物王。', prompt: 'Kodak Ektar 100, ultra-vivid' },
+                { id: 'gold200_l', name: 'Gold 200 ｜ 暖調家庭', desc: '懷舊家庭相簿感。', prompt: 'Kodak Gold 200, nostalgic warmth' },
+                { id: 'koda64', name: 'Kodachrome 64 ｜ 傳奇鉻', desc: '50-70s 紀錄片感,層次厚實。', prompt: 'vintage Kodachrome 64' },
+                // --- 現代電影 ---
+                { id: 'v3_50d', name: 'Vision3 50D ｜ 日光電影', desc: '好萊塢日光純淨標。', prompt: 'Kodak Vision3 50D cinematic film' },
+                { id: 'v3_250d', name: 'Vision3 250D ｜ 全能電影', desc: '電影工業最通用。', prompt: 'Kodak Vision3 250D' },
+                { id: 'v3_500t', name: 'Vision3 500T ｜ 燈光電影', desc: '霓虹冷藍感。', prompt: 'Kodak Vision3 500T, tungsten balanced' },
+                { id: 'cinestill', name: 'CineStill 800T ｜ 藍調底片', desc: '夜間高光紅暈。', prompt: 'CineStill 800T, red halation' },
+                { id: 'eterna_l', name: 'Eterna ｜ 富士電影', desc: '低反差後期空間大。', prompt: 'Fujifilm Eterna film stock' },
+                { id: 'reala_l', name: 'Reala 500D ｜ 自然第四層', desc: '色彩真實寬容度極佳。', prompt: 'Fujifilm Reala 500D' },
+                { id: 'tealorange_l', name: 'Teal & Orange ｜ 商業大片', desc: '經典青橙配色。', prompt: 'blockbuster teal and orange' },
+                { id: 'technicolor_l', name: 'Technicolor ｜ 三色帶', desc: '噴墨技術飽和感深。', prompt: 'vibrant Technicolor 3-strip' },
+                { id: 'anamorphic_l', name: 'Anamorphic Bloom ｜ 鏡頭光暈', desc: '模擬寬螢幕橫向藍光。', prompt: 'anamorphic blue bloom grade' },
+                // --- 日系 ---
+                { id: 'pro400h_l', name: 'Pro 400H ｜ 日系空氣', desc: '標誌偏青高光,通透。', prompt: 'Fujifilm Pro 400H, Japanese airy' },
+                { id: 'classic_l', name: 'Classic Chrome ｜ 紀實文青', desc: '硬調低飽和。', prompt: 'Fujifilm Classic Chrome' },
+                { id: 'jp_high', name: 'High Key ｜ 日系高調', desc: '視覺輕盈。', prompt: 'Japanese high-key aesthetic' },
+                { id: 'superia', name: 'Superia 400 ｜ 綠調生活', desc: '暗部帶綠日常感。', prompt: 'Fujifilm Superia 400' },
+                { id: 'velvia_l', name: 'Velvia 50 ｜ 富士鮮豔', desc: '風景王濃郁。', prompt: 'Fujifilm Velvia 50' },
+                // --- 實驗工藝 ---
+                { id: 'wes_anderson', name: 'Wes Anderson ｜ 魏斯安德森', desc: '粉彩繪本質感。', prompt: 'Wes Anderson color palette, storybook' },
+                { id: 'polaroid600', name: 'Polaroid 600 ｜ 拍立得', desc: '暖紫調顯影偏色。', prompt: 'Polaroid 600 style' },
+                { id: 'lomo_l', name: 'LOMO ｜ 洛莫風格', desc: '隨性強暗角。', prompt: 'Lomography aesthetic, high contrast' },
+                { id: 'holga_l', name: 'Holga ｜ 賀加Lo-Fi', desc: '漏光低解像。', prompt: 'Holga style, light leaks' },
+                { id: 'lomopurple', name: 'LomoPurple ｜ 紫色世界', desc: '綠轉紫異色空間。', prompt: 'LomoChrome Purple, surreal infrared' },
+                { id: 'vista400_l', name: 'Agfa Vista 400 ｜ 愛克發', desc: '紅表現街拍經典。', prompt: 'Agfa Vista 400, vibrant red' },
+                { id: 'precisa', name: 'Agfa Precisa ｜ 正片亮麗', desc: '交叉沖洗發色亮。', prompt: 'Agfa Precisa 100 cross-processed' },
+                { id: 'expired_l', name: 'Expired Film ｜ 過期底片', desc: '褪色故事感。', prompt: 'expired film aesthetic' },
+                { id: 'cross_l', name: 'Cross Processing ｜ 負沖', desc: '極端偏色效果。', prompt: 'cross processed film look' },
+                { id: 'bleach_l', name: 'Bleach Bypass ｜ 跳銀', desc: '金屬粗獷。', prompt: 'bleach bypass film process' },
+                { id: 'super8_l', name: 'Super 8 ｜ 家庭帶', desc: '粗顆粒懷舊。', prompt: 'vintage 8mm home movie grain' },
+                { id: 'sepia_l', name: 'Sepia Tone ｜ 懷舊褐', desc: '棕褐色老照片。', prompt: 'sepia tone vintage' },
+                { id: 'goldtone_l', name: 'Gold Tone ｜ 金色單色', desc: '琥珀高光。', prompt: 'gold toned monochrome' },
+                // --- 黑白 ---
+                { id: 'cyanotype_l', name: 'Cyanotype ｜ 藍曬法', desc: '工程藍圖。', prompt: 'cyanotype process, Prussian blue' },
+                { id: 'infrared_l', name: 'Rollei Infrared ｜ 紅外線', desc: '雪白植被超現實。', prompt: 'Rollei Infrared 400 look' },
+                { id: 'wetplate_l', name: 'Wet Plate ｜ 濕版攝影', desc: '化學歷史痕跡。', prompt: 'antique wet plate collodion' },
+                { id: 'hp5_l', name: 'Ilford HP5 ｜ 經典黑白', desc: '灰階平滑人文感。', prompt: 'Ilford HP5 Plus' },
+                { id: 'tmax_l', name: 'Kodak T-MAX ｜ 紀錄黑白', desc: '細膩解析解析度。', prompt: 'Kodak T-MAX 400' },
+                { id: 'trix_l', name: 'Kodak Tri-X ｜ 強力黑白', desc: '反差粗顆粒。', prompt: 'Kodak Tri-X 400' },
+                { id: 'doublex_l', name: 'Double-X ｜ 電影黑白', desc: '深厚底片中間調。', prompt: 'Kodak Double-X 5222' }
             ],
             shotTypes: [
-                { id: 'EWS', name: 'EWS', desc: '極大遠景：強調環境。' }, 
-                { id: 'WS', name: 'WS', desc: '全景：顯示主體與環境。' }, 
+                { id: 'none', name: 'None', desc: '不指定景別。' },
+                { id: 'Aerial Shot', name: 'Aerial / Drone Shot', desc: '航拍視角：大規模廣景。' },
+                { id: 'Establishing Shot', name: 'Establishing Shot', desc: '定景鏡頭：交代大環境。' }, 
+                { id: 'EWS', name: 'EWS', desc: '極大遠景：主體極小。' }, 
+                { id: 'WS', name: 'WS', desc: '全景：顯示環境。' }, 
+                { id: 'Crowd Shot', name: 'Crowd Shot', desc: '群組鏡頭：堆疊或人群。' },
                 { id: 'Full Shot', name: 'Full Shot', desc: '全身：頭到腳。' }, 
-                { id: 'MLS', name: 'MLS', desc: '七分身：膝蓋以上。' }, 
+                { id: 'MLS', name: 'MLS', desc: '七分身。' }, 
                 { id: 'Cowboy', name: 'Cowboy', desc: '牛仔鏡頭。' }, 
-                { id: 'MS', name: 'MS', desc: '中景：腰部以上。' },
-                { id: 'MCU', name: 'MCU', desc: '中特寫：胸部以上。' }, 
-                { id: 'CU', name: 'CU', desc: '特寫：面部表情捕捉。' }, 
-                { id: 'ECU', name: 'ECU', desc: '極特寫：五官細節。' }, 
+                { id: 'MS', name: 'MS', desc: '中景：腰以上。' },
+                { id: 'Two-Shot', name: 'Two-Shot', desc: '雙人平衡。' },
+                { id: 'MCU', name: 'MCU', desc: '中特寫：胸以上。' }, 
+                { id: 'CU', name: 'CU', desc: '特寫。' }, 
+                { id: 'Detail Shot', name: 'Detail Shot', desc: '細節特寫：展示紋理。' },
+                { id: 'ECU', name: 'ECU', desc: '極特寫：五官局部。' }, 
                 { id: 'Macro', name: 'Macro', desc: '微距：極致放大。' }
             ],
             perspectives: [
-                { id: 'eye', name: 'Eye-Level', desc: '平視。' }, 
-                { id: 'low', name: 'Low Angle', desc: '仰視：營造英雄感。' }, 
-                { id: 'high', name: 'High Angle', desc: '俯視：營造脆弱感。' }, 
+                { id: 'none', name: 'None', desc: '不指定視角。' },
+                { id: 'overhead', name: 'Overhead / Top-Down', desc: '正上方俯拍。' }, 
+                { id: 'god', name: 'God\'s Eye View', desc: '上帝視角：極廣闊。' },
                 { id: 'bird', name: 'Bird\'s Eye View', desc: '鳥瞰。' }, 
-                { id: 'worms', name: 'Worm’s Eye', desc: '蟲眼：貼地仰視。' }, 
-                { id: 'dutch', name: 'Dutch Angle', desc: '傾斜：營造不安感。' },
+                { id: 'high', name: 'High Angle', desc: '俯視。' }, 
+                { id: 'threequarter', name: 'Three-Quarter View', desc: '45 度視角。' },
+                { id: 'eye', name: 'Eye-Level', desc: '平視。' }, 
+                { id: 'profile', name: 'Profile View', desc: '側面平視。' },
+                { id: 'ground', name: 'Ground Level', desc: '地平：攝影機貼地。' },
+                { id: 'lowslung', name: 'Low-Slung', desc: '低位平攝。' },
+                { id: 'low', name: 'Low Angle', desc: '仰視：英雄感。' }, 
+                { id: 'extreme_low', name: 'Extreme Low Angle', desc: '極低仰視。' },
+                { id: 'worms', name: 'Worm’s Eye', desc: '蟲眼。' }, 
+                { id: 'nadir', name: 'Nadir', desc: '天底。' },
+                { id: 'undershot', name: 'Undershot', desc: '正下方垂直向上。' },
+                { id: 'oblique', name: 'Oblique Angle', desc: '斜角：非平行。' },
+                { id: 'dutch', name: 'Dutch Angle', desc: '傾斜不安感。' },
                 { id: 'ots', name: 'OTS', desc: '過肩。' }, 
                 { id: 'pov', name: 'POV', desc: '第一人稱。' }, 
-                { id: 'selfie', name: 'Selfie Angle', desc: '自拍。' }, 
-                { id: 'ground', name: 'Ground Level', desc: '地平：貼地。' }
+                { id: 'selfie', name: 'Selfie Angle', desc: '自拍。' }
             ],
             focals: [
-                { id: 'none', name: 'None' }, { id: '6mm', name: '6mm' }, { id: '8mm', name: '8mm' },
+                { id: 'none', name: 'None' }, { id: '6mm', name: '6mm' }, { id: '8mm', name: '8mm' }, { id: '11mm', name: '11mm' },
                 { id: '12mm', name: '12mm' }, { id: '14mm', name: '14mm' }, { id: '18mm', name: '18mm' },
                 { id: '24mm', name: '24mm' }, { id: '35mm', name: '35mm' }, { id: '47mm', name: '47mm' },
-                { id: '50mm', name: '50mm' }, { id: '55mm', name: '55mm' }, { id: '85mm', name: '85mm' },
-                { id: '100mm', name: '100mm' }, { id: '200mm', name: '200mm' }, { id: '400mm', name: '400mm' },
+                { id: '50mm', name: '50mm' }, { id: '55mm', name: '55mm' }, { id: '58mm', name: '58mm' },
+                { id: '85mm', name: '85mm' }, { id: '100mm', name: '100mm' }, { id: '135mm', name: '135mm' },
+                { id: '200mm', name: '200mm' }, { id: '400mm', name: '400mm' },
                 { id: '600mm', name: '600mm' }, { id: '800mm', name: '800mm' }, { id: '1200mm', name: '1200mm' },
                 { id: '1700mm', name: '1700mm' }, { id: '5200mm', name: '5200mm' }
             ],
             apertures: [
-                { id: 'none', name: 'None' }, { id: '𝑓/0.95', name: '𝑓/0.95' }, { id: '𝑓/1.2', name: '𝑓/1.2' },
-                { id: '𝑓/1.4', name: '𝑓/1.4' }, { id: '𝑓/1.8', name: '𝑓/1.8' }, { id: '𝑓/2.0', name: '𝑓/2.0' },
-                { id: '𝑓/2.8', name: '𝑓/2.8' }, { id: '𝑓/4.0', name: '𝑓/4.0' }, { id: '𝑓/5.6', name: '𝑓/5.6' },
-                { id: '𝑓/8.0', name: '𝑓/8.0' }, { id: '𝑓/11', name: '𝑓/11' }, { id: '𝑓/16', name: '𝑓/16' },
-                { id: '𝑓/22', name: '𝑓/22' }, { id: '𝑓/32', name: '𝑓/32' }, { id: '𝑓/45', name: '𝑓/45' }
+                { id: 'none', name: 'None' }, { id: '𝑓/0.7', name: '𝑓/0.7' }, { id: '𝑓/0.85', name: '𝑓/0.85' },
+                { id: '𝑓/0.95', name: '𝑓/0.95' }, { id: '𝑓/1.2', name: '𝑓/1.2' }, { id: '𝑓/1.4', name: '𝑓/1.4' },
+                { id: '𝑓/1.8', name: '𝑓/1.8' }, { id: '𝑓/2.0', name: '𝑓/2.0' }, { id: '𝑓/2.8', name: '𝑓/2.8' },
+                { id: '𝑓/4.0', name: '𝑓/4.0' }, { id: '𝑓/5.6', name: '𝑓/5.6' }, { id: '𝑓/8.0', name: '𝑓/8.0' },
+                { id: '𝑓/11', name: '𝑓/11' }, { id: '𝑓/16', name: '𝑓/16' }, { id: '𝑓/22', name: '𝑓/22' },
+                { id: '𝑓/32', name: '𝑓/32' }, { id: '𝑓/45', name: '𝑓/45' }
             ],
             aspectRatios: ['1:1', '9:16', '16:9', '3:4', '4:3', '3:2', '2:3', '5:4', '4:5', '21:9']
         };
 
         const App = () => {
-            const STORAGE_KEY = 'cine_v14_7_legends';
+            const STORAGE_KEY = 'cine_v15_2_authority';
             const [shots, setShots] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_list') || '[]'));
             const [current, setCurrent] = useState(() => JSON.parse(localStorage.getItem(STORAGE_KEY + '_cfg') || JSON.stringify({
-                action: '', camera: 'arri35', focal: '35mm', aperture: '𝑓/2.8', lens: 'cooke', 
-                perspective: 'eye', shotType: 'MCU', lighting: 'threepoint', lut: 'correct', aspect: '16:9',
+                action: '', camera: 'none', focal: 'none', aperture: 'none', lens: 'none', 
+                perspective: 'eye', shotType: 'MCU', lighting: 'none', lut: 'none', aspect: '16:9',
                 refPerson: false, refProduct: false, refEnv: false, refStyle: false
             })));
             const [copyId, setCopyId] = useState(null);
@@ -309,18 +435,17 @@
             useEffect(() => localStorage.setItem(STORAGE_KEY + '_list', JSON.stringify(shots)), [shots]);
             useEffect(() => localStorage.setItem(STORAGE_KEY + '_cfg', JSON.stringify(current)), [current]);
 
-            // --- 視覺純化偵測引擎 ---
             const analyzeSubjectBoost = (text) => {
                 if (!text) return "";
                 const t = text.toLowerCase();
                 let boosters = [];
                 if (/(man|woman|girl|boy|face|eyes|skin|model|subject|hand|body|character|person|child|old)/i.test(t)) {
-                    boosters.push("intricate skin pores, natural skin texture, lifelike hair strands, sub-surface scattering, detailed iris reflections");
+                    boosters.push("highly realistic skin textures and pores, natural skin subsurface scattering, detailed iris reflections, lifelike hair detail, masterful studio portrait lighting");
                 }
                 if (/(apple|fruit|bottle|product|glass|liquid|watch|jewelry|car|metal|object|gadget|iphone|phone|watch)/i.test(t)) {
-                    boosters.push("physically accurate surface textures, realistic light refraction, spectral caustic reflections, premium material rendering");
+                    boosters.push("ultra-high fidelity surface textures, authentic optical light refraction, caustic reflections on material, premium commercial product photography");
                 }
-                return boosters.length > 0 ? boosters.join(", ") : "high-fidelity photographic detail";
+                return boosters.length > 0 ? boosters.join(", ") : "high-fidelity photographic detail, organic textures";
             };
 
             const finalPrompt = useMemo(() => {
@@ -337,9 +462,9 @@
 
                 const refStrings = []; let rI = 1;
                 if (current.refPerson) { refStrings.push(`maintaining character identity from ref image ${rI}`); rI++; }
-                if (current.refProduct) { refStrings.push(`preserving product details from ref image ${rI}`); rI++; }
+                if (current.refProduct) { refStrings.push(`preserving exact product details from ref image ${rI}`); rI++; }
                 if (current.refEnv) { refStrings.push(`matching environment from ref image ${rI}`); rI++; }
-                if (current.refStyle) { refStrings.push(`adopting aesthetic from ref image ${rI}`); rI++; }
+                if (current.refStyle) { refStrings.push(`adopting overall aesthetic and style from reference image ${rI}`); rI++; }
 
                 const techChain = [
                     findP('shotTypes', current.shotType),
@@ -355,12 +480,8 @@
                 ].filter(val => val && val.trim() !== '');
 
                 const boost = analyzeSubjectBoost(current.action);
-                
-                // --- 極致攝影畫質純化指令 (無 CG / 無 AI 痕跡) ---
                 const quality = "masterful commercial photography, extreme high-definition 16K clarity, physically accurate lighting, high optical sharpness, organic textures, zero digital artifacts, absolutely no CG or 3D render look, high-fidelity photographic realism, 24-bit RAW depth, elite cinematography";
-                
-                const aspect = `--ar ${current.aspect.replace(':', ':')}`;
-                return `${techChain.join(", ")}, ${boost}, ${quality} ${aspect}`;
+                return `${techChain.join(", ")}, ${boost}, ${quality} --ar ${current.aspect.replace(':', ':')}`;
             }, [current]);
 
             const addShot = () => { 
@@ -379,22 +500,27 @@
                 document.body.removeChild(el);
             };
 
-            const startAutoScroll = (direction) => {
-                if (scrollTimer.current) return;
-                scrollTimer.current = setInterval(() => { if (scrollContainerRef.current) scrollContainerRef.current.scrollTop += (direction === 'up' ? -8 : 8); }, 16);
+            const handleReset = () => {
+                if (window.confirm("確定要重置所有參數（含參考圖勾選）嗎？")) {
+                    setCurrent(prev => ({
+                        ...prev,
+                        camera: 'none', focal: 'none', aperture: 'none', lens: 'none', lut: 'none', lighting: 'none',
+                        shotType: 'none', perspective: 'none', aspect: '16:9',
+                        refPerson: false, refProduct: false, refEnv: false, refStyle: false
+                    }));
+                }
             };
 
-            const stopAutoScroll = () => { if (scrollTimer.current) { clearInterval(scrollTimer.current); scrollTimer.current = null; } };
+            const handleClear = () => { if (window.confirm("確定要清除所有分鏡紀錄嗎？")) setShots([]); };
 
             const handlePointerDown = (index) => { setDragIndex(index); dragOverIndex.current = index; };
             const handlePointerMove = (e, index) => {
                 if (dragIndex === null) return;
                 if (scrollContainerRef.current) {
                     const rect = scrollContainerRef.current.getBoundingClientRect();
-                    const threshold = 70;
-                    if (e.clientY < rect.top + threshold) startAutoScroll('up');
-                    else if (e.clientY > rect.bottom - threshold) startAutoScroll('down');
-                    else stopAutoScroll();
+                    if (e.clientY < rect.top + 70) { if(!scrollTimer.current) scrollTimer.current = setInterval(()=>scrollContainerRef.current.scrollTop-=8,16); }
+                    else if (e.clientY > rect.bottom - 70) { if(!scrollTimer.current) scrollTimer.current = setInterval(()=>scrollContainerRef.current.scrollTop+=8,16); }
+                    else { clearInterval(scrollTimer.current); scrollTimer.current = null; }
                 }
                 if (index !== dragOverIndex.current) {
                     const newShots = [...shots];
@@ -403,19 +529,18 @@
                     dragOverIndex.current = index; setDragIndex(index); setShots(newShots);
                 }
             };
-            const handlePointerUp = () => { setDragIndex(null); dragOverIndex.current = null; stopAutoScroll(); };
+            const handlePointerUp = () => { setDragIndex(null); dragOverIndex.current = null; clearInterval(scrollTimer.current); scrollTimer.current = null; };
 
             return (
                 <div className="min-h-screen bg-[#070708] text-gray-200 font-sans p-2 md:p-6 pb-20 select-none">
                     <div className="max-w-screen-2xl mx-auto grid grid-cols-1 xl:grid-cols-12 gap-4 md:gap-6">
-                        
                         <div className="xl:col-span-5 space-y-4">
                             <header className="flex items-center justify-between px-2 pt-2">
                                 <div className="flex items-center gap-3">
                                     <div className="bg-blue-600 p-2 rounded-xl shadow-lg border border-blue-400/20"><Icon name="Clapperboard" size={24} className="text-white" /></div>
                                     <div>
                                         <h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none">CinePrompt Master</h1>
-                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V14.7 | OPTIC LEGENDS EDITION</p>
+                                        <p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V15.2 | MASTER AUTHORITY</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1.5 text-[8px] text-green-400 bg-green-400/5 px-2 py-1 rounded-full border border-green-400/20 font-bold"><Icon name="Camera" size={10} /> 16K REAL-PHOTO CORE</div>
@@ -423,16 +548,16 @@
 
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl p-4 md:p-6 shadow-2xl space-y-5">
                                 <div className="space-y-1.5">
-                                    <label className="mobile-label text-[12px] font-black text-gray-400 uppercase flex items-center gap-2 tracking-widest"><Icon name="ChevronRight" className="text-blue-500" size={16} /> Visual Beat</label>
+                                    <label className="mobile-label text-[11px] font-black text-gray-400 uppercase flex items-center gap-2 tracking-widest"><Icon name="ChevronRight" className="text-blue-500" size={16} /> Visual Beat</label>
                                     <textarea value={current.action} onChange={(e) => setCurrent({...current, action: e.target.value})} placeholder="把你心中的畫面寫下來... （已啟用動態偵測技術）" className="w-full bg-[#18181b] border border-gray-800 rounded-2xl p-4 text-sm focus:ring-1 focus:ring-blue-500 outline-none h-28 transition-all resize-none shadow-inner select-text" />
                                 </div>
 
                                 <div className="bg-[#18181b] border border-gray-800/50 rounded-2xl p-4 space-y-3 shadow-inner">
-                                    <label className="mobile-label text-[12px] font-black text-blue-400 uppercase flex items-center gap-2 tracking-widest mb-1"><Icon name="Layers" size={14} /> Ref Booster (Banana)</label>
+                                    <label className="mobile-label text-[11px] font-black text-blue-400 uppercase flex items-center gap-2 tracking-widest mb-1"><Icon name="Layers" size={14} /> Ref Booster (Banana)</label>
                                     <div className="grid grid-cols-2 gap-y-3 gap-x-6">
-                                        {['refPerson', 'refProduct', 'refEnv', 'refStyle'].map((key, i) => (
-                                            <label key={key} className="flex items-center gap-2 cursor-pointer group">
-                                                <input type="checkbox" checked={current[key]} onChange={(e) => setCurrent({...current, [key]: e.target.checked})} className="rounded bg-gray-900 border-gray-700" />
+                                        {['refPerson', 'refProduct', 'refEnv', 'refStyle'].map((k, i) => (
+                                            <label key={k} className="flex items-center gap-2 cursor-pointer group">
+                                                <input type="checkbox" checked={current[k]} onChange={(e) => setCurrent({...current, [k]: e.target.checked})} className="rounded bg-gray-900" />
                                                 <span className="text-[14px] font-bold text-gray-400 group-hover:text-blue-400 transition-colors">{['人物參考','產品參考','環境參考','風格參考'][i]}</span>
                                             </label>
                                         ))}
@@ -442,19 +567,19 @@
                                 <div className="space-y-5">
                                     <div className="grid grid-cols-3 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-sky-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Camera" size={14}/> Cameras</label>
+                                            <label className="mobile-label text-[11px] font-black text-sky-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Camera" size={14}/> Cameras</label>
                                             <select value={current.camera} onChange={(e) => setCurrent({...current, camera: e.target.value})} className="w-full bg-[#1c1c1e] border border-sky-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-sky-400">
                                                 {config.cameras.map(c => <option key={c.id} value={c.id} title={c.desc}>{c.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-emerald-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Focus" size={14}/> Focal Length</label>
+                                            <label className="mobile-label text-[11px] font-black text-emerald-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Focus" size={14}/> Focal Length</label>
                                             <select value={current.focal} onChange={(e) => setCurrent({...current, focal: e.target.value})} className="w-full bg-[#1c1c1e] border border-emerald-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-emerald-400">
-                                                {config.focals.map(f => <option key={f.id} value={f.id} title={f.desc}>{f.name}</option>)}
+                                                {config.focals.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-orange-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Aperture" size={14}/> Aperture</label>
+                                            <label className="mobile-label text-[11px] font-black text-orange-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Aperture" size={14}/> Aperture</label>
                                             <select value={current.aperture} onChange={(e) => setCurrent({...current, aperture: e.target.value})} className="w-full bg-[#1c1c1e] border border-orange-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer font-serif italic text-orange-400">
                                                 {config.apertures.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
                                             </select>
@@ -463,13 +588,13 @@
 
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-indigo-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Disc" size={14}/> Lens Series</label>
+                                            <label className="mobile-label text-[11px] font-black text-indigo-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Disc" size={14}/> Lens Series</label>
                                             <select value={current.lens} onChange={(e) => setCurrent({...current, lens: e.target.value})} className="w-full bg-[#1c1c1e] border border-indigo-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-indigo-400">
                                                 {config.lenses.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-rose-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Palette" size={14}/> Color LUTs</label>
+                                            <label className="mobile-label text-[11px] font-black text-rose-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Palette" size={14}/> Color LUTs</label>
                                             <select value={current.lut} onChange={(e) => setCurrent({...current, lut: e.target.value})} className="w-full bg-[#1c1c1e] border border-rose-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-rose-400">
                                                 {config.luts.map(u => <option key={u.id} value={u.id} title={u.desc}>{u.name}</option>)}
                                             </select>
@@ -478,14 +603,14 @@
 
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-blue-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Eye" size={14}/> Shot Types</label>
-                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-blue-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-blue-400 font-bold">
+                                            <label className="mobile-label text-[11px] font-black text-blue-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Eye" size={14}/> Shot Types</label>
+                                            <select value={current.shotType} onChange={(e) => setCurrent({...current, shotType: e.target.value})} className="w-full bg-[#1c1c1e] border border-blue-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-blue-400 font-bold uppercase">
                                                 {config.shotTypes.map(s => <option key={s.id} value={s.id} title={s.desc}>{s.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-teal-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Maximize" size={14}/> Perspectives</label>
-                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-teal-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-teal-400 font-bold">
+                                            <label className="mobile-label text-[11px] font-black text-teal-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Maximize" size={14}/> Perspectives</label>
+                                            <select value={current.perspective} onChange={(e) => setCurrent({...current, perspective: e.target.value})} className="w-full bg-[#1c1c1e] border border-teal-900/30 rounded-xl h-11 px-3 outline-none cursor-pointer text-teal-400 font-bold uppercase">
                                                 {config.perspectives.map(p => <option key={p.id} value={p.id} title={p.desc}>{p.name}</option>)}
                                             </select>
                                         </div>
@@ -493,22 +618,22 @@
 
                                     <div className="grid grid-cols-2 gap-3">
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-yellow-500 uppercase flex items-center gap-1 tracking-wider"><Icon name="Sun" size={14}/> Lighting</label>
+                                            <label className="mobile-label text-[11px] font-black text-yellow-500 uppercase flex items-center gap-1 tracking-wider"><Icon name="Sun" size={14}/> Lighting</label>
                                             <select value={current.lighting} onChange={(e) => setCurrent({...current, lighting: e.target.value})} className="w-full bg-[#1c1c1e] border border-yellow-900/20 rounded-xl h-11 px-3 outline-none text-yellow-500">
                                                 {config.lighting.map(l => <option key={l.id} value={l.id} title={l.desc}>{l.name}</option>)}
                                             </select>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="mobile-label text-[12px] font-black text-slate-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Monitor" size={14}/> Aspect Ratio</label>
+                                            <label className="mobile-label text-[11px] font-black text-slate-400 uppercase flex items-center gap-1 tracking-wider"><Icon name="Monitor" size={14}/> Aspect Ratio</label>
                                             <select value={current.aspect} onChange={(e) => setCurrent({...current, aspect: e.target.value})} className="w-full bg-[#1c1c1e] border border-slate-800 rounded-xl h-11 px-3 outline-none cursor-pointer text-slate-400">{config.aspectRatios.map(r => <option key={r} value={r}>{r}</option>)}</select>
                                         </div>
                                     </div>
                                 </div>
-                                <button onClick={addShot} disabled={!current.action} className="w-full py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-lg active:scale-95 bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/30 disabled:bg-gray-800 disabled:text-gray-600 disabled:cursor-not-allowed font-bold">Add Shot to Timeline</button>
+                                <button onClick={addShot} disabled={!current.action} className="w-full py-4 rounded-2xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg active:scale-95 bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/30 disabled:bg-gray-800 disabled:text-gray-600 disabled:cursor-not-allowed">Add Shot to Timeline</button>
                             </div>
                             <div className="bg-[#121214] border border-blue-900/20 rounded-3xl p-4 group italic">
                                 <div className="flex justify-between items-center mb-2">
-                                    <label className="text-[12px] font-black text-blue-500 uppercase tracking-widest flex items-center gap-2"><Icon name="Brain" size={12}/> Live Master Prompt</label>
+                                    <label className="text-[11px] font-black text-blue-500 uppercase tracking-widest flex items-center gap-2"><Icon name="Brain" size={12}/> Live Master Prompt</label>
                                     <button onClick={() => handleCopy(finalPrompt, 'live')} className="text-[9px] bg-blue-600/10 text-blue-400 px-3 py-1 rounded-full hover:bg-blue-600/20 font-bold border border-blue-600/20 active:scale-90">{copyId === 'live' ? 'COPIED!' : 'COPY'}</button>
                                 </div>
                                 <div className="font-mono text-[10px] leading-relaxed text-gray-500 max-h-[140px] overflow-y-auto custom-scrollbar select-text">{finalPrompt}</div>
@@ -518,20 +643,11 @@
                         {/* 右側 Timeline */}
                         <div className="xl:col-span-7 flex flex-col gap-4">
                             <div className="flex justify-between items-center px-1">
-                                <h2 className="text-[12px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2"><Icon name="Film" size={18} /> Shot List Timeline</h2>
+                                <h2 className="text-[11px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2"><Icon name="Film" size={18} /> Shot List Timeline</h2>
                                 <div className="flex gap-4">
-                                    <button 
-                                        onClick={() => confirm("確定要重置技術參數與參考圖勾選嗎？") && setCurrent(prev => ({
-                                            ...prev,
-                                            camera: 'none', focal: 'none', aperture: 'none', lens: 'none', lut: 'none', lighting: 'none',
-                                            refPerson: false, refProduct: false, refEnv: false, refStyle: false
-                                        }))} 
-                                        className="text-[10px] font-bold text-gray-500 hover:text-white flex items-center gap-1 transition-colors"
-                                    >
-                                        <Icon name="RotateCcw" size={14}/> RESET
-                                    </button>
-                                    <button onClick={() => confirm("確定清除分鏡紀錄？") && setShots([])} className="text-[10px] font-bold text-red-500/80 hover:text-red-500 flex items-center gap-1 transition-colors"><Icon name="Trash2" size={14}/> CLEAR</button>
-                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${i+1},"${s.action}","${s.camera}|${s.lens}","${s.prompt}"\n`); const b = new Blob([csv], { type: 'text/csv' }); const u = URL.createObjectURL(b); const l = document.createElement("a"); l.href = u; l.download = `Ian_ShotList.csv`; l.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
+                                    <button onClick={handleReset} className="text-[10px] font-bold text-gray-500 hover:text-white flex items-center gap-1 transition-colors"><Icon name="RotateCcw" size={14}/> RESET</button>
+                                    <button onClick={handleClear} className="text-[10px] font-bold text-red-500/80 hover:text-red-500 flex items-center gap-1 transition-colors"><Icon name="Trash2" size={14}/> CLEAR</button>
+                                    <button onClick={() => { let csv = "Shot#,Action,Specs,Prompt\n"; shots.forEach((s, i) => csv += `${i+1},"${s.action}","${s.camera}|${s.lens}|${s.focal}","${s.prompt}"\n`); const b = new Blob([csv], { type: 'text/csv' }); const u = URL.createObjectURL(b); const l = document.createElement("a"); l.href = u; l.download = `Ian_ShotList.csv`; l.click(); }} className="text-[10px] font-bold text-blue-500 hover:text-blue-400 flex items-center gap-1 transition-colors"><Icon name="Download" size={14}/> EXPORT</button>
                                 </div>
                             </div>
                             <div className="bg-[#121214] border border-gray-800 rounded-3xl flex-1 overflow-hidden shadow-inner flex flex-col">
