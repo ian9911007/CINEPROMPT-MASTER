@@ -1,5 +1,8 @@
 *
 !CINEPROMPT-MASTER.html
+!index.html
+!cineprompt/
+!cineprompt/**
 !.gitignore
 !Protocol.md
 !visual-style-library.md
