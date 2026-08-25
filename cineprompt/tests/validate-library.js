@@ -67,6 +67,9 @@ run('extreme telephoto uses causal distance semantics and format-aware FoV', () 
     const small = compile({ reference_format: 'micro_four_thirds', selections: { field_of_view: 'focals:600mm' } });
     assert.ok(/greater camera-to-subject distance/i.test(full.prompt));
     assert.ok(full.metadata.horizontal_fov_degrees > small.metadata.horizontal_fov_degrees);
+    assert.ok(full.prompt.includes('Full Frame 35mm reference gate'));
+    assert.ok(small.prompt.includes('Micro Four Thirds reference gate'));
+    assert.notEqual(full.prompt, small.prompt);
     assert.ok(!/focal length causes perspective/i.test(full.prompt));
 });
 
@@ -155,7 +158,7 @@ run('static GitHub Pages entry references only local runtime modules plus existi
     assert.ok(!/fetch\(|XMLHttpRequest|\/api\//.test(html));
 });
 
-run('all menu entries use bilingual labels and Traditional-Chinese floating descriptions', () => {
+run('menus use concise values, visual Traditional-Chinese descriptions, and visible tag limits', () => {
     const app = fs.readFileSync(path.join(base, 'src', 'app.jsx'), 'utf8');
     assert.ok(app.includes('function localizedName(item)'));
     assert.ok(app.includes('function localizedDescription(item)'));
@@ -163,7 +166,12 @@ run('all menu entries use bilingual labels and Traditional-Chinese floating desc
     assert.ok(app.includes('>{localizedName(item)}</option>'));
     assert.ok(app.includes('+ Add｜新增'));
     assert.ok(app.includes('Composition｜構圖'));
-    assert.ok(app.includes('保留「${name}」的目錄身分'));
+    assert.ok(app.includes('item.historical_context || item.definition'));
+    assert.ok(app.includes('function normalizeChinesePunctuation(value)'));
+    assert.ok(app.includes("['field_of_view', 'aperture_depth_of_field', 'aspect_ratio'].includes(item.category)"));
+    assert.ok(app.includes('已達上限，請先移除一項'));
+    assert.ok(app.includes('！未寫入'));
+    assert.ok(!app.includes('Catalog identity retained for'));
 });
 
 console.log(JSON.stringify({ status: 'PASS', cases: cases.length, audit: library.audit_summary, results: cases }, null, 2));

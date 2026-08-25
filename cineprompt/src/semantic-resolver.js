@@ -93,6 +93,11 @@
         const warnings = [];
         if (state.action && String(state.action).trim()) sections.scene.push(String(state.action).trim());
         sections.constraints.push(...referenceSemantics(state.references));
+        const fov = compatibility.metadata && compatibility.metadata.horizontal_fov_degrees;
+        const referenceFormat = compatibility.metadata && compatibility.metadata.reference_format;
+        if (fov != null && referenceFormat) {
+            sections.camera_geometry.push(`horizontal field of view approximately ${fov} degrees on the ${referenceFormat.name} reference gate`);
+        }
 
         for (const item of compatibility.effective_items) {
             const section = SECTION_BY_CATEGORY[item.category] || 'materials_image_character';
