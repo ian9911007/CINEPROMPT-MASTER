@@ -83,8 +83,9 @@ const CATEGORY_TONE = {
     capture_system: 'text-[#5e98f9]', capture_medium: 'text-[#5e98f9]', primary_lens: 'text-[#5e98f9]',
     field_of_view: 'text-[#5e98f9]', aperture_depth_of_field: 'text-[#5e98f9]', shutter_speed: 'text-[#5e98f9]',
     focus_behavior: 'text-[#5e98f9]', iso_sensitivity: 'text-[#5e98f9]', exposure_compensation: 'text-[#5e98f9]', shot_size: 'text-[#5e98f9]',
-    subject_orientation: 'text-[#5e98f9]', camera_height: 'text-[#5e98f9]', camera_pitch: 'text-[#5e98f9]',
-    camera_roll: 'text-[#5e98f9]', camera_position: 'text-[#5e98f9]', projection: 'text-[#5e98f9]',
+    shot_purpose: 'text-[#5e98f9]', subject_arrangement: 'text-[#5e98f9]', subject_orientation: 'text-[#5e98f9]',
+    camera_height: 'text-[#5e98f9]', camera_pitch: 'text-[#5e98f9]', camera_roll: 'text-[#5e98f9]',
+    camera_position: 'text-[#5e98f9]', camera_distance: 'text-[#5e98f9]', projection: 'text-[#5e98f9]',
     imaging_modality: 'text-[#5e98f9]', white_balance: 'text-[#5e98f9]', color_response: 'text-[#5e98f9]', film_sensor_character: 'text-[#5e98f9]',
     film_process: 'text-[#5e98f9]', color_grade: 'text-[#5e98f9]', aspect_ratio: 'text-[#5e98f9]'
 };
@@ -386,7 +387,7 @@ function SelectControl({ category, label, icon, value, onChange }) {
     const options = library.items.filter((item) => item.category === category && !item.deprecated && item.id !== 'none');
     return (
         <div className="space-y-1.5 min-w-0">
-            <label className={`mobile-label text-xs font-black uppercase flex items-center gap-1 tracking-wider ${CATEGORY_TONE[category] || 'text-gray-400'}`}>
+            <label className={`mobile-label text-xs font-black uppercase flex items-center gap-1 tracking-wider ${CATEGORY_TONE[category] || 'text-[#5e98f9]'}`}>
                 <Icon name={icon} size={13} /> {label}
             </label>
             <select value={value || ''} onChange={(event) => onChange(category, event.target.value)} className="w-full bg-[#1c1c1e] border border-gray-700 rounded-xl h-12 px-3 outline-none cursor-pointer text-gray-200">
