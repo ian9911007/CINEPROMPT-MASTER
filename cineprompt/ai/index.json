@@ -45102,7 +45102,7 @@
       "category": "light_quality",
       "subcategory": "neutral",
       "definition": "Large-source diffused light with broad wrap and soft shadow edges.",
-      "historical_context": "",
+      "historical_context": "大面積柔光源擴散漫射，光線均勻柔和包裹主體，陰影邊緣羽化過渡自然，消除刺眼油光。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -45182,7 +45182,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "lighting:diffused_light diffused light 漫射光 light_quality large-source diffused light with broad wrap and soft shadow edges.  large apparent light source with broad wrap, gradual shadow transitions, and wide soft specular reflections"
+      "search_text": "lighting:diffused_light diffused light 漫射光 light_quality large-source diffused light with broad wrap and soft shadow edges. 大面積柔光源擴散漫射，光線均勻柔和包裹主體，陰影邊緣羽化過渡自然，消除刺眼油光。 large apparent light source with broad wrap, gradual shadow transitions, and wide soft specular reflections"
     },
     {
       "key": "lighting:booklight_l",
@@ -45516,7 +45516,7 @@
       "category": "light_quality",
       "subcategory": "neutral",
       "definition": "Black material removes ambient bounce from the shadow side to deepen form contrast.",
-      "historical_context": "",
+      "historical_context": "在陰影側使用吸光黑旗板吸收環境反射光，強化面部與物體明暗反差與立體雕塑感。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -45596,7 +45596,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "lighting:negative_fill negative fill 負補光 light_quality black material removes ambient bounce from the shadow side to deepen form contrast.  negative fill absorbs reflected light on the shadow side, deepening form shadows and increasing dimensional contrast without adding a light source"
+      "search_text": "lighting:negative_fill negative fill 負補光 light_quality black material removes ambient bounce from the shadow side to deepen form contrast. 在陰影側使用吸光黑旗板吸收環境反射光，強化面部與物體明暗反差與立體雕塑感。 negative fill absorbs reflected light on the shadow side, deepening form shadows and increasing dimensional contrast without adding a light source"
     },
     {
       "key": "lighting:specular_l",
@@ -48388,7 +48388,7 @@
       "category": "lens_character",
       "subcategory": "neutral",
       "definition": "Discrete internal-reflection flare ghosts produced around a bright source.",
-      "historical_context": "",
+      "historical_context": "強光源直射鏡頭內部鏡片組反射產生的多邊形或圓形鬼影光斑，營造夢幻大氣與戲劇張力。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -48467,7 +48467,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "lighting:lens_flare ghosting lens flare 鬼影鏡頭耀斑 lens_character discrete internal-reflection flare ghosts produced around a bright source.  discrete circular or polygonal internal-reflection ghosts aligned with a bright source and the optical center"
+      "search_text": "lighting:lens_flare ghosting lens flare 鬼影鏡頭耀斑 lens_character discrete internal-reflection flare ghosts produced around a bright source. 強光源直射鏡頭內部鏡片組反射產生的多邊形或圓形鬼影光斑，營造夢幻大氣與戲劇張力。 discrete circular or polygonal internal-reflection ghosts aligned with a bright source and the optical center"
     },
     {
       "key": "lighting:bokeh_light",
@@ -49717,7 +49717,7 @@
       "category": "subject_arrangement",
       "subcategory": "neutral",
       "definition": "A dense multi-subject arrangement organized as a collective mass.",
-      "historical_context": "",
+      "historical_context": "大密集群眾配置，營造宏大場面感、社會集體氛圍或人潮張力。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -49796,7 +49796,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "shottypes:crowd crowd shot 群眾鏡頭 subject_arrangement a dense multi-subject arrangement organized as a collective mass.  a dense crowd arranged as a collective visual mass while preserving distinguishable foreground and background groups"
+      "search_text": "shottypes:crowd crowd shot 群眾鏡頭 subject_arrangement a dense multi-subject arrangement organized as a collective mass. 大密集群眾配置，營造宏大場面感、社會集體氛圍或人潮張力。 a dense crowd arranged as a collective visual mass while preserving distinguishable foreground and background groups"
     },
     {
       "key": "shotTypes:Group",
@@ -49806,7 +49806,7 @@
       "category": "subject_arrangement",
       "subcategory": "neutral",
       "definition": "A readable multi-subject group arrangement.",
-      "historical_context": "",
+      "historical_context": "多人小群體配置，清楚呈現團隊內部成員的空間層次與群體互動關係。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -49885,7 +49885,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "shottypes:group group shot 群體鏡頭 subject_arrangement a readable multi-subject group arrangement.  multiple subjects arranged as one readable group with deliberate spacing, overlap, and shared visual weight"
+      "search_text": "shottypes:group group shot 群體鏡頭 subject_arrangement a readable multi-subject group arrangement. 多人小群體配置，清楚呈現團隊內部成員的空間層次與群體互動關係。 multiple subjects arranged as one readable group with deliberate spacing, overlap, and shared visual weight"
     },
     {
       "key": "shotTypes:Full",
@@ -50265,7 +50265,7 @@
       "category": "subject_arrangement",
       "subcategory": "neutral",
       "definition": "A two-subject arrangement that makes their spatial relationship readable.",
-      "historical_context": "",
+      "historical_context": "雙人主體配置，平衡呈現兩人之間的對話互動、情感連結或對峙張力。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -50344,7 +50344,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "shottypes:twoshot two shot 雙人鏡頭 subject_arrangement a two-subject arrangement that makes their spatial relationship readable.  two primary subjects share the frame with a clear spatial relationship and balanced conversational or relational emphasis"
+      "search_text": "shottypes:twoshot two shot 雙人鏡頭 subject_arrangement a two-subject arrangement that makes their spatial relationship readable. 雙人主體配置，平衡呈現兩人之間的對話互動、情感連結或對峙張力。 two primary subjects share the frame with a clear spatial relationship and balanced conversational or relational emphasis"
     },
     {
       "key": "shotTypes:MS",
@@ -51237,7 +51237,7 @@
       "category": "camera_pitch",
       "subcategory": "neutral",
       "definition": "A direct top-down camera pitch; object arrangement remains an independent composition choice.",
-      "historical_context": "",
+      "historical_context": "垂直向下 90 度俯拍平鋪視角（Flat Lay），完美展示桌面物品佈局、幾何秩序與設計細節。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -51316,7 +51316,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "perspectives:flatlay flat lay 平鋪視角 camera_pitch a direct top-down camera pitch; object arrangement remains an independent composition choice.  camera optical axis points straight downward, perpendicular to the supporting surface, without assuming a particular object arrangement"
+      "search_text": "perspectives:flatlay flat lay 平鋪視角 camera_pitch a direct top-down camera pitch; object arrangement remains an independent composition choice. 垂直向下 90 度俯拍平鋪視角（flat lay），完美展示桌面物品佈局、幾何秩序與設計細節。 camera optical axis points straight downward, perpendicular to the supporting surface, without assuming a particular object arrangement"
     },
     {
       "key": "perspectives:bird",
@@ -51918,7 +51918,7 @@
       "category": "camera_position",
       "subcategory": "neutral",
       "definition": "An over-the-shoulder camera position that establishes foreground spatial context.",
-      "historical_context": "",
+      "historical_context": "過肩鏡頭（Over-The-Shoulder），以前景人物肩膀框定視線，建立對話兩者的空間深度與臨場感。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -51997,7 +51997,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "perspectives:ots ots 過肩視角 camera_position an over-the-shoulder camera position that establishes foreground spatial context.  camera positioned behind and slightly above a foreground subject shoulder, using that shoulder as spatial context for the opposing subject"
+      "search_text": "perspectives:ots ots 過肩視角 camera_position an over-the-shoulder camera position that establishes foreground spatial context. 過肩鏡頭（over-the-shoulder），以前景人物肩膀框定視線，建立對話兩者的空間深度與臨場感。 camera positioned behind and slightly above a foreground subject shoulder, using that shoulder as spatial context for the opposing subject"
     },
     {
       "key": "perspectives:selfie",
@@ -52155,7 +52155,7 @@
       "category": "composition",
       "subcategory": "neutral",
       "definition": "A bilateral composition with mirrored visual weight around a central axis.",
-      "historical_context": "",
+      "historical_context": "雙側對稱構圖（如 Wes Anderson 風格），以中央縱軸鏡像兩側視覺重量，呈現極致秩序感與儀式美學。",
       "physical_traits": {
         "focal_range": null,
         "aperture_limit": null,
@@ -52230,7 +52230,7 @@
       "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
-      "search_text": "perspectives:symmetrical bilateral symmetry 雙側對稱構圖 composition a bilateral composition with mirrored visual weight around a central axis.  bilateral symmetry organized around a clear central axis, with mirrored visual weight on both sides"
+      "search_text": "perspectives:symmetrical bilateral symmetry 雙側對稱構圖 composition a bilateral composition with mirrored visual weight around a central axis. 雙側對稱構圖（如 wes anderson 風格），以中央縱軸鏡像兩側視覺重量，呈現極致秩序感與儀式美學。 bilateral symmetry organized around a clear central axis, with mirrored visual weight on both sides"
     },
     {
       "key": "perspectives:tracking",

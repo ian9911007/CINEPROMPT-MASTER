@@ -10,11 +10,7 @@
         model_profile: 'generic',
         reference_format: 'full_frame_35mm',
         literal_gear_token: false,
-        selections: {
-            shot_size: 'shotTypes:MCU',
-            camera_height: 'perspectives:eye',
-            aspect_ratio: 'aspectRatios:16:9'
-        },
+        selections: {},
         tags: [],
         references: { person: false, product: false, environment: false, style: false },
         migration_warnings: []
