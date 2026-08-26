@@ -223,17 +223,7 @@
   "model_profiles": [
     {
       "id": "nano_banana_pro",
-      "name": "Nano Banana Pro",
-      "density": "dense",
-      "official_source": {
-        "title": "Google AI for Developers: Nano Banana image generation",
-        "url": "https://ai.google.dev/gemini-api/docs/image-generation",
-        "accessed": "2026-08-25"
-      }
-    },
-    {
-      "id": "nano_banana_2",
-      "name": "Nano Banana 2",
+      "name": "Nano Banana",
       "density": "dense",
       "official_source": {
         "title": "Google AI for Developers: Nano Banana image generation",

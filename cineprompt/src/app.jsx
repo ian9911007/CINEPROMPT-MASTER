@@ -7,31 +7,31 @@ const exportApi = window.CinePromptExport;
 const STORAGE_KEY = storageMigration.STORAGE_KEY;
 
 const SINGLE_FIELDS = [
-    ['capture_system', 'Capture System｜拍攝系統', 'Camera'],
-    ['capture_medium', 'Capture Medium｜拍攝媒介', 'CircleDot'],
-    ['primary_lens', 'Primary Lens｜主要鏡頭', 'Focus'],
-    ['field_of_view', 'Field of View｜視野與焦距', 'Scan'],
-    ['aperture_depth_of_field', 'Aperture / DoF｜光圈與景深', 'Aperture'],
-    ['shot_size', 'Shot Size｜景別', 'Frame'],
-    ['subject_orientation', 'Subject Orientation｜主體朝向', 'UserRound'],
-    ['camera_height', 'Camera Height｜機位高度', 'MoveVertical'],
-    ['camera_pitch', 'Camera Pitch｜鏡頭俯仰', 'MoveDiagonal'],
-    ['camera_roll', 'Camera Roll｜鏡頭滾轉', 'RotateCw'],
-    ['camera_position', 'Camera Position｜相機位置', 'MapPin'],
-    ['projection', 'Projection｜投影方式', 'Orbit'],
-    ['imaging_modality', 'Imaging Modality｜成像模態', 'Microscope'],
-    ['color_response', 'Color Response｜色彩反應', 'Palette'],
-    ['film_sensor_character', 'Film / Sensor Character｜底片與感光元件特性', 'Film'],
-    ['film_process', 'Film Process｜底片沖印流程', 'FlaskConical'],
-    ['color_grade', 'Color Grade｜調色', 'SlidersHorizontal'],
-    ['aspect_ratio', 'Aspect Ratio｜畫面比例', 'Monitor']
+    ['capture_system', '攝影機', 'Camera'],
+    ['capture_medium', '拍攝媒介', 'CircleDot'],
+    ['primary_lens', '鏡頭', 'Focus'],
+    ['field_of_view', '焦距', 'Scan'],
+    ['aperture_depth_of_field', '光圈', 'Aperture'],
+    ['shot_size', '景別', 'Frame'],
+    ['subject_orientation', '主體朝向', 'UserRound'],
+    ['camera_height', '機位高度', 'MoveVertical'],
+    ['camera_pitch', '鏡頭俯仰', 'MoveDiagonal'],
+    ['camera_roll', '鏡頭滾轉', 'RotateCw'],
+    ['camera_position', '相機位置', 'MapPin'],
+    ['projection', '投影方式', 'Orbit'],
+    ['imaging_modality', '成像模態', 'Microscope'],
+    ['color_response', '色彩反應', 'Palette'],
+    ['film_sensor_character', '底片與感光元件特性', 'Film'],
+    ['film_process', '底片沖印流程', 'FlaskConical'],
+    ['color_grade', '調色', 'SlidersHorizontal'],
+    ['aspect_ratio', '畫面比例', 'Monitor']
 ];
 
 const MULTI_GROUPS = [
-    { label: 'Composition｜構圖', categories: ['composition', 'shot_purpose', 'camera_movement'], limit: 3, tone: 'text-sky-300', border: 'border-sky-500/25' },
-    { label: 'Lighting｜燈光', categories: ['lighting_pattern', 'light_direction', 'light_quality', 'exposure_character'], limit: 4, tone: 'text-amber-300', border: 'border-amber-500/25' },
-    { label: 'Optics & Effects｜光學與效果', categories: ['lens_character', 'optical_distortion', 'optical_filter', 'highlight_behavior', 'post_visual_effect'], limit: 3, tone: 'text-fuchsia-300', border: 'border-fuchsia-500/25' },
-    { label: 'Image Character & Presets｜影像特性與預設', categories: ['grain_noise', 'image_character', 'creative_preset'], limit: 3, tone: 'text-violet-300', border: 'border-violet-500/25' }
+    { label: '構圖', categories: ['composition', 'shot_purpose', 'camera_movement'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-sky-500/25' },
+    { label: '燈光', categories: ['lighting_pattern', 'light_direction', 'light_quality', 'exposure_character'], limit: 4, tone: 'text-[#5e98f9]', border: 'border-amber-500/25' },
+    { label: '光學與效果', categories: ['lens_character', 'optical_distortion', 'optical_filter', 'highlight_behavior', 'post_visual_effect'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-fuchsia-500/25' },
+    { label: '影像特性與預設', categories: ['grain_noise', 'image_character', 'creative_preset'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-violet-500/25' }
 ];
 
 const byKey = new Map(library.items.map((item) => [item.key, item]));
@@ -57,19 +57,18 @@ const CATEGORY_COPY = {
 };
 
 const CATEGORY_TONE = {
-    capture_system: 'text-cyan-300', capture_medium: 'text-cyan-300', primary_lens: 'text-violet-300',
-    field_of_view: 'text-sky-300', aperture_depth_of_field: 'text-amber-300', shot_size: 'text-rose-300',
-    subject_orientation: 'text-rose-300', camera_height: 'text-sky-300', camera_pitch: 'text-sky-300',
-    camera_roll: 'text-sky-300', camera_position: 'text-sky-300', projection: 'text-fuchsia-300',
-    imaging_modality: 'text-emerald-300', color_response: 'text-pink-300', film_sensor_character: 'text-orange-300',
-    film_process: 'text-orange-300', color_grade: 'text-pink-300', aspect_ratio: 'text-lime-300'
+    capture_system: 'text-[#5e98f9]', capture_medium: 'text-[#5e98f9]', primary_lens: 'text-[#5e98f9]',
+    field_of_view: 'text-[#5e98f9]', aperture_depth_of_field: 'text-[#5e98f9]', shot_size: 'text-[#5e98f9]',
+    subject_orientation: 'text-[#5e98f9]', camera_height: 'text-[#5e98f9]', camera_pitch: 'text-[#5e98f9]',
+    camera_roll: 'text-[#5e98f9]', camera_position: 'text-[#5e98f9]', projection: 'text-[#5e98f9]',
+    imaging_modality: 'text-[#5e98f9]', color_response: 'text-[#5e98f9]', film_sensor_character: 'text-[#5e98f9]',
+    film_process: 'text-[#5e98f9]', color_grade: 'text-[#5e98f9]', aspect_ratio: 'text-[#5e98f9]'
 };
 
 const MODEL_COPY = {
-    nano_banana_pro: { name: 'Nano Banana Pro｜高密度影像生成', description: '以分區式攝影語意輸出，適合保留較完整的鏡頭、燈光與影像特性控制。' },
-    nano_banana_2: { name: 'Nano Banana 2｜高密度影像生成', description: '以分區式攝影語意輸出，適合保留較完整的鏡頭、燈光與影像特性控制。' },
-    image_2: { name: 'Image 2.0｜自然語言影像生成', description: '以連貫自然語言輸出影像指示，避免加入模型專屬的指令語法。' },
-    generic: { name: 'Generic｜通用模型', description: '以模型中立的攝影語意輸出，供未列出的影像模型使用。' }
+    nano_banana_pro: { name: '🍌 Nano Banana', description: '以分區式攝影語意輸出，適合保留較完整的鏡頭、燈光與影像特性控制。' },
+    image_2: { name: 'OpenAI Image 2.0', description: '以連貫自然語言輸出影像指示，避免加入模型專屬的指令語法。' },
+    generic: { name: '通用', description: '以模型中立的攝影語意輸出，供未列出的影像模型使用。' }
 };
 
 const FORMAT_COPY = {
@@ -196,7 +195,7 @@ function SelectControl({ category, label, icon, value, onChange }) {
                 <Icon name={icon} size={13} /> {label}
             </label>
             <select value={value || ''} onChange={(event) => onChange(category, event.target.value)} className="w-full bg-[#1c1c1e] border border-gray-700 rounded-xl h-12 px-3 outline-none cursor-pointer text-gray-200">
-                <option value="" title="不指定此項控制，交由其他已選影像條件決定。">N/A｜不指定</option>
+                <option value="" title="不指定此項控制，交由其他已選影像條件決定。">N / A</option>
                 {options.map((item) => (
                     <option key={item.key} value={item.key} title={localizedDescription(item)}>{localizedName(item)}</option>
                 ))}
@@ -217,7 +216,7 @@ function ChipPicker({ group, selectedKeys, effectiveKeys, suppressedKeys, warnin
             <div className="flex items-center justify-between gap-3">
                 <label className={`text-xs font-black uppercase tracking-widest ${group.tone}`}>{group.label}</label>
                 <select disabled={atLimit} value="" onChange={(event) => { if (event.target.value) onAdd(event.target.value); }} className={`max-w-[58%] bg-[#111113] border rounded-lg h-10 px-3 text-sm text-blue-300 disabled:cursor-not-allowed disabled:text-gray-600 ${atLimit ? 'border-amber-500/40' : 'border-gray-700'}`}>
-                    <option value="" title={`新增一項「${group.label.split('｜')[1]}」控制。`}>+ Add｜新增</option>
+                    <option value="" title={`新增一項「${group.label.split('｜')[1]}」控制。`}>+ ADD</option>
                     {options.filter((item) => !selectedKeys.includes(item.key)).map((item) => <option key={item.key} value={item.key} title={localizedDescription(item)}>{localizedName(item)}</option>)}
                 </select>
             </div>
@@ -266,7 +265,7 @@ function LibraryExplorer({ state, onSelect, onAddTag, onRemoveTag }) {
     const active = new Set([...Object.values(state.selections), ...state.tags]);
     return (
         <details className="bg-[#121214] border border-gray-800 rounded-2xl overflow-hidden">
-            <summary className="cursor-pointer px-4 py-3 text-[10px] font-black text-violet-400 uppercase tracking-widest flex items-center gap-2"><Icon name="Library" size={14} /> Knowledge Library Explorer｜知識資料庫瀏覽器</summary>
+            <summary className="cursor-pointer px-4 py-3 text-[10px] font-black text-[#61f7f7] uppercase tracking-widest flex items-center gap-2"><Icon name="Library" size={14} />資料庫瀏覽器</summary>
             <div className="p-4 pt-1 space-y-3">
                 <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search equipment, optics, process, modality, effect...｜搜尋器材、光學、流程、成像模態與效果…" className="w-full bg-[#18181b] border border-gray-800 rounded-xl h-10 px-3 text-xs outline-none focus:border-violet-500/50 select-text" />
                 <div className="max-h-72 overflow-y-auto custom-scrollbar space-y-2">
@@ -404,13 +403,13 @@ function App() {
 
                         <div className="grid grid-cols-2 gap-3">
                             <div className="space-y-1.5">
-                                <label className="text-xs font-black text-indigo-300 uppercase flex items-center gap-1 tracking-wider"><Icon name="Cpu" size={13} /> Target Model｜目標模型</label>
+                                <label className="text-xs font-black text-[#5e98f9] uppercase flex items-center gap-1 tracking-wider"><Icon name="Cpu" size={13} /> 目標模型</label>
                                 <select value={state.model_profile} onChange={(event) => setState((previous) => ({ ...previous, model_profile: event.target.value }))} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 text-gray-300">
                                     {library.model_profiles.map((profile) => <option key={profile.id} value={profile.id} title={(MODEL_COPY[profile.id] || {}).description}>{(MODEL_COPY[profile.id] || {}).name || profile.name}</option>)}
                                 </select>
                             </div>
                             <div className="space-y-1.5">
-                                <label className="text-xs font-black text-teal-300 uppercase flex items-center gap-1 tracking-wider"><Icon name="ScanLine" size={13} /> Field-of-View Reference Gate｜視野換算片幅</label>
+                                <label className="text-xs font-black text-[#5e98f9] uppercase flex items-center gap-1 tracking-wider"><Icon name="ScanLine" size={13} /> 片幅</label>
                                 <select value={state.reference_format} onChange={(event) => setState((previous) => ({ ...previous, reference_format: event.target.value }))} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 text-gray-300">
                                     {library.reference_formats.map((format) => <option key={format.id} value={format.id} title={`將同一焦距換算為 ${FORMAT_COPY[format.id] || '參考片幅'} 的水平視野角度；此角度會寫入提示詞，不改變主體透視。`}>{format.name}｜{FORMAT_COPY[format.id] || '參考片幅'}</option>)}
                                 </select>
@@ -418,14 +417,14 @@ function App() {
                         </div>
 
                         <label className="flex items-center justify-between bg-[#18181b] border border-gray-800 rounded-xl px-3 py-2.5 cursor-pointer">
-                            <span><span className="block text-xs font-black text-gray-300 uppercase">Literal Gear Token｜器材名稱權杖</span><span className="block text-[11px] text-gray-500">關閉時只使用已確認的視覺結果，開啟後允許在提示詞中實驗性保留器材名稱。</span></span>
+                            <span><span className="block text-xs font-black text-gray-300 uppercase">輸出攝影器材名稱</span><span className="block text-[11px] text-gray-500">關閉時只使用已確認的視覺結果，開啟後允許在提示詞中實驗性保留攝影器材名稱。</span></span>
                             <input type="checkbox" checked={state.literal_gear_token} onChange={(event) => setState((previous) => ({ ...previous, literal_gear_token: event.target.checked }))} />
                         </label>
 
                         <div className="bg-[#18181b] border border-blue-900/20 rounded-2xl p-4">
                             <div className="flex justify-between items-center mb-2 gap-2">
-                                <div><label className="text-xs font-black text-blue-400 uppercase tracking-widest flex items-center gap-2"><Icon name="Brain" size={12} /> Live Semantic Prompt｜即時語意提示詞</label>{fov != null && <span className="text-[11px] text-gray-500">視野換算：{fov}° 水平視野，{FORMAT_COPY[result.metadata.reference_format.id] || result.metadata.reference_format.name}。</span>}</div>
-                                <div className="flex gap-2"><button onClick={addShot} disabled={!state.action.trim()} className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600"><Icon name="Plus" size={11} /> ADD｜新增分鏡</button><button onClick={() => copyText(result.prompt, () => { setCopyId('live'); setTimeout(() => setCopyId(null), 1500); })} disabled={!state.action.trim()} className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600">{copyId === 'live' ? 'COPIED｜已複製' : 'COPY｜複製'}</button></div>
+                                <div><label className="text-xs font-black text-blue-400 uppercase tracking-widest flex items-center gap-2"><Icon name="Brain" size={12} />即時提示詞</label>{fov != null && <span className="text-[11px] text-gray-500">視野換算：{fov}° 水平視野，{FORMAT_COPY[result.metadata.reference_format.id] || result.metadata.reference_format.name}。</span>}</div>
+                                <div className="flex gap-2"><button onClick={addShot} disabled={!state.action.trim()} className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600"><Icon name="Plus" size={11} /> ADD</button><button onClick={() => copyText(result.prompt, () => { setCopyId('live'); setTimeout(() => setCopyId(null), 1500); })} disabled={!state.action.trim()} className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600">{copyId === 'live' ? 'COPIED｜已複製' : 'COPY'}</button></div>
                             </div>
                             <div className="font-mono text-xs leading-relaxed text-gray-300 max-h-[170px] overflow-y-auto custom-scrollbar select-text">{result.prompt}</div>
                         </div>
@@ -433,7 +432,7 @@ function App() {
                         <WarningPanel warnings={result.warnings} migrationWarnings={state.migration_warnings} />
 
                         <div className="bg-[#18181b] border border-gray-800/50 rounded-2xl p-4 space-y-3">
-                            <label className="text-xs font-black text-blue-400 uppercase flex items-center gap-2 tracking-widest"><Icon name="Layers" size={14} /> Reference Authority｜參考圖權限</label>
+                            <label className="text-xs font-black text-blue-400 uppercase flex items-center gap-2 tracking-widest"><Icon name="Layers" size={14} /> 資產配置</label>
                             <div className="grid grid-cols-2 gap-y-3 gap-x-6">
                                 {Object.entries({ person: '人物參考', product: '產品參考', environment: '環境參考', style: '風格參考' }).map(([key, label]) => <label key={key} className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={state.references[key]} onChange={(event) => changeReference(key, event.target.checked)} /><span className="text-[13px] font-bold text-gray-400">{label}</span></label>)}
                             </div>
@@ -444,7 +443,7 @@ function App() {
                         </div>
 
                         <details className="bg-[#18181b] border border-gray-800 rounded-2xl">
-                            <summary className="cursor-pointer px-4 py-3 text-xs font-black text-fuchsia-300 uppercase tracking-widest">Advanced Physical & Response Controls｜進階物理與影像反應控制</summary>
+                            <summary className="cursor-pointer px-4 py-3 text-xs font-black text-[#61f7f7] uppercase tracking-widest"> 進階物理與影像反應控制 </summary>
                             <div className="p-4 pt-1 grid grid-cols-2 md:grid-cols-3 gap-3">
                                 {advancedCategories.map(([category, label, icon]) => <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />)}
                             </div>

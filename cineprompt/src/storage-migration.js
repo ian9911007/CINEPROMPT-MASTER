@@ -25,9 +25,11 @@
     }
 
     function normalizeState(value) {
+        const savedModelProfile = value && value.model_profile === 'nano_banana_2' ? 'nano_banana_pro' : value && value.model_profile;
         return {
             ...DEFAULT_STATE,
             ...(value || {}),
+            model_profile: savedModelProfile || DEFAULT_STATE.model_profile,
             selections: { ...DEFAULT_STATE.selections, ...((value && value.selections) || {}) },
             tags: Array.isArray(value && value.tags) ? [...new Set(value.tags)] : [],
             references: { ...DEFAULT_STATE.references, ...((value && value.references) || {}) },

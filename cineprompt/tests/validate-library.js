@@ -5,7 +5,8 @@ const path = require('path');
 const base = path.resolve(__dirname, '..');
 const library = require(path.join(base, 'library', 'cineprompt-library.js'));
 const compiler = require(path.join(base, 'src', 'compiler.js'));
-const migration = require(path.join(base, 'src', 'storage-migration.js')).forLibrary(library);
+const storageMigration = require(path.join(base, 'src', 'storage-migration.js'));
+const migration = storageMigration.forLibrary(library);
 const exportApi = require(path.join(base, 'src', 'export.js'));
 
 const forbidden = /(?:\b(?:8K|12K|16K|32K|32-bit|HDR|\d+MP)\b|clinical sharpness|zero grain|maximum detail|masterpiece|shot on|shot with)/i;
@@ -116,6 +117,13 @@ run('model adapters produce distinct supported structures', () => {
     assert.equal([nano.prompt, image2.prompt, generic.prompt].every((prompt) => !prompt.includes('--ar')), true);
 });
 
+run('Nano Banana profiles share one visible menu option while old state remains compatible', () => {
+    assert.deepEqual(library.model_profiles.filter((profile) => profile.id.startsWith('nano_banana')), [
+        library.model_profiles.find((profile) => profile.id === 'nano_banana_pro')
+    ]);
+    assert.equal(storageMigration.normalizeState({ model_profile: 'nano_banana_2' }).model_profile, 'nano_banana_pro');
+});
+
 run('legacy localStorage migration remains readable and unknown IDs degrade gracefully', () => {
     const migrated = migration.migrateLegacyRecord({ action: 'Legacy', camera: 'thermal_imaging', lens: 'canon_dream', focal: '50mm', aperture: 'f/0.7', lut: 'missing_lut', lighting: 'rimlight_l', shotType: 'MCU', perspective: 'eye', aspect: '16:9', refPerson: true });
     assert.equal(migrated.selections.imaging_modality, 'cameras:thermal_imaging');
@@ -164,8 +172,8 @@ run('menus use concise values, visual Traditional-Chinese descriptions, and visi
     assert.ok(app.includes('function localizedDescription(item)'));
     assert.ok(app.includes('title={localizedDescription(item)}'));
     assert.ok(app.includes('>{localizedName(item)}</option>'));
-    assert.ok(app.includes('+ Add｜新增'));
-    assert.ok(app.includes('Composition｜構圖'));
+    assert.ok(app.includes('+ ADD'));
+    assert.ok(app.includes('構圖'));
     assert.ok(app.includes('item.historical_context || item.definition'));
     assert.ok(app.includes('function normalizeChinesePunctuation(value)'));
     assert.ok(app.includes("['field_of_view', 'aperture_depth_of_field', 'aspect_ratio'].includes(item.category)"));
