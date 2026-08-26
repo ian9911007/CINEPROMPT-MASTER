@@ -4,8 +4,8 @@
     root.CINEPROMPT_LIBRARY = library;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
     return {
-  "schema_version": "4.0.0",
-  "created": "2026-08-25",
+  "schema_version": "4.1.0",
+  "created": "2026-08-26",
   "source_of_truth": "Resources/cineprompt/library/cineprompt-library.js",
   "title": "CINEPROMPT MASTER Cinematography and Photographic Imaging Ontology",
   "retrieval_policy": [
@@ -20,6 +20,7 @@
     "reference_authority",
     "composition_camera_geometry",
     "capture_optical_constraints",
+    "photographic_technique",
     "lighting",
     "image_response",
     "creative_effects",
@@ -35,6 +36,22 @@
       "display_name": "Capture Medium",
       "selection_mode": "single"
     },
+    "imaging_modality": {
+      "display_name": "Imaging Modality",
+      "selection_mode": "single"
+    },
+    "film_sensor_character": {
+      "display_name": "Film / Sensor Character",
+      "selection_mode": "single"
+    },
+    "iso_sensitivity": {
+      "display_name": "ISO / Sensitivity",
+      "selection_mode": "single"
+    },
+    "exposure_compensation": {
+      "display_name": "Exposure Compensation",
+      "selection_mode": "single"
+    },
     "primary_lens": {
       "display_name": "Primary Lens / Lens Family",
       "selection_mode": "single"
@@ -47,6 +64,30 @@
       "display_name": "Aperture / Depth of Field",
       "selection_mode": "single"
     },
+    "shutter_speed": {
+      "display_name": "Shutter / Exposure Time",
+      "selection_mode": "single"
+    },
+    "focus_behavior": {
+      "display_name": "Focus Target / Focus Plane",
+      "selection_mode": "single"
+    },
+    "projection": {
+      "display_name": "Projection",
+      "selection_mode": "single"
+    },
+    "lens_character": {
+      "display_name": "Lens Character",
+      "selection_mode": "multi"
+    },
+    "optical_distortion": {
+      "display_name": "Optical Distortion",
+      "selection_mode": "multi"
+    },
+    "optical_filter": {
+      "display_name": "Optical Filter",
+      "selection_mode": "multi"
+    },
     "shot_size": {
       "display_name": "Shot Size",
       "selection_mode": "single"
@@ -55,13 +96,13 @@
       "display_name": "Shot Purpose",
       "selection_mode": "single"
     },
+    "subject_arrangement": {
+      "display_name": "Subject Arrangement",
+      "selection_mode": "single"
+    },
     "subject_orientation": {
       "display_name": "Subject Orientation",
       "selection_mode": "single"
-    },
-    "composition": {
-      "display_name": "Composition",
-      "selection_mode": "multi"
     },
     "camera_height": {
       "display_name": "Camera Height",
@@ -83,29 +124,17 @@
       "display_name": "Camera-to-Subject Distance",
       "selection_mode": "single"
     },
-    "projection": {
-      "display_name": "Projection",
-      "selection_mode": "single"
-    },
     "camera_movement": {
       "display_name": "Camera Movement",
       "selection_mode": "multi"
     },
-    "lens_character": {
-      "display_name": "Lens Character",
+    "photographic_technique": {
+      "display_name": "Photographic Technique",
       "selection_mode": "multi"
     },
-    "optical_distortion": {
-      "display_name": "Optical Distortion",
+    "composition": {
+      "display_name": "Composition",
       "selection_mode": "multi"
-    },
-    "optical_filter": {
-      "display_name": "Optical Filter",
-      "selection_mode": "multi"
-    },
-    "imaging_modality": {
-      "display_name": "Imaging Modality",
-      "selection_mode": "single"
     },
     "lighting_pattern": {
       "display_name": "Lighting Pattern",
@@ -123,17 +152,21 @@
       "display_name": "Exposure Character",
       "selection_mode": "multi"
     },
-    "color_response": {
-      "display_name": "Color Response",
+    "white_balance": {
+      "display_name": "White Balance / Temperature / Tint",
       "selection_mode": "single"
     },
-    "film_sensor_character": {
-      "display_name": "Film / Sensor Character",
+    "color_response": {
+      "display_name": "Color Response",
       "selection_mode": "single"
     },
     "film_process": {
       "display_name": "Film Process",
       "selection_mode": "single"
+    },
+    "color_grade": {
+      "display_name": "Color Grade",
+      "selection_mode": "multi"
     },
     "grain_noise": {
       "display_name": "Grain / Noise",
@@ -143,10 +176,6 @@
       "display_name": "Highlight Behavior",
       "selection_mode": "multi"
     },
-    "color_grade": {
-      "display_name": "Color Grade",
-      "selection_mode": "single"
-    },
     "image_character": {
       "display_name": "Image Character",
       "selection_mode": "multi"
@@ -155,13 +184,13 @@
       "display_name": "Post / Visual Effect",
       "selection_mode": "multi"
     },
-    "aspect_ratio": {
-      "display_name": "Aspect Ratio",
-      "selection_mode": "single"
-    },
     "creative_preset": {
       "display_name": "Creative Preset",
       "selection_mode": "multi"
+    },
+    "aspect_ratio": {
+      "display_name": "Aspect Ratio",
+      "selection_mode": "single"
     }
   },
   "reference_formats": [
@@ -273,18 +302,123 @@
       "title": "OpenAI Developers: GPT Image 2 model",
       "url": "https://developers.openai.com/api/docs/models/gpt-image-2",
       "accessed": "2026-08-25"
+    },
+    "nikon_shutter_speed": {
+      "title": "Nikon: Understanding Shutter Speed",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+      "accessed": "2026-08-26"
+    },
+    "nikon_motion": {
+      "title": "Nikon: Capturing or Freezing Motion in Photos",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+      "accessed": "2026-08-26"
+    },
+    "nikon_long_exposure": {
+      "title": "Nikon: The Joy of Long Exposure Photography",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+      "accessed": "2026-08-26"
+    },
+    "nikon_panning": {
+      "title": "Nikon: 10 Tips for Better Camera Panning",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/10-tips-for-better-camera-panning",
+      "accessed": "2026-08-26"
+    },
+    "nikon_focus_stacking": {
+      "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+      "accessed": "2026-08-26"
+    },
+    "nikon_exposure_bracketing": {
+      "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+      "accessed": "2026-08-26"
+    },
+    "nikon_iso": {
+      "title": "Nikon: Understanding ISO Sensitivity",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+      "accessed": "2026-08-26"
+    },
+    "nikon_white_balance": {
+      "title": "Nikon: Setting White Balance",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+      "accessed": "2026-08-26"
+    },
+    "nikon_flash": {
+      "title": "Nikon: Flash Points, the Control of Light",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+      "accessed": "2026-08-26"
+    },
+    "nikon_composition": {
+      "title": "Nikon: 5 Easy Composition Guidelines",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+      "accessed": "2026-08-26"
+    },
+    "adobe_composition": {
+      "title": "Adobe: The Basics of Photography Composition",
+      "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+      "accessed": "2026-08-26"
+    },
+    "adobe_leading_lines": {
+      "title": "Adobe: A Guide to Leading Lines in Photography",
+      "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+      "accessed": "2026-08-26"
+    },
+    "adobe_lens_corrections": {
+      "title": "Adobe Camera Raw: Correct Lens Distortions",
+      "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+      "accessed": "2026-08-26"
+    },
+    "adobe_white_balance": {
+      "title": "Adobe Lightroom Classic: Image Tone and Color",
+      "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+      "accessed": "2026-08-26"
+    },
+    "blackmagic_color": {
+      "title": "Blackmagic Design: DaVinci Resolve Color",
+      "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+      "accessed": "2026-08-26"
+    },
+    "blackmagic_image_effects": {
+      "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+      "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+      "accessed": "2026-08-26"
+    },
+    "rosco_lighting": {
+      "title": "Rosco: The Basics of Film Lighting",
+      "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+      "accessed": "2026-08-26"
+    },
+    "sony_a9iii": {
+      "title": "Sony alpha 9 III Specifications",
+      "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+      "accessed": "2026-08-26"
+    },
+    "fujifilm_star_trails": {
+      "title": "Fujifilm: How to Start Photographing Star Trails",
+      "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+      "accessed": "2026-08-26"
+    },
+    "fujifilm_light_trails": {
+      "title": "Fujifilm: How to Make Amazing Light Trails",
+      "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-make-amazing-light-trails/",
+      "accessed": "2026-08-26"
+    },
+    "adobe_light_painting": {
+      "title": "Adobe: Light Painting Photography",
+      "url": "https://www.adobe.com/creativecloud/photography/type/light-painting-photography.html",
+      "accessed": "2026-08-26"
     }
   },
   "audit_summary": {
-    "total_entries": 610,
-    "audited_entries": 610,
+    "total_entries": 801,
+    "audited_entries": 801,
     "reclassified_entries": 269,
-    "corrected_semantic_entries": 430,
+    "corrected_semantic_entries": 439,
     "quality_noise_repairs": 69,
     "literal_gear_repairs": 203,
     "label_corrections": 1,
-    "duplicate_deprecated_entries": 8,
-    "uncertain_entries": 440,
+    "duplicate_deprecated_entries": 10,
+    "uncertain_entries": 436,
     "by_legacy_category": {
       "cameras": 122,
       "lenses": 173,
@@ -294,39 +428,72 @@
       "perspectives": 26,
       "focals": 24,
       "apertures": 18,
-      "aspectRatios": 14
+      "aspectRatios": 14,
+      "shutters": 30,
+      "techniques": 19,
+      "composition": 26,
+      "distance": 5,
+      "arrangement": 1,
+      "projection": 2,
+      "focus": 5,
+      "iso": 11,
+      "exposure_compensation": 7,
+      "white_balance": 9,
+      "optics": 8,
+      "optical_distortion": 7,
+      "optical_filter": 3,
+      "grain_noise": 6,
+      "highlight": 6,
+      "image_character": 10,
+      "lighting_pattern": 5,
+      "light_direction": 5,
+      "light_quality": 10,
+      "exposure_character": 3,
+      "color_response": 3,
+      "color_grade": 10
     },
     "by_category": {
       "capture_system": 80,
-      "capture_medium": 9,
-      "primary_lens": 146,
-      "field_of_view": 24,
-      "aperture_depth_of_field": 18,
-      "shot_size": 12,
-      "shot_purpose": 4,
-      "subject_orientation": 5,
-      "composition": 7,
-      "camera_height": 4,
-      "camera_pitch": 9,
-      "camera_roll": 3,
-      "camera_position": 4,
-      "projection": 6,
       "camera_movement": 8,
-      "optical_filter": 3,
+      "creative_preset": 39,
+      "capture_medium": 9,
       "imaging_modality": 50,
-      "lighting_pattern": 9,
-      "light_direction": 7,
-      "light_quality": 35,
-      "exposure_character": 8,
-      "color_response": 7,
+      "projection": 9,
+      "optical_filter": 6,
+      "post_visual_effect": 35,
+      "primary_lens": 146,
+      "color_grade": 24,
+      "color_response": 10,
+      "exposure_character": 11,
+      "highlight_behavior": 7,
       "film_sensor_character": 38,
       "film_process": 7,
-      "highlight_behavior": 1,
-      "color_grade": 14,
-      "image_character": 2,
-      "post_visual_effect": 37,
+      "photographic_technique": 20,
+      "light_quality": 45,
+      "lighting_pattern": 14,
+      "light_direction": 12,
+      "lens_character": 9,
+      "image_character": 12,
+      "shot_size": 12,
+      "camera_position": 5,
+      "shot_purpose": 4,
+      "subject_arrangement": 4,
+      "camera_height": 4,
+      "camera_pitch": 10,
+      "subject_orientation": 5,
+      "composition": 27,
+      "camera_roll": 3,
+      "field_of_view": 24,
+      "aperture_depth_of_field": 18,
       "aspect_ratio": 14,
-      "creative_preset": 39
+      "shutter_speed": 30,
+      "camera_distance": 5,
+      "focus_behavior": 5,
+      "iso_sensitivity": 11,
+      "exposure_compensation": 7,
+      "white_balance": 9,
+      "optical_distortion": 7,
+      "grain_noise": 6
     }
   },
   "items": [
@@ -12228,9 +12395,9 @@
       "id": "isometric_camera",
       "display_name": "Isometric View",
       "localized_name": "等角視角",
-      "category": "composition",
+      "category": "projection",
       "subcategory": "neutral",
-      "definition": "Catalog identity retained for Isometric View; visual consequences are separated from unverified legacy associations.",
+      "definition": "An axonometric projection that keeps principal axes parallel and presents comparable scale across depth.",
       "historical_context": "等角/軸測投影、無透視變形 (Orthographic)、微縮模型感、模擬市民/紀念碑谷風格。",
       "physical_traits": {
         "focal_range": null,
@@ -12239,42 +12406,45 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "isometric camera view",
-        "orthographic projection",
-        "no perspective distortion",
-        "30-degree angle",
-        "miniature scale",
-        "architectural section",
-        "clean lines"
+        "isometric axonometric projection with parallel spatial axes and no conventional vanishing-point convergence"
       ],
       "controls": [
-        "composition"
+        "projection"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
+        "composition",
         "camera_height",
         "camera_pitch",
         "camera_roll",
         "camera_position",
         "camera_distance",
         "field_of_view",
-        "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -12289,38 +12459,8 @@
       "semantic_traits": [
         {
           "id": "cameras:isometric_camera:trait:1",
-          "text": "isometric camera view",
-          "dimension": "geometry"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:2",
-          "text": "orthographic projection",
-          "dimension": "general"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:3",
-          "text": "no perspective distortion",
-          "dimension": "geometry"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:4",
-          "text": "30-degree angle",
-          "dimension": "geometry"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:5",
-          "text": "miniature scale",
-          "dimension": "general"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:6",
-          "text": "architectural section",
-          "dimension": "general"
-        },
-        {
-          "id": "cameras:isometric_camera:trait:7",
-          "text": "clean lines",
-          "dimension": "general"
+          "text": "isometric axonometric projection with parallel spatial axes and no conventional vanishing-point convergence",
+          "dimension": "optics"
         }
       ],
       "negative_semantics": [
@@ -12330,11 +12470,15 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
-      "confidence": "low",
-      "uncertainty": [
-        "Legacy equipment, historical, or aesthetic claims are not individually source-verified."
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
       ],
+      "confidence": "medium",
+      "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
       "audit": {
@@ -12346,8 +12490,9 @@
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "optics"
     },
     {
       "key": "cameras:point_cloud",
@@ -33111,11 +33256,11 @@
     {
       "key": "lenses:promist",
       "id": "promist",
-      "display_name": "Pro-Mist Filter",
-      "localized_name": "柔光濾鏡",
+      "display_name": "Diffusion Filter Character",
+      "localized_name": "柔光濾鏡質感",
       "category": "optical_filter",
       "subcategory": "neutral",
-      "definition": "Catalog identity retained for Pro-Mist Filter; visual consequences are separated from unverified legacy associations.",
+      "definition": "A diffusion-filter character that lowers microcontrast and blooms bright highlights without applying global blur.",
       "historical_context": "柔化高光、降低數位銳利度、光暈感。",
       "physical_traits": {
         "focal_range": null,
@@ -33124,15 +33269,17 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "pro-mist filter effect (e.g",
-        "1/4 strength)"
+        "diffusion-filter rendering with slightly reduced microcontrast and a soft halo around bright highlights while retaining recognizable edge structure"
       ],
       "controls": [
-        "optical_filter"
+        "optical_filter",
+        "highlight_behavior"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -33143,18 +33290,24 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
-        "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -33169,13 +33322,8 @@
       "semantic_traits": [
         {
           "id": "lenses:promist:trait:1",
-          "text": "pro-mist filter effect (e.g",
-          "dimension": "general"
-        },
-        {
-          "id": "lenses:promist:trait:2",
-          "text": "1/4 strength)",
-          "dimension": "general"
+          "text": "diffusion-filter rendering with slightly reduced microcontrast and a soft halo around bright highlights while retaining recognizable edge structure",
+          "dimension": "optics"
         }
       ],
       "negative_semantics": [
@@ -33185,11 +33333,15 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
-      "confidence": "low",
-      "uncertainty": [
-        "Legacy equipment, historical, or aesthetic claims are not individually source-verified."
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
       ],
+      "confidence": "medium",
+      "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
       "audit": {
@@ -33201,8 +33353,9 @@
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "optics"
     },
     {
       "key": "lenses:anamorphic_macro",
@@ -36565,11 +36718,11 @@
     {
       "key": "luts:anamorphic_bloom",
       "id": "anamorphic_bloom",
-      "display_name": "Anamorphic Bloom",
-      "localized_name": "變形光暈",
+      "display_name": "Anamorphic Highlight Bloom",
+      "localized_name": "變形高光泛光",
       "category": "highlight_behavior",
       "subcategory": "neutral",
-      "definition": "Catalog identity retained for Anamorphic Bloom; visual consequences are separated from unverified legacy associations.",
+      "definition": "Horizontally biased highlight bloom separated from flare ghosts and oval bokeh.",
       "historical_context": "模擬寬銀幕橫向藍色光斑",
       "physical_traits": {
         "focal_range": null,
@@ -36578,10 +36731,7 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "anamorphic lens flares",
-        "horizontal blue flares",
-        "oval bokeh",
-        "sci-fi atmosphere"
+        "saturated highlights spread into a soft horizontally biased bloom without changing unrelated bokeh or scene color"
       ],
       "controls": [
         "highlight_behavior"
@@ -36589,6 +36739,8 @@
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -36599,18 +36751,25 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -36625,23 +36784,8 @@
       "semantic_traits": [
         {
           "id": "luts:anamorphic_bloom:trait:1",
-          "text": "anamorphic lens flares",
-          "dimension": "optics"
-        },
-        {
-          "id": "luts:anamorphic_bloom:trait:2",
-          "text": "horizontal blue flares",
-          "dimension": "optics"
-        },
-        {
-          "id": "luts:anamorphic_bloom:trait:3",
-          "text": "oval bokeh",
-          "dimension": "optics"
-        },
-        {
-          "id": "luts:anamorphic_bloom:trait:4",
-          "text": "sci-fi atmosphere",
-          "dimension": "general"
+          "text": "saturated highlights spread into a soft horizontally biased bloom without changing unrelated bokeh or scene color",
+          "dimension": "highlight"
         }
       ],
       "negative_semantics": [
@@ -36651,11 +36795,15 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
-      "confidence": "low",
-      "uncertainty": [
-        "Legacy equipment, historical, or aesthetic claims are not individually source-verified."
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
       ],
+      "confidence": "medium",
+      "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
       "audit": {
@@ -36667,8 +36815,9 @@
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "highlight"
     },
     {
       "key": "luts:kodak_2383",
@@ -43261,7 +43410,13 @@
       ],
       "compatible_with": [],
       "conflicts_with": [],
-      "suppresses": [],
+      "suppresses": [
+        "image_character:analog_scanlines",
+        "image_character:chroma_misalignment",
+        "image_character:tracking_noise",
+        "image_character:signal_ghosting",
+        "image_character:tape_dropout"
+      ],
       "requires": [],
       "era": "unspecified",
       "capture_medium": "electronic_video_or_early_digital",
@@ -48679,11 +48834,11 @@
     {
       "key": "luts:double_exposure",
       "id": "double_exposure",
-      "display_name": "Double Exposure",
-      "localized_name": "雙重曝光",
-      "category": "post_visual_effect",
-      "subcategory": "neutral",
-      "definition": "Catalog identity retained for Double Exposure; visual consequences are separated from unverified legacy associations.",
+      "display_name": "Double Exposure Overlay",
+      "localized_name": "雙重曝光疊合",
+      "category": "photographic_technique",
+      "subcategory": "multiple_exposure",
+      "definition": "A deliberate two-exposure overlay; each layer may have independent capture settings.",
       "historical_context": "人像輪廓內填充自然風景,經典美學",
       "physical_traits": {
         "focal_range": null,
@@ -48692,17 +48847,16 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "double exposure photography",
-        "dreamlike blend",
-        "multiple exposure overlay",
-        "artistic montage"
+        "two visually related exposures overlaid with intentional spatial registration and controlled transparency or tonal blending"
       ],
       "controls": [
-        "post_visual_effect"
+        "photographic_technique"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -48713,19 +48867,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
+        "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
       ],
@@ -48739,23 +48900,8 @@
       "semantic_traits": [
         {
           "id": "luts:double_exposure:trait:1",
-          "text": "double exposure photography",
-          "dimension": "effect"
-        },
-        {
-          "id": "luts:double_exposure:trait:2",
-          "text": "dreamlike blend",
-          "dimension": "general"
-        },
-        {
-          "id": "luts:double_exposure:trait:3",
-          "text": "multiple exposure overlay",
-          "dimension": "general"
-        },
-        {
-          "id": "luts:double_exposure:trait:4",
-          "text": "artistic montage",
-          "dimension": "general"
+          "text": "two visually related exposures overlaid with intentional spatial registration and controlled transparency or tonal blending",
+          "dimension": "technique"
         }
       ],
       "negative_semantics": [
@@ -48765,11 +48911,15 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
-      "confidence": "low",
-      "uncertainty": [
-        "Legacy equipment, historical, or aesthetic claims are not individually source-verified."
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
       ],
+      "confidence": "medium",
+      "uncertainty": [],
       "deprecated": false,
       "duplicate_of": null,
       "audit": {
@@ -48781,8 +48931,9 @@
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "technique"
     },
     {
       "key": "luts:glitch_datamosh",
@@ -51371,7 +51522,7 @@
       "localized_name": "漫射光",
       "category": "light_quality",
       "subcategory": "neutral",
-      "definition": "均勻散射的光線,產生無斷層的連續柔光。",
+      "definition": "Large-source diffused light with broad wrap and soft shadow edges.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -51380,7 +51531,7 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "diffused lighting"
+        "large apparent light source with broad wrap, gradual shadow transitions, and wide soft specular reflections"
       ],
       "controls": [
         "light_quality"
@@ -51388,6 +51539,8 @@
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -51398,19 +51551,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -51425,7 +51585,7 @@
       "semantic_traits": [
         {
           "id": "lighting:diffused_light:trait:1",
-          "text": "diffused lighting",
+          "text": "large apparent light source with broad wrap, gradual shadow transitions, and wide soft specular reflections",
           "dimension": "lighting"
         }
       ],
@@ -51436,7 +51596,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -51445,13 +51611,14 @@
         "status": "audited",
         "legacy_category": "lighting",
         "legacy_id": "diffused_light",
-        "category_changed": false,
-        "semantics_corrected": false,
+        "category_changed": true,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "lighting"
     },
     {
       "key": "lighting:booklight_l",
@@ -51840,7 +52007,7 @@
       "localized_name": "負補光",
       "category": "light_quality",
       "subcategory": "neutral",
-      "definition": "使用黑布吸收反射光,加深陰影密度,強化立體感",
+      "definition": "Black material removes ambient bounce from the shadow side to deepen form contrast.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -51849,8 +52016,7 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "negative fill",
-        "dark shadows"
+        "negative fill absorbs reflected light on the shadow side, deepening form shadows and increasing dimensional contrast without adding a light source"
       ],
       "controls": [
         "light_quality"
@@ -51858,6 +52024,8 @@
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -51868,19 +52036,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -51895,12 +52070,7 @@
       "semantic_traits": [
         {
           "id": "lighting:negative_fill:trait:1",
-          "text": "negative fill",
-          "dimension": "general"
-        },
-        {
-          "id": "lighting:negative_fill:trait:2",
-          "text": "dark shadows",
+          "text": "negative fill absorbs reflected light on the shadow side, deepening form shadows and increasing dimensional contrast without adding a light source",
           "dimension": "lighting"
         }
       ],
@@ -51911,7 +52081,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -51920,13 +52096,14 @@
         "status": "audited",
         "legacy_category": "lighting",
         "legacy_id": "negative_fill",
-        "category_changed": false,
-        "semantics_corrected": false,
+        "category_changed": true,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "lighting"
     },
     {
       "key": "lighting:specular_l",
@@ -55203,11 +55380,11 @@
     {
       "key": "lighting:lens_flare",
       "id": "lens_flare",
-      "display_name": "Lens Flare",
-      "localized_name": "鏡頭耀光",
-      "category": "post_visual_effect",
+      "display_name": "Ghosting Lens Flare",
+      "localized_name": "鬼影鏡頭耀斑",
+      "category": "lens_character",
       "subcategory": "neutral",
-      "definition": "強光直射鏡頭產生的光暈、鬼影與變形光斑,增加臨場感。",
+      "definition": "Discrete internal-reflection flare ghosts produced around a bright source.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -55216,16 +55393,16 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "cinematic lens flare",
-        "anamorphic streaks",
-        "optical artifacts"
+        "discrete circular or polygonal internal-reflection ghosts aligned with a bright source and the optical center"
       ],
       "controls": [
-        "post_visual_effect"
+        "lens_character"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
         "composition",
         "camera_height",
@@ -55236,19 +55413,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
-        "lens_character",
-        "aperture",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
+        "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
       ],
@@ -55262,18 +55446,8 @@
       "semantic_traits": [
         {
           "id": "lighting:lens_flare:trait:1",
-          "text": "cinematic lens flare",
+          "text": "discrete circular or polygonal internal-reflection ghosts aligned with a bright source and the optical center",
           "dimension": "optics"
-        },
-        {
-          "id": "lighting:lens_flare:trait:2",
-          "text": "anamorphic streaks",
-          "dimension": "optics"
-        },
-        {
-          "id": "lighting:lens_flare:trait:3",
-          "text": "optical artifacts",
-          "dimension": "image_character"
         }
       ],
       "negative_semantics": [
@@ -55283,7 +55457,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -55293,12 +55473,13 @@
         "legacy_category": "lighting",
         "legacy_id": "lens_flare",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "optics"
     },
     {
       "key": "lighting:bokeh_light",
@@ -55566,21 +55747,27 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
-      "deprecated": false,
-      "duplicate_of": null,
+      "deprecated": true,
+      "duplicate_of": "luts:subsurface_scatter",
       "audit": {
         "status": "audited",
         "legacy_category": "lighting",
         "legacy_id": "subsurface_s",
-        "category_changed": true,
+        "category_changed": false,
         "semantics_corrected": false,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
+        "inspected_on": "2026-08-26"
       }
     },
     {
@@ -55667,21 +55854,27 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
-      "deprecated": false,
-      "duplicate_of": null,
+      "deprecated": true,
+      "duplicate_of": "luts:iridescence_soap",
       "audit": {
         "status": "audited",
         "legacy_category": "lighting",
         "legacy_id": "iridescence",
-        "category_changed": true,
+        "category_changed": false,
         "semantics_corrected": false,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
+        "inspected_on": "2026-08-26"
       }
     },
     {
@@ -56757,9 +56950,9 @@
       "id": "Crowd",
       "display_name": "CROWD SHOT",
       "localized_name": "群眾鏡頭",
-      "category": "composition",
+      "category": "subject_arrangement",
       "subcategory": "neutral",
-      "definition": "群眾鏡頭",
+      "definition": "A dense multi-subject arrangement organized as a collective mass.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -56768,15 +56961,17 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "crowd shot"
+        "a dense crowd arranged as a collective visual mass while preserving distinguishable foreground and background groups"
       ],
       "controls": [
-        "composition"
+        "subject_arrangement"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
         "subject_orientation",
+        "composition",
         "camera_height",
         "camera_pitch",
         "camera_roll",
@@ -56785,19 +56980,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -56812,7 +57014,7 @@
       "semantic_traits": [
         {
           "id": "shotTypes:Crowd:trait:1",
-          "text": "crowd shot",
+          "text": "a dense crowd arranged as a collective visual mass while preserving distinguishable foreground and background groups",
           "dimension": "general"
         }
       ],
@@ -56823,7 +57025,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -56833,11 +57041,11 @@
         "legacy_category": "shotTypes",
         "legacy_id": "Crowd",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
+        "inspected_on": "2026-08-26"
       }
     },
     {
@@ -56845,9 +57053,9 @@
       "id": "Group",
       "display_name": "GROUP SHOT",
       "localized_name": "群體鏡頭",
-      "category": "composition",
+      "category": "subject_arrangement",
       "subcategory": "neutral",
-      "definition": "群體鏡頭",
+      "definition": "A readable multi-subject group arrangement.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -56856,15 +57064,17 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "group shot"
+        "multiple subjects arranged as one readable group with deliberate spacing, overlap, and shared visual weight"
       ],
       "controls": [
-        "composition"
+        "subject_arrangement"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
         "subject_orientation",
+        "composition",
         "camera_height",
         "camera_pitch",
         "camera_roll",
@@ -56873,19 +57083,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -56900,7 +57117,7 @@
       "semantic_traits": [
         {
           "id": "shotTypes:Group:trait:1",
-          "text": "group shot",
+          "text": "multiple subjects arranged as one readable group with deliberate spacing, overlap, and shared visual weight",
           "dimension": "general"
         }
       ],
@@ -56911,7 +57128,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -56921,11 +57144,11 @@
         "legacy_category": "shotTypes",
         "legacy_id": "Group",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
+        "inspected_on": "2026-08-26"
       }
     },
     {
@@ -57373,9 +57596,9 @@
       "id": "TwoShot",
       "display_name": "TWO SHOT",
       "localized_name": "雙人鏡頭",
-      "category": "composition",
+      "category": "subject_arrangement",
       "subcategory": "neutral",
-      "definition": "雙人鏡頭",
+      "definition": "A two-subject arrangement that makes their spatial relationship readable.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -57384,15 +57607,17 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "two shot"
+        "two primary subjects share the frame with a clear spatial relationship and balanced conversational or relational emphasis"
       ],
       "controls": [
-        "composition"
+        "subject_arrangement"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
         "subject_orientation",
+        "composition",
         "camera_height",
         "camera_pitch",
         "camera_roll",
@@ -57401,19 +57626,26 @@
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -57428,7 +57660,7 @@
       "semantic_traits": [
         {
           "id": "shotTypes:TwoShot:trait:1",
-          "text": "two shot",
+          "text": "two primary subjects share the frame with a clear spatial relationship and balanced conversational or relational emphasis",
           "dimension": "general"
         }
       ],
@@ -57439,7 +57671,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -57449,11 +57687,11 @@
         "legacy_category": "shotTypes",
         "legacy_id": "TwoShot",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
+        "inspected_on": "2026-08-26"
       }
     },
     {
@@ -58512,9 +58750,9 @@
       "id": "flatlay",
       "display_name": "FLAT LAY",
       "localized_name": "平鋪視角",
-      "category": "composition",
+      "category": "camera_pitch",
       "subcategory": "neutral",
-      "definition": "平鋪視角(Knolling)",
+      "definition": "A direct top-down camera pitch; object arrangement remains an independent composition choice.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -58523,36 +58761,45 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "flat lay"
+        "camera optical axis points straight downward, perpendicular to the supporting surface, without assuming a particular object arrangement"
       ],
       "controls": [
-        "composition"
+        "camera_pitch"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
+        "composition",
         "camera_height",
-        "camera_pitch",
         "camera_roll",
         "camera_position",
         "camera_distance",
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -58567,8 +58814,8 @@
       "semantic_traits": [
         {
           "id": "perspectives:flatlay:trait:1",
-          "text": "flat lay",
-          "dimension": "general"
+          "text": "camera optical axis points straight downward, perpendicular to the supporting surface, without assuming a particular object arrangement",
+          "dimension": "geometry"
         }
       ],
       "negative_semantics": [
@@ -58578,7 +58825,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -58588,12 +58841,13 @@
         "legacy_category": "perspectives",
         "legacy_id": "flatlay",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "geometry"
     },
     {
       "key": "perspectives:bird",
@@ -59304,9 +59558,9 @@
       "id": "ots",
       "display_name": "OTS",
       "localized_name": "過肩視角",
-      "category": "composition",
+      "category": "camera_position",
       "subcategory": "neutral",
-      "definition": "過肩視角",
+      "definition": "An over-the-shoulder camera position that establishes foreground spatial context.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -59315,36 +59569,45 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "ots"
+        "camera positioned behind and slightly above a foreground subject shoulder, using that shoulder as spatial context for the opposing subject"
       ],
       "controls": [
-        "composition"
+        "camera_position"
       ],
       "does_not_control": [
         "scene_subject",
         "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
         "subject_orientation",
+        "composition",
         "camera_height",
         "camera_pitch",
         "camera_roll",
-        "camera_position",
         "camera_distance",
         "field_of_view",
         "projection",
         "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
         "lens_character",
-        "aperture",
+        "aperture_depth_of_field",
         "optical_distortion",
         "optical_filter",
         "capture_system",
         "capture_medium",
         "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
         "lighting",
         "exposure_character",
+        "white_balance",
         "color_response",
         "grain_noise",
         "highlight_behavior",
         "color_grade",
+        "image_character",
         "post_visual_effect",
         "aspect_ratio",
         "output_fidelity"
@@ -59359,8 +59622,8 @@
       "semantic_traits": [
         {
           "id": "perspectives:ots:trait:1",
-          "text": "ots",
-          "dimension": "general"
+          "text": "camera positioned behind and slightly above a foreground subject shoulder, using that shoulder as spatial context for the opposing subject",
+          "dimension": "geometry"
         }
       ],
       "negative_semantics": [
@@ -59370,7 +59633,13 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -59380,12 +59649,13 @@
         "legacy_category": "perspectives",
         "legacy_id": "ots",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "geometry"
     },
     {
       "key": "perspectives:selfie",
@@ -59566,11 +59836,11 @@
     {
       "key": "perspectives:symmetrical",
       "id": "symmetrical",
-      "display_name": "SYMMETRICAL",
-      "localized_name": "對稱視角",
+      "display_name": "Bilateral Symmetry",
+      "localized_name": "雙側對稱構圖",
       "category": "composition",
       "subcategory": "neutral",
-      "definition": "對稱視角",
+      "definition": "A bilateral composition with mirrored visual weight around a central axis.",
       "historical_context": "",
       "physical_traits": {
         "focal_range": null,
@@ -59579,7 +59849,7 @@
         "perspective_causality": null
       },
       "visual_traits": [
-        "symmetrical"
+        "bilateral symmetry organized around a clear central axis, with mirrored visual weight on both sides"
       ],
       "controls": [
         "composition"
@@ -59623,8 +59893,8 @@
       "semantic_traits": [
         {
           "id": "perspectives:symmetrical:trait:1",
-          "text": "symmetrical",
-          "dimension": "geometry"
+          "text": "bilateral symmetry organized around a clear central axis, with mirrored visual weight on both sides",
+          "dimension": "composition"
         }
       ],
       "negative_semantics": [
@@ -59634,7 +59904,18 @@
       ],
       "literal_name_safe": true,
       "compatibility_profile": "neutral",
-      "source": [],
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
       "confidence": "medium",
       "uncertainty": [],
       "deprecated": false,
@@ -59644,12 +59925,13 @@
         "legacy_category": "perspectives",
         "legacy_id": "symmetrical",
         "category_changed": true,
-        "semantics_corrected": false,
+        "semantics_corrected": true,
         "quality_noise_removed": false,
         "literal_gear_risk_removed": false,
         "label_corrected": false,
-        "inspected_on": "2026-08-25"
-      }
+        "inspected_on": "2026-08-26"
+      },
+      "dimension": "composition"
     },
     {
       "key": "perspectives:tracking",
@@ -66346,7 +66628,20729 @@
         "label_corrected": false,
         "inspected_on": "2026-08-25"
       }
+    },
+    {
+      "key": "shutters:bulb",
+      "id": "bulb",
+      "display_name": "Bulb / Time",
+      "localized_name": "B 快門／自訂長曝",
+      "category": "shutter_speed",
+      "subcategory": "extreme_long",
+      "definition": "Exposure-time control at Bulb / Time; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "B 快門／自訂長曝的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": null,
+        "exposure_regime": "extreme_long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "Bulb / Time exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:bulb:trait:1",
+          "text": "Bulb / Time exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:bulb:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "bulb",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:multi_hour",
+      "id": "multi_hour",
+      "display_name": "Multi-hour Exposure",
+      "localized_name": "多小時曝光",
+      "category": "shutter_speed",
+      "subcategory": "extreme_long",
+      "definition": "Exposure-time control at Multi-hour Exposure; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "多小時曝光的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 10800,
+        "exposure_regime": "extreme_long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "Multi-hour Exposure exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:multi_hour:trait:1",
+          "text": "Multi-hour Exposure exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:multi_hour:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "multi_hour",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:one_hour",
+      "id": "one_hour",
+      "display_name": "1 Hour",
+      "localized_name": "1 小時",
+      "category": "shutter_speed",
+      "subcategory": "extreme_long",
+      "definition": "Exposure-time control at 1 Hour; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1 小時的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 3600,
+        "exposure_regime": "extreme_long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1 Hour exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:one_hour:trait:1",
+          "text": "1 Hour exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:one_hour:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "one_hour",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:tens_of_minutes",
+      "id": "tens_of_minutes",
+      "display_name": "Tens of Minutes",
+      "localized_name": "數十分鐘",
+      "category": "shutter_speed",
+      "subcategory": "extreme_long",
+      "definition": "Exposure-time control at Tens of Minutes; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "數十分鐘的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 1800,
+        "exposure_regime": "extreme_long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "Tens of Minutes exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:tens_of_minutes:trait:1",
+          "text": "Tens of Minutes exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:tens_of_minutes:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "tens_of_minutes",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:several_minutes",
+      "id": "several_minutes",
+      "display_name": "Several Minutes",
+      "localized_name": "數分鐘",
+      "category": "shutter_speed",
+      "subcategory": "extreme_long",
+      "definition": "Exposure-time control at Several Minutes; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "數分鐘的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 300,
+        "exposure_regime": "extreme_long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "Several Minutes exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:several_minutes:trait:1",
+          "text": "Several Minutes exposure-time control; extreme accumulated-time rendering with persistent path continuity and strong suppression or ghosting of transient motion when the scene contains movement",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:several_minutes:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "several_minutes",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:60s",
+      "id": "60s",
+      "display_name": "60 s",
+      "localized_name": "60 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 60 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "60 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 60,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "60 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:60s:trait:1",
+          "text": "60 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:60s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "60s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:30s",
+      "id": "30s",
+      "display_name": "30 s",
+      "localized_name": "30 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 30 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "30 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 30,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "30 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:30s:trait:1",
+          "text": "30 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:30s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "30s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:15s",
+      "id": "15s",
+      "display_name": "15 s",
+      "localized_name": "15 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 15 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "15 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 15,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "15 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:15s:trait:1",
+          "text": "15 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:15s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "15s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:10s",
+      "id": "10s",
+      "display_name": "10 s",
+      "localized_name": "10 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 10 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "10 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 10,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "10 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:10s:trait:1",
+          "text": "10 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:10s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "10s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:5s",
+      "id": "5s",
+      "display_name": "5 s",
+      "localized_name": "5 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 5 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "5 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 5,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "5 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:5s:trait:1",
+          "text": "5 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:5s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "5s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:2s",
+      "id": "2s",
+      "display_name": "2 s",
+      "localized_name": "2 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 2 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "2 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 2,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "2 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:2s:trait:1",
+          "text": "2 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:2s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "2s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1s",
+      "id": "1s",
+      "display_name": "1 s",
+      "localized_name": "1 秒",
+      "category": "shutter_speed",
+      "subcategory": "long",
+      "definition": "Exposure-time control at 1 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 1,
+        "exposure_regime": "long",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1s:trait:1",
+          "text": "1 s exposure-time control; long-exposure integration with strong smoothing, streaking, ghosting, or light-path accumulation selected only when matching scene elements exist",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_2s",
+      "id": "1_2s",
+      "display_name": "1/2 s",
+      "localized_name": "1/2 秒",
+      "category": "shutter_speed",
+      "subcategory": "slow",
+      "definition": "Exposure-time control at 1/2 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/2 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.5,
+        "exposure_regime": "slow",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/2 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_2s:trait:1",
+          "text": "1/2 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_2s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_2s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_4s",
+      "id": "1_4s",
+      "display_name": "1/4 s",
+      "localized_name": "1/4 秒",
+      "category": "shutter_speed",
+      "subcategory": "slow",
+      "definition": "Exposure-time control at 1/4 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/4 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.25,
+        "exposure_regime": "slow",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/4 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_4s:trait:1",
+          "text": "1/4 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_4s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_4s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_8s",
+      "id": "1_8s",
+      "display_name": "1/8 s",
+      "localized_name": "1/8 秒",
+      "category": "shutter_speed",
+      "subcategory": "slow",
+      "definition": "Exposure-time control at 1/8 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/8 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.125,
+        "exposure_regime": "slow",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/8 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_8s:trait:1",
+          "text": "1/8 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_8s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_8s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_15s",
+      "id": "1_15s",
+      "display_name": "1/15 s",
+      "localized_name": "1/15 秒",
+      "category": "shutter_speed",
+      "subcategory": "slow",
+      "definition": "Exposure-time control at 1/15 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/15 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.06666666666666667,
+        "exposure_regime": "slow",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/15 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_15s:trait:1",
+          "text": "1/15 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_15s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_15s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_30s",
+      "id": "1_30s",
+      "display_name": "1/30 s",
+      "localized_name": "1/30 秒",
+      "category": "shutter_speed",
+      "subcategory": "slow",
+      "definition": "Exposure-time control at 1/30 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/30 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.03333333333333333,
+        "exposure_regime": "slow",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/30 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_30s:trait:1",
+          "text": "1/30 s exposure-time control; slow-shutter rendering with visible subject or camera-motion smear while static structure can remain coherent when the camera is stable",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_30s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_30s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_60s",
+      "id": "1_60s",
+      "display_name": "1/60 s",
+      "localized_name": "1/60 秒",
+      "category": "shutter_speed",
+      "subcategory": "ordinary",
+      "definition": "Exposure-time control at 1/60 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/60 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.016666666666666666,
+        "exposure_regime": "ordinary",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/60 s exposure-time control; ordinary motion rendering with limited blur that remains dependent on subject speed, direction, distance, and magnification",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_60s:trait:1",
+          "text": "1/60 s exposure-time control; ordinary motion rendering with limited blur that remains dependent on subject speed, direction, distance, and magnification",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_60s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_60s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_125s",
+      "id": "1_125s",
+      "display_name": "1/125 s",
+      "localized_name": "1/125 秒",
+      "category": "shutter_speed",
+      "subcategory": "ordinary",
+      "definition": "Exposure-time control at 1/125 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/125 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.008,
+        "exposure_regime": "ordinary",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/125 s exposure-time control; ordinary motion rendering with limited blur that remains dependent on subject speed, direction, distance, and magnification",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_125s:trait:1",
+          "text": "1/125 s exposure-time control; ordinary motion rendering with limited blur that remains dependent on subject speed, direction, distance, and magnification",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_125s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_125s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_250s",
+      "id": "1_250s",
+      "display_name": "1/250 s",
+      "localized_name": "1/250 秒",
+      "category": "shutter_speed",
+      "subcategory": "fast",
+      "definition": "Exposure-time control at 1/250 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/250 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.004,
+        "exposure_regime": "fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/250 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_250s:trait:1",
+          "text": "1/250 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_250s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_250s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_500s",
+      "id": "1_500s",
+      "display_name": "1/500 s",
+      "localized_name": "1/500 秒",
+      "category": "shutter_speed",
+      "subcategory": "fast",
+      "definition": "Exposure-time control at 1/500 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/500 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.002,
+        "exposure_regime": "fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/500 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_500s:trait:1",
+          "text": "1/500 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_500s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_500s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_1000s",
+      "id": "1_1000s",
+      "display_name": "1/1000 s",
+      "localized_name": "1/1000 秒",
+      "category": "shutter_speed",
+      "subcategory": "fast",
+      "definition": "Exposure-time control at 1/1000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/1000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.001,
+        "exposure_regime": "fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/1000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_1000s:trait:1",
+          "text": "1/1000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_1000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_1000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_2000s",
+      "id": "1_2000s",
+      "display_name": "1/2000 s",
+      "localized_name": "1/2000 秒",
+      "category": "shutter_speed",
+      "subcategory": "fast",
+      "definition": "Exposure-time control at 1/2000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/2000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.0005,
+        "exposure_regime": "fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/2000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_2000s:trait:1",
+          "text": "1/2000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_2000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_2000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_4000s",
+      "id": "1_4000s",
+      "display_name": "1/4000 s",
+      "localized_name": "1/4000 秒",
+      "category": "shutter_speed",
+      "subcategory": "fast",
+      "definition": "Exposure-time control at 1/4000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/4000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.00025,
+        "exposure_regime": "fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/4000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_4000s:trait:1",
+          "text": "1/4000 s exposure-time control; fast action rendering with progressively reduced motion smear and crisper moving contours",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_4000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_4000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_8000s",
+      "id": "1_8000s",
+      "display_name": "1/8000 s",
+      "localized_name": "1/8000 秒",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at 1/8000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/8000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.000125,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/8000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_8000s:trait:1",
+          "text": "1/8000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_8000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_8000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:approx_1_10000s",
+      "id": "approx_1_10000s",
+      "display_name": "Approx. 1/10000 s",
+      "localized_name": "約 1/10000 秒",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at Approx. 1/10000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "約 1/10000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.0001,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "Approx. 1/10000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:approx_1_10000s:trait:1",
+          "text": "Approx. 1/10000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:approx_1_10000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "approx_1_10000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_16000s",
+      "id": "1_16000s",
+      "display_name": "1/16000 s",
+      "localized_name": "1/16000 秒",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at 1/16000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/16000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.0000625,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/16000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_16000s:trait:1",
+          "text": "1/16000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_16000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_16000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_32000s",
+      "id": "1_32000s",
+      "display_name": "1/32000 s",
+      "localized_name": "1/32000 秒",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at 1/32000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/32000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.00003125,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/32000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_32000s:trait:1",
+          "text": "1/32000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_32000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_32000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:1_80000s",
+      "id": "1_80000s",
+      "display_name": "1/80000 s",
+      "localized_name": "1/80000 秒",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at 1/80000 s; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "1/80000 秒的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.0000125,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": false
+      },
+      "visual_traits": [
+        "1/80000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "the numeric exposure token does not imply that every named camera supports this setting"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:1_80000s:trait:1",
+          "text": "1/80000 s exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:1_80000s:trait:2",
+          "text": "the numeric exposure token does not imply that every named camera supports this setting",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "1_80000s",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "shutters:approx_1_100000s_simulation",
+      "id": "approx_1_100000s_simulation",
+      "display_name": "Approx. 1/100000 s Visual Simulation",
+      "localized_name": "約 1/100000 秒視覺模擬",
+      "category": "shutter_speed",
+      "subcategory": "ultra_fast",
+      "definition": "Exposure-time control at Approx. 1/100000 s Visual Simulation; the selected scene and technique determine which motion consequence is relevant.",
+      "historical_context": "約 1/100000 秒視覺模擬的曝光時間控制；只依場景中實際存在的運動、光源與所選攝影手法呈現結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "exposure_seconds": 0.00001,
+        "exposure_regime": "ultra_fast",
+        "visual_simulation": true
+      },
+      "visual_traits": [
+        "Approx. 1/100000 s Visual Simulation exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+        "ultra-high-speed photographic visual simulation, not a claim about the physical capability of any selected camera"
+      ],
+      "controls": [
+        "shutter_speed",
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "shutters:approx_1_100000s_simulation:trait:1",
+          "text": "Approx. 1/100000 s Visual Simulation exposure-time control; ultra-fast temporal isolation with negligible conventional motion smear, without inventing a transient subject",
+          "dimension": "general"
+        },
+        {
+          "id": "shutters:approx_1_100000s_simulation:trait:2",
+          "text": "ultra-high-speed photographic visual simulation, not a claim about the physical capability of any selected camera",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer depth of field, ISO, aperture, star trails, light trails, water, clouds, or a specific moving subject from shutter speed alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "shutters",
+        "legacy_id": "approx_1_100000s_simulation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:panning",
+      "id": "panning",
+      "display_name": "Panning",
+      "localized_name": "追焦搖攝",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Track a moving subject during exposure so the subject remains comparatively defined while the background stretches into directional motion streaks.",
+      "historical_context": "追焦搖攝控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Track a moving subject during exposure so the subject remains comparatively defined while the background stretches into directional motion streaks."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:panning:trait:1",
+          "text": "Track a moving subject during exposure so the subject remains comparatively defined while the background stretches into directional motion streaks.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: 10 Tips for Better Camera Panning",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/10-tips-for-better-camera-panning",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "panning",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:long_exposure",
+      "id": "long_exposure",
+      "display_name": "Long-Exposure Photography",
+      "localized_name": "長時間曝光",
+      "category": "photographic_technique",
+      "subcategory": "multi_exposure",
+      "definition": "Use stable-camera temporal integration: preserve stationary structure while moving scene elements render as blur, flow, trails, ghosts, or disappearance according to their actual motion.",
+      "historical_context": "長時間曝光控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use stable-camera temporal integration: preserve stationary structure while moving scene elements render as blur, flow, trails, ghosts, or disappearance according to their actual motion."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:long_exposure:trait:1",
+          "text": "Use stable-camera temporal integration: preserve stationary structure while moving scene elements render as blur, flow, trails, ghosts, or disappearance according to their actual motion.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "long_exposure",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:extreme_long_exposure",
+      "id": "extreme_long_exposure",
+      "display_name": "Extreme Long-Exposure Photography",
+      "localized_name": "極長時間曝光",
+      "category": "photographic_technique",
+      "subcategory": "multi_exposure",
+      "definition": "Render extended accumulated time with persistent path continuity and strong suppression of transient solid subjects; activate celestial, cloud, water, or illumination effects only when present.",
+      "historical_context": "極長時間曝光控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render extended accumulated time with persistent path continuity and strong suppression of transient solid subjects; activate celestial, cloud, water, or illumination effects only when present."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:extreme_long_exposure:trait:1",
+          "text": "Render extended accumulated time with persistent path continuity and strong suppression of transient solid subjects; activate celestial, cloud, water, or illumination effects only when present.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "extreme_long_exposure",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:star_trails",
+      "id": "star_trails",
+      "display_name": "Star-Trail Photography",
+      "localized_name": "星軌攝影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Render scene-present stars as continuous arcs or circles around the supported celestial rotation center while terrestrial structures remain stable.",
+      "historical_context": "星軌攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render scene-present stars as continuous arcs or circles around the supported celestial rotation center while terrestrial structures remain stable."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:star_trails:trait:1",
+          "text": "Render scene-present stars as continuous arcs or circles around the supported celestial rotation center while terrestrial structures remain stable.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Fujifilm: How to Start Photographing Star Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-start-photographing-star-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "star_trails",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:light_trails",
+      "id": "light_trails",
+      "display_name": "Light-Trail Photography",
+      "localized_name": "光軌攝影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Record scene-present moving luminous sources as continuous paths through a stable scene without smearing stationary architecture.",
+      "historical_context": "光軌攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Record scene-present moving luminous sources as continuous paths through a stable scene without smearing stationary architecture."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:light_trails:trait:1",
+          "text": "Record scene-present moving luminous sources as continuous paths through a stable scene without smearing stationary architecture.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Fujifilm: How to Make Amazing Light Trails",
+          "url": "https://www.fujifilm-x.com/en-gb/learning-centre/how-to-make-amazing-light-trails/",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "light_trails",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:light_painting",
+      "id": "light_painting",
+      "display_name": "Light Painting",
+      "localized_name": "光繪攝影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Use a moving controlled light source to draw luminous lines or selectively accumulate illumination through the existing scene.",
+      "historical_context": "光繪攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a moving controlled light source to draw luminous lines or selectively accumulate illumination through the existing scene."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:light_painting:trait:1",
+          "text": "Use a moving controlled light source to draw luminous lines or selectively accumulate illumination through the existing scene.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: Light Painting Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/type/light-painting-photography.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "light_painting",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:freeze_motion",
+      "id": "freeze_motion",
+      "display_name": "Freeze-Motion Photography",
+      "localized_name": "凝結動作攝影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Minimize subject-motion smear and preserve crisp moving contours at a decisive instant without inventing an action subject.",
+      "historical_context": "凝結動作攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Minimize subject-motion smear and preserve crisp moving contours at a decisive instant without inventing an action subject."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:freeze_motion:trait:1",
+          "text": "Minimize subject-motion smear and preserve crisp moving contours at a decisive instant without inventing an action subject.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "freeze_motion",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:high_speed_photography",
+      "id": "high_speed_photography",
+      "display_name": "High-Speed Photography",
+      "localized_name": "高速攝影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Isolate a very brief scene-present transient with exceptionally crisp micro-motion detail, allowing either short exposure time or brief strobe duration as the effective cause.",
+      "historical_context": "高速攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Isolate a very brief scene-present transient with exceptionally crisp micro-motion detail, allowing either short exposure time or brief strobe duration as the effective cause."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:high_speed_photography:trait:1",
+          "text": "Isolate a very brief scene-present transient with exceptionally crisp micro-motion detail, allowing either short exposure time or brief strobe duration as the effective cause.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding Shutter Speed",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-shutter-speed",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Sony alpha 9 III Specifications",
+          "url": "https://www.sony.com/electronics/support/e-mount-body-ilce-9-series/ilce-9m3/specifications",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "high_speed_photography",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:intentional_camera_movement",
+      "id": "intentional_camera_movement",
+      "display_name": "Intentional Camera Movement",
+      "localized_name": "意圖性相機移動",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Move the camera deliberately during exposure to transform scene structure into controlled directional, rotational, or painterly streaks; no subject is assumed sharp.",
+      "historical_context": "意圖性相機移動控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Move the camera deliberately during exposure to transform scene structure into controlled directional, rotational, or painterly streaks; no subject is assumed sharp."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:intentional_camera_movement:trait:1",
+          "text": "Move the camera deliberately during exposure to transform scene structure into controlled directional, rotational, or painterly streaks; no subject is assumed sharp.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: The Joy of Long Exposure Photography",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/the-joy-of-long-exposure-photography",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "intentional_camera_movement",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:sequential_multiple_exposure",
+      "id": "sequential_multiple_exposure",
+      "display_name": "Sequential Multiple Exposure",
+      "localized_name": "連續動作多重曝光",
+      "category": "photographic_technique",
+      "subcategory": "multi_exposure",
+      "definition": "Show successive positions of one moving subject as a readable temporal sequence within a stable frame rather than as one continuous blur.",
+      "historical_context": "連續動作多重曝光控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Show successive positions of one moving subject as a readable temporal sequence within a stable frame rather than as one continuous blur."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:sequential_multiple_exposure:trait:1",
+          "text": "Show successive positions of one moving subject as a readable temporal sequence within a stable frame rather than as one continuous blur.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "sequential_multiple_exposure",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:focus_stacking",
+      "id": "focus_stacking",
+      "display_name": "Focus Stacking",
+      "localized_name": "焦點堆疊",
+      "category": "photographic_technique",
+      "subcategory": "focus_and_scale",
+      "definition": "Composite sequential focus planes so the intended subject remains continuously sharp across greater depth while preserving natural falloff outside the stacked coverage.",
+      "historical_context": "焦點堆疊控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Composite sequential focus planes so the intended subject remains continuously sharp across greater depth while preserving natural falloff outside the stacked coverage."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:focus_stacking:trait:1",
+          "text": "Composite sequential focus planes so the intended subject remains continuously sharp across greater depth while preserving natural falloff outside the stacked coverage.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "focus_stacking",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:exposure_bracket_merge",
+      "id": "exposure_bracket_merge",
+      "display_name": "Exposure-Bracket Tonal Merge",
+      "localized_name": "曝光包圍明暗合成",
+      "category": "photographic_technique",
+      "subcategory": "multi_exposure",
+      "definition": "Merge bracketed exposures into one natural extended-tonal-range image with retained highlight and shadow detail and controlled local contrast.",
+      "historical_context": "曝光包圍明暗合成控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Merge bracketed exposures into one natural extended-tonal-range image with retained highlight and shadow detail and controlled local contrast."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:exposure_bracket_merge:trait:1",
+          "text": "Merge bracketed exposures into one natural extended-tonal-range image with retained highlight and shadow detail and controlled local contrast.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "exposure_bracket_merge",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:rear_curtain_sync",
+      "id": "rear_curtain_sync",
+      "display_name": "Rear-Curtain Flash Synchronization",
+      "localized_name": "後簾閃光同步",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Place ambient-motion trails behind the moving subject, then flash-freeze the subject near the end of the exposure.",
+      "historical_context": "後簾閃光同步控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place ambient-motion trails behind the moving subject, then flash-freeze the subject near the end of the exposure."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:rear_curtain_sync:trait:1",
+          "text": "Place ambient-motion trails behind the moving subject, then flash-freeze the subject near the end of the exposure.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "rear_curtain_sync",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:slow_sync_flash",
+      "id": "slow_sync_flash",
+      "display_name": "Slow-Sync Flash",
+      "localized_name": "慢速同步閃光",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Combine a flash-defined foreground subject with visible ambient background exposure and optional ambient-motion blur.",
+      "historical_context": "慢速同步閃光控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Combine a flash-defined foreground subject with visible ambient background exposure and optional ambient-motion blur."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:slow_sync_flash:trait:1",
+          "text": "Combine a flash-defined foreground subject with visible ambient background exposure and optional ambient-motion blur.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "slow_sync_flash",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:selective_focus",
+      "id": "selective_focus",
+      "display_name": "Selective Focus",
+      "localized_name": "選擇性對焦",
+      "category": "photographic_technique",
+      "subcategory": "focus_and_scale",
+      "definition": "Keep the chosen subject or detail critically sharp while allowing deliberate focus falloff elsewhere to establish visual hierarchy.",
+      "historical_context": "選擇性對焦控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Keep the chosen subject or detail critically sharp while allowing deliberate focus falloff elsewhere to establish visual hierarchy."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:selective_focus:trait:1",
+          "text": "Keep the chosen subject or detail critically sharp while allowing deliberate focus falloff elsewhere to establish visual hierarchy.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "selective_focus",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:tilted_focus_plane",
+      "id": "tilted_focus_plane",
+      "display_name": "Tilted Focus-Plane Control",
+      "localized_name": "傾斜焦平面控制",
+      "category": "photographic_technique",
+      "subcategory": "focus_and_scale",
+      "definition": "Rotate the plane of focus to align sharpness with a selected spatial surface or isolate a narrow oblique band of focus without claiming increased depth of field.",
+      "historical_context": "傾斜焦平面控制控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Rotate the plane of focus to align sharpness with a selected spatial surface or isolate a narrow oblique band of focus without claiming increased depth of field."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:tilted_focus_plane:trait:1",
+          "text": "Rotate the plane of focus to align sharpness with a selected spatial surface or isolate a narrow oblique band of focus without claiming increased depth of field.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "tilted_focus_plane",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:macro_photography",
+      "id": "macro_photography",
+      "display_name": "Macro Photography",
+      "localized_name": "微距攝影",
+      "category": "photographic_technique",
+      "subcategory": "focus_and_scale",
+      "definition": "Render a small subject at dominant frame scale with minute surface detail, close-focus perspective, and intentionally managed shallow focus falloff.",
+      "historical_context": "微距攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render a small subject at dominant frame scale with minute surface detail, close-focus perspective, and intentionally managed shallow focus falloff."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:macro_photography:trait:1",
+          "text": "Render a small subject at dominant frame scale with minute surface detail, close-focus perspective, and intentionally managed shallow focus falloff.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "macro_photography",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:extreme_macro_photography",
+      "id": "extreme_macro_photography",
+      "display_name": "Extreme-Macro Photography",
+      "localized_name": "極微距攝影",
+      "category": "photographic_technique",
+      "subcategory": "focus_and_scale",
+      "definition": "Render beyond-life-size microstructure with a razor-thin native focus plane and tightly controlled detail isolation.",
+      "historical_context": "極微距攝影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render beyond-life-size microstructure with a razor-thin native focus plane and tightly controlled detail isolation."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:extreme_macro_photography:trait:1",
+          "text": "Render beyond-life-size microstructure with a razor-thin native focus plane and tightly controlled detail isolation.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "extreme_macro_photography",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "techniques:subject_motion_blur",
+      "id": "subject_motion_blur",
+      "display_name": "Stationary-Camera Subject Blur",
+      "localized_name": "固定機位主體拖影",
+      "category": "photographic_technique",
+      "subcategory": "motion_and_time",
+      "definition": "Hold scene geometry stable while allowing only moving subjects to smear, stretch, or partially disappear along their paths.",
+      "historical_context": "固定機位主體拖影控制最終影像中可觀察的時間、焦點或多重曝光結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Hold scene geometry stable while allowing only moving subjects to smear, stretch, or partially disappear along their paths."
+      ],
+      "controls": [
+        "photographic_technique"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "techniques:subject_motion_blur:trait:1",
+          "text": "Hold scene geometry stable while allowing only moving subjects to smear, stretch, or partially disappear along their paths.",
+          "dimension": "technique"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Capturing or Freezing Motion in Photos",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/capturing-or-freezing-motion-in-photos",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "techniques",
+        "legacy_id": "subject_motion_blur",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:rule_of_thirds",
+      "id": "rule_of_thirds",
+      "display_name": "Rule of Thirds",
+      "localized_name": "三分法構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Place the primary subject, horizon, or focal detail near a one-third line or grid intersection, preserving meaningful open space elsewhere.",
+      "historical_context": "三分法構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the primary subject, horizon, or focal detail near a one-third line or grid intersection, preserving meaningful open space elsewhere."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:rule_of_thirds:trait:1",
+          "text": "Place the primary subject, horizon, or focal detail near a one-third line or grid intersection, preserving meaningful open space elsewhere.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "rule_of_thirds",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:centered_composition",
+      "id": "centered_composition",
+      "display_name": "Centered Composition",
+      "localized_name": "置中構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Place the dominant subject directly on the frame center and organize supporting elements around that central emphasis.",
+      "historical_context": "置中構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the dominant subject directly on the frame center and organize supporting elements around that central emphasis."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:centered_composition:trait:1",
+          "text": "Place the dominant subject directly on the frame center and organize supporting elements around that central emphasis.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "centered_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:asymmetrical_balance",
+      "id": "asymmetrical_balance",
+      "display_name": "Asymmetrical Balance",
+      "localized_name": "非對稱平衡",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Balance an off-center dominant subject with smaller objects, tonal contrast, or negative space on the opposing side.",
+      "historical_context": "非對稱平衡以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Balance an off-center dominant subject with smaller objects, tonal contrast, or negative space on the opposing side."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:asymmetrical_balance:trait:1",
+          "text": "Balance an off-center dominant subject with smaller objects, tonal contrast, or negative space on the opposing side.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "asymmetrical_balance",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:leading_lines",
+      "id": "leading_lines",
+      "display_name": "Leading Lines",
+      "localized_name": "引導線構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Use visible lines entering the frame and directing the viewer toward the primary subject or focal area.",
+      "historical_context": "引導線構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use visible lines entering the frame and directing the viewer toward the primary subject or focal area."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:leading_lines:trait:1",
+          "text": "Use visible lines entering the frame and directing the viewer toward the primary subject or focal area.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "leading_lines",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:diagonal_composition",
+      "id": "diagonal_composition",
+      "display_name": "Diagonal Composition",
+      "localized_name": "對角構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Arrange the dominant masses or edges along a strong diagonal to create directional energy without requiring convergence on the subject.",
+      "historical_context": "對角構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Arrange the dominant masses or edges along a strong diagonal to create directional energy without requiring convergence on the subject."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:diagonal_composition:trait:1",
+          "text": "Arrange the dominant masses or edges along a strong diagonal to create directional energy without requiring convergence on the subject.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "diagonal_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:triangular_composition",
+      "id": "triangular_composition",
+      "display_name": "Triangular Composition",
+      "localized_name": "三角構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Organize three primary nodes or masses into a stable triangular hierarchy.",
+      "historical_context": "三角構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Organize three primary nodes or masses into a stable triangular hierarchy."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:triangular_composition:trait:1",
+          "text": "Organize three primary nodes or masses into a stable triangular hierarchy.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "triangular_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:golden_ratio_grid",
+      "id": "golden_ratio_grid",
+      "display_name": "Golden-Ratio Grid",
+      "localized_name": "黃金比例網格",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Divide major visual masses using an approximately one-to-one-point-six-one-eight spatial relationship and place emphasis near the corresponding divisions.",
+      "historical_context": "黃金比例網格以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Divide major visual masses using an approximately one-to-one-point-six-one-eight spatial relationship and place emphasis near the corresponding divisions."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:golden_ratio_grid:trait:1",
+          "text": "Divide major visual masses using an approximately one-to-one-point-six-one-eight spatial relationship and place emphasis near the corresponding divisions.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "golden_ratio_grid",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:golden_spiral",
+      "id": "golden_spiral",
+      "display_name": "Golden Spiral",
+      "localized_name": "黃金螺旋構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Place the focal subject near the spiral core and arrange supporting forms along a curved path that guides the eye inward.",
+      "historical_context": "黃金螺旋構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the focal subject near the spiral core and arrange supporting forms along a curved path that guides the eye inward."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:golden_spiral:trait:1",
+          "text": "Place the focal subject near the spiral core and arrange supporting forms along a curved path that guides the eye inward.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "golden_spiral",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:frame_within_frame",
+      "id": "frame_within_frame",
+      "display_name": "Frame Within a Frame",
+      "localized_name": "框中框",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Use a door, window, arch, tunnel, or comparable scene element to nearly enclose the primary subject inside an internal frame.",
+      "historical_context": "框中框以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a door, window, arch, tunnel, or comparable scene element to nearly enclose the primary subject inside an internal frame."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:frame_within_frame:trait:1",
+          "text": "Use a door, window, arch, tunnel, or comparable scene element to nearly enclose the primary subject inside an internal frame.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "frame_within_frame",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:negative_space",
+      "id": "negative_space",
+      "display_name": "Negative Space",
+      "localized_name": "負空間構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Surround a comparatively small subject with a large low-information area that clarifies isolation, direction, or scale.",
+      "historical_context": "負空間構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Surround a comparatively small subject with a large low-information area that clarifies isolation, direction, or scale."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:negative_space:trait:1",
+          "text": "Surround a comparatively small subject with a large low-information area that clarifies isolation, direction, or scale.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "negative_space",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:fill_the_frame",
+      "id": "fill_the_frame",
+      "display_name": "Fill the Frame",
+      "localized_name": "填滿畫面",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Let the subject approach or cross frame edges so background information is minimized and surface or expression dominates.",
+      "historical_context": "填滿畫面以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Let the subject approach or cross frame edges so background information is minimized and surface or expression dominates."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:fill_the_frame:trait:1",
+          "text": "Let the subject approach or cross frame edges so background information is minimized and surface or expression dominates.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "fill_the_frame",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:layered_planes",
+      "id": "layered_planes",
+      "display_name": "Layered Foreground, Midground, and Background",
+      "localized_name": "前中後景分層構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Place readable elements in foreground, midground, and background so each plane contributes to depth and hierarchy.",
+      "historical_context": "前中後景分層構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place readable elements in foreground, midground, and background so each plane contributes to depth and hierarchy."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:layered_planes:trait:1",
+          "text": "Place readable elements in foreground, midground, and background so each plane contributes to depth and hierarchy.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "layered_planes",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:foreground_framing",
+      "id": "foreground_framing",
+      "display_name": "Foreground Framing",
+      "localized_name": "前景框景",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Use near-camera elements along one or two frame edges to partially surround the subject and reinforce depth without fully enclosing it.",
+      "historical_context": "前景框景以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use near-camera elements along one or two frame edges to partially surround the subject and reinforce depth without fully enclosing it."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:foreground_framing:trait:1",
+          "text": "Use near-camera elements along one or two frame edges to partially surround the subject and reinforce depth without fully enclosing it.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "foreground_framing",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:deep_axial_composition",
+      "id": "deep_axial_composition",
+      "display_name": "Deep Axial Composition",
+      "localized_name": "深軸構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Use overlap, diminishing scale, atmosphere, or a corridor-like axis to pull attention through a pronounced depth channel.",
+      "historical_context": "深軸構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use overlap, diminishing scale, atmosphere, or a corridor-like axis to pull attention through a pronounced depth channel."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:deep_axial_composition:trait:1",
+          "text": "Use overlap, diminishing scale, atmosphere, or a corridor-like axis to pull attention through a pronounced depth channel.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "deep_axial_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:s_curve_flow",
+      "id": "s_curve_flow",
+      "display_name": "S-Curve Flow",
+      "localized_name": "S 曲線構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Arrange a visible S-shaped path that carries attention smoothly from the foreground through the frame.",
+      "historical_context": "S 曲線構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Arrange a visible S-shaped path that carries attention smoothly from the foreground through the frame."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:s_curve_flow:trait:1",
+          "text": "Arrange a visible S-shaped path that carries attention smoothly from the foreground through the frame.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "s_curve_flow",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:radial_composition",
+      "id": "radial_composition",
+      "display_name": "Radial Composition",
+      "localized_name": "放射構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Arrange elements so they radiate outward from or converge inward toward one dominant focal point.",
+      "historical_context": "放射構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Arrange elements so they radiate outward from or converge inward toward one dominant focal point."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:radial_composition:trait:1",
+          "text": "Arrange elements so they radiate outward from or converge inward toward one dominant focal point.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "radial_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:repetition_pattern",
+      "id": "repetition_pattern",
+      "display_name": "Repetition and Pattern",
+      "localized_name": "重複與圖案構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Repeat elements with deliberate spacing, rhythm, or shape consistency across the frame.",
+      "historical_context": "重複與圖案構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Repeat elements with deliberate spacing, rhythm, or shape consistency across the frame."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:repetition_pattern:trait:1",
+          "text": "Repeat elements with deliberate spacing, rhythm, or shape consistency across the frame.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "repetition_pattern",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:pattern_interruption",
+      "id": "pattern_interruption",
+      "display_name": "Pattern Interruption",
+      "localized_name": "圖案中斷構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Break an established repeated pattern with one distinct element that becomes the focal point.",
+      "historical_context": "圖案中斷構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Break an established repeated pattern with one distinct element that becomes the focal point."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:pattern_interruption:trait:1",
+          "text": "Break an established repeated pattern with one distinct element that becomes the focal point.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "pattern_interruption",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:balanced_visual_weight",
+      "id": "balanced_visual_weight",
+      "display_name": "Balanced Visual Weight",
+      "localized_name": "平衡視覺重量",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Distribute size, contrast, color, and spacing so no unintended region overwhelms the intended focal hierarchy.",
+      "historical_context": "平衡視覺重量以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Distribute size, contrast, color, and spacing so no unintended region overwhelms the intended focal hierarchy."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [
+        "composition:dynamic_imbalance"
+      ],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:balanced_visual_weight:trait:1",
+          "text": "Distribute size, contrast, color, and spacing so no unintended region overwhelms the intended focal hierarchy.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "balanced_visual_weight",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:dynamic_imbalance",
+      "id": "dynamic_imbalance",
+      "display_name": "Deliberate Dynamic Imbalance",
+      "localized_name": "刻意動態失衡",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Concentrate visual weight off-center or along an unresolved diagonal to create intentional tension and directional pull.",
+      "historical_context": "刻意動態失衡以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Concentrate visual weight off-center or along an unresolved diagonal to create intentional tension and directional pull."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [
+        "composition:balanced_visual_weight"
+      ],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:dynamic_imbalance:trait:1",
+          "text": "Concentrate visual weight off-center or along an unresolved diagonal to create intentional tension and directional pull.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "dynamic_imbalance",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:subject_isolation",
+      "id": "subject_isolation",
+      "display_name": "Subject Isolation",
+      "localized_name": "主體隔離構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Maintain a clear separation zone around the primary subject without requiring shallow focus or a large empty field.",
+      "historical_context": "主體隔離構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Maintain a clear separation zone around the primary subject without requiring shallow focus or a large empty field."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:subject_isolation:trait:1",
+          "text": "Maintain a clear separation zone around the primary subject without requiring shallow focus or a large empty field.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "subject_isolation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:geometric_composition",
+      "id": "geometric_composition",
+      "display_name": "Geometric Composition",
+      "localized_name": "幾何構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Use shapes, edges, and angular relationships as the dominant visual ordering system.",
+      "historical_context": "幾何構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use shapes, edges, and angular relationships as the dominant visual ordering system."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:geometric_composition:trait:1",
+          "text": "Use shapes, edges, and angular relationships as the dominant visual ordering system.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "geometric_composition",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:converging_lines",
+      "id": "converging_lines",
+      "display_name": "Converging Lines",
+      "localized_name": "匯聚線構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Direct visible lines toward a vanishing point or intersection to emphasize depth and a specific destination.",
+      "historical_context": "匯聚線構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Direct visible lines toward a vanishing point or intersection to emphasize depth and a specific destination."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:converging_lines:trait:1",
+          "text": "Direct visible lines toward a vanishing point or intersection to emphasize depth and a specific destination.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "converging_lines",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:visual_hierarchy",
+      "id": "visual_hierarchy",
+      "display_name": "Visual Hierarchy",
+      "localized_name": "視覺層級構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Order primary, secondary, and tertiary elements through scale, contrast, position, and spacing to create a clear reading sequence.",
+      "historical_context": "視覺層級構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Order primary, secondary, and tertiary elements through scale, contrast, position, and spacing to create a clear reading sequence."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:visual_hierarchy:trait:1",
+          "text": "Order primary, secondary, and tertiary elements through scale, contrast, position, and spacing to create a clear reading sequence.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "visual_hierarchy",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:directional_lead_room",
+      "id": "directional_lead_room",
+      "display_name": "Directional Lead Room",
+      "localized_name": "視線與動作留白",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Reserve open space in the direction of a subject gaze or movement so the action has a visible destination.",
+      "historical_context": "視線與動作留白以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Reserve open space in the direction of a subject gaze or movement so the action has a visible destination."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:directional_lead_room:trait:1",
+          "text": "Reserve open space in the direction of a subject gaze or movement so the action has a visible destination.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "directional_lead_room",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "composition:scale_contrast",
+      "id": "scale_contrast",
+      "display_name": "Scale Contrast",
+      "localized_name": "尺度對比構圖",
+      "category": "composition",
+      "subcategory": "foundational",
+      "definition": "Juxtapose a very small subject with a much larger environment or structure to make relative scale immediately legible.",
+      "historical_context": "尺度對比構圖以空間配置控制視線、平衡、深度或層級，不改變景別與相機位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Juxtapose a very small subject with a much larger environment or structure to make relative scale immediately legible."
+      ],
+      "controls": [
+        "composition"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "composition:scale_contrast:trait:1",
+          "text": "Juxtapose a very small subject with a much larger environment or structure to make relative scale immediately legible.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe: A Guide to Leading Lines in Photography",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/leading-lines.html",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: 5 Easy Composition Guidelines",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/5-easy-composition-guidelines",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "composition",
+        "legacy_id": "scale_contrast",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "distance:intimate",
+      "id": "intimate",
+      "display_name": "Intimate Camera Distance",
+      "localized_name": "貼近距離",
+      "category": "camera_distance",
+      "subcategory": "foundational",
+      "definition": "Place the camera very close to the subject so near-surface detail and spatial immediacy dominate, without changing focal length automatically.",
+      "historical_context": "貼近距離控制相機與主體的空間關係，不自動改變焦距。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the camera very close to the subject so near-surface detail and spatial immediacy dominate, without changing focal length automatically."
+      ],
+      "controls": [
+        "camera_distance"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "distance:intimate:trait:1",
+          "text": "Place the camera very close to the subject so near-surface detail and spatial immediacy dominate, without changing focal length automatically.",
+          "dimension": "geometry"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Canon: Perspective",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/perspective/index.html",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "distance",
+        "legacy_id": "intimate",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "distance:close",
+      "id": "close",
+      "display_name": "Close Camera Distance",
+      "localized_name": "近距離",
+      "category": "camera_distance",
+      "subcategory": "foundational",
+      "definition": "Use a close camera-to-subject relationship with strong presence and limited intervening space.",
+      "historical_context": "近距離控制相機與主體的空間關係，不自動改變焦距。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a close camera-to-subject relationship with strong presence and limited intervening space."
+      ],
+      "controls": [
+        "camera_distance"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "distance:close:trait:1",
+          "text": "Use a close camera-to-subject relationship with strong presence and limited intervening space.",
+          "dimension": "geometry"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Canon: Perspective",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/perspective/index.html",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "distance",
+        "legacy_id": "close",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "distance:conversational",
+      "id": "conversational",
+      "display_name": "Conversational Camera Distance",
+      "localized_name": "對談距離",
+      "category": "camera_distance",
+      "subcategory": "foundational",
+      "definition": "Use a natural interpersonal camera distance that keeps the subject present while retaining nearby environmental context.",
+      "historical_context": "對談距離控制相機與主體的空間關係，不自動改變焦距。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a natural interpersonal camera distance that keeps the subject present while retaining nearby environmental context."
+      ],
+      "controls": [
+        "camera_distance"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "distance:conversational:trait:1",
+          "text": "Use a natural interpersonal camera distance that keeps the subject present while retaining nearby environmental context.",
+          "dimension": "geometry"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Canon: Perspective",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/perspective/index.html",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "distance",
+        "legacy_id": "conversational",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "distance:distant",
+      "id": "distant",
+      "display_name": "Distant Camera Position",
+      "localized_name": "遠距離",
+      "category": "camera_distance",
+      "subcategory": "foundational",
+      "definition": "Place the camera far enough away that environment and spatial separation become prominent around the subject.",
+      "historical_context": "遠距離控制相機與主體的空間關係，不自動改變焦距。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the camera far enough away that environment and spatial separation become prominent around the subject."
+      ],
+      "controls": [
+        "camera_distance"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "distance:distant:trait:1",
+          "text": "Place the camera far enough away that environment and spatial separation become prominent around the subject.",
+          "dimension": "geometry"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Canon: Perspective",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/perspective/index.html",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "distance",
+        "legacy_id": "distant",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "distance:remote_observation",
+      "id": "remote_observation",
+      "display_name": "Remote Observation Distance",
+      "localized_name": "遙遠觀察距離",
+      "category": "camera_distance",
+      "subcategory": "foundational",
+      "definition": "Use a very distant observational relationship in which the subject occupies a small portion of the environment.",
+      "historical_context": "遙遠觀察距離控制相機與主體的空間關係，不自動改變焦距。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a very distant observational relationship in which the subject occupies a small portion of the environment."
+      ],
+      "controls": [
+        "camera_distance"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "distance:remote_observation:trait:1",
+          "text": "Use a very distant observational relationship in which the subject occupies a small portion of the environment.",
+          "dimension": "geometry"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Canon: Perspective",
+          "url": "https://files.canon-europe.com/files/webcontent/rf-lens-world/knowledge/perspective/index.html",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "distance",
+        "legacy_id": "remote_observation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "arrangement:single_subject",
+      "id": "single_subject",
+      "display_name": "Single-Subject Arrangement",
+      "localized_name": "單一主體配置",
+      "category": "subject_arrangement",
+      "subcategory": "foundational",
+      "definition": "Organize one primary subject as the sole dominant human, animal, or object presence in the frame.",
+      "historical_context": "單一主體配置控制主體數量與相互配置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Organize one primary subject as the sole dominant human, animal, or object presence in the frame."
+      ],
+      "controls": [
+        "subject_arrangement"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "arrangement:single_subject:trait:1",
+          "text": "Organize one primary subject as the sole dominant human, animal, or object presence in the frame.",
+          "dimension": "composition"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe: The Basics of Photography Composition",
+          "url": "https://www.adobe.com/creativecloud/photography/technique/composition.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "arrangement",
+        "legacy_id": "single_subject",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "projection:rectilinear",
+      "id": "rectilinear",
+      "display_name": "Rectilinear Projection",
+      "localized_name": "直線投影",
+      "category": "projection",
+      "subcategory": "foundational",
+      "definition": "Keep straight scene lines straight except for ordinary perspective convergence, without fisheye curvature.",
+      "historical_context": "直線投影控制空間如何投影到平面，不指定場景內容。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Keep straight scene lines straight except for ordinary perspective convergence, without fisheye curvature."
+      ],
+      "controls": [
+        "projection"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "projection:rectilinear:trait:1",
+          "text": "Keep straight scene lines straight except for ordinary perspective convergence, without fisheye curvature.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "projection",
+        "legacy_id": "rectilinear",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "projection:orthographic",
+      "id": "orthographic",
+      "display_name": "Orthographic-Like Projection",
+      "localized_name": "近正投影",
+      "category": "projection",
+      "subcategory": "foundational",
+      "definition": "Render near-parallel projection with strongly reduced perspective convergence and minimal size change across depth as a visual simulation.",
+      "historical_context": "近正投影控制空間如何投影到平面，不指定場景內容。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render near-parallel projection with strongly reduced perspective convergence and minimal size change across depth as a visual simulation."
+      ],
+      "controls": [
+        "projection"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "projection:orthographic:trait:1",
+          "text": "Render near-parallel projection with strongly reduced perspective convergence and minimal size change across depth as a visual simulation.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "projection",
+        "legacy_id": "orthographic",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "focus:near_foreground",
+      "id": "near_foreground",
+      "display_name": "Near-Foreground Focus",
+      "localized_name": "近前景對焦",
+      "category": "focus_behavior",
+      "subcategory": "foundational",
+      "definition": "Place the critical focus plane on a near-foreground element while allowing depth of field to remain controlled by aperture and geometry.",
+      "historical_context": "近前景對焦只控制清晰平面的落點，不控制景深寬度。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the critical focus plane on a near-foreground element while allowing depth of field to remain controlled by aperture and geometry."
+      ],
+      "controls": [
+        "focus_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "focus:near_foreground:trait:1",
+          "text": "Place the critical focus plane on a near-foreground element while allowing depth of field to remain controlled by aperture and geometry.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "focus",
+        "legacy_id": "near_foreground",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "focus:primary_subject",
+      "id": "primary_subject",
+      "display_name": "Primary-Subject Focus",
+      "localized_name": "主要主體對焦",
+      "category": "focus_behavior",
+      "subcategory": "foundational",
+      "definition": "Place the critical focus plane on the primary subject or explicitly identified facial feature.",
+      "historical_context": "主要主體對焦只控制清晰平面的落點，不控制景深寬度。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the critical focus plane on the primary subject or explicitly identified facial feature."
+      ],
+      "controls": [
+        "focus_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "focus:primary_subject:trait:1",
+          "text": "Place the critical focus plane on the primary subject or explicitly identified facial feature.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "focus",
+        "legacy_id": "primary_subject",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "focus:midground",
+      "id": "midground",
+      "display_name": "Midground Focus",
+      "localized_name": "中景對焦",
+      "category": "focus_behavior",
+      "subcategory": "foundational",
+      "definition": "Place the critical focus plane in the midground so nearer and farther planes fall away according to the selected depth of field.",
+      "historical_context": "中景對焦只控制清晰平面的落點，不控制景深寬度。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the critical focus plane in the midground so nearer and farther planes fall away according to the selected depth of field."
+      ],
+      "controls": [
+        "focus_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "focus:midground:trait:1",
+          "text": "Place the critical focus plane in the midground so nearer and farther planes fall away according to the selected depth of field.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "focus",
+        "legacy_id": "midground",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "focus:far_infinity",
+      "id": "far_infinity",
+      "display_name": "Far / Infinity Focus",
+      "localized_name": "遠景／無限遠對焦",
+      "category": "focus_behavior",
+      "subcategory": "foundational",
+      "definition": "Place critical focus on distant scene structure or the optical infinity region.",
+      "historical_context": "遠景／無限遠對焦只控制清晰平面的落點，不控制景深寬度。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place critical focus on distant scene structure or the optical infinity region."
+      ],
+      "controls": [
+        "focus_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "focus:far_infinity:trait:1",
+          "text": "Place critical focus on distant scene structure or the optical infinity region.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "focus",
+        "legacy_id": "far_infinity",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "focus:intentional_misfocus",
+      "id": "intentional_misfocus",
+      "display_name": "Intentional Misfocus",
+      "localized_name": "刻意失焦",
+      "category": "focus_behavior",
+      "subcategory": "foundational",
+      "definition": "Render the intended subject deliberately outside critical focus while preserving enough structure to read the chosen scene.",
+      "historical_context": "刻意失焦只控制清晰平面的落點，不控制景深寬度。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render the intended subject deliberately outside critical focus while preserving enough structure to read the chosen scene."
+      ],
+      "controls": [
+        "focus_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "focus:intentional_misfocus:trait:1",
+          "text": "Render the intended subject deliberately outside critical focus while preserving enough structure to read the chosen scene.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Focus Shift, the Basics: Stacking Focus",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/focus-shift-the-basics-stacking-focus",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "focus",
+        "legacy_id": "intentional_misfocus",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:50",
+      "id": "50",
+      "display_name": "ISO 50",
+      "localized_name": "ISO 50",
+      "category": "iso_sensitivity",
+      "subcategory": "low",
+      "definition": "ISO 50 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 50 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 50,
+        "sensitivity_regime": "low"
+      },
+      "visual_traits": [
+        "ISO 50 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:50:trait:1",
+          "text": "ISO 50 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "50",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:100",
+      "id": "100",
+      "display_name": "ISO 100",
+      "localized_name": "ISO 100",
+      "category": "iso_sensitivity",
+      "subcategory": "low",
+      "definition": "ISO 100 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 100 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 100,
+        "sensitivity_regime": "low"
+      },
+      "visual_traits": [
+        "ISO 100 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:100:trait:1",
+          "text": "ISO 100 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "100",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:200",
+      "id": "200",
+      "display_name": "ISO 200",
+      "localized_name": "ISO 200",
+      "category": "iso_sensitivity",
+      "subcategory": "low",
+      "definition": "ISO 200 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 200 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 200,
+        "sensitivity_regime": "low"
+      },
+      "visual_traits": [
+        "ISO 200 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:200:trait:1",
+          "text": "ISO 200 sensitivity as a visual-control token; clean tonal surfaces with minimal visible random noise, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "200",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:400",
+      "id": "400",
+      "display_name": "ISO 400",
+      "localized_name": "ISO 400",
+      "category": "iso_sensitivity",
+      "subcategory": "moderate",
+      "definition": "ISO 400 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 400 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 400,
+        "sensitivity_regime": "moderate"
+      },
+      "visual_traits": [
+        "ISO 400 sensitivity as a visual-control token; light fine-grained noise may appear in smooth tones and shadows, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:400:trait:1",
+          "text": "ISO 400 sensitivity as a visual-control token; light fine-grained noise may appear in smooth tones and shadows, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "400",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:800",
+      "id": "800",
+      "display_name": "ISO 800",
+      "localized_name": "ISO 800",
+      "category": "iso_sensitivity",
+      "subcategory": "moderate",
+      "definition": "ISO 800 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 800 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 800,
+        "sensitivity_regime": "moderate"
+      },
+      "visual_traits": [
+        "ISO 800 sensitivity as a visual-control token; light fine-grained noise may appear in smooth tones and shadows, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:800:trait:1",
+          "text": "ISO 800 sensitivity as a visual-control token; light fine-grained noise may appear in smooth tones and shadows, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "800",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:1600",
+      "id": "1600",
+      "display_name": "ISO 1600",
+      "localized_name": "ISO 1600",
+      "category": "iso_sensitivity",
+      "subcategory": "high",
+      "definition": "ISO 1600 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 1600 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 1600,
+        "sensitivity_regime": "high"
+      },
+      "visual_traits": [
+        "ISO 1600 sensitivity as a visual-control token; visible luminance noise and some chroma variation may appear, especially in shadows, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:1600:trait:1",
+          "text": "ISO 1600 sensitivity as a visual-control token; visible luminance noise and some chroma variation may appear, especially in shadows, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "1600",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:3200",
+      "id": "3200",
+      "display_name": "ISO 3200",
+      "localized_name": "ISO 3200",
+      "category": "iso_sensitivity",
+      "subcategory": "high",
+      "definition": "ISO 3200 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 3200 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 3200,
+        "sensitivity_regime": "high"
+      },
+      "visual_traits": [
+        "ISO 3200 sensitivity as a visual-control token; visible luminance noise and some chroma variation may appear, especially in shadows, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:3200:trait:1",
+          "text": "ISO 3200 sensitivity as a visual-control token; visible luminance noise and some chroma variation may appear, especially in shadows, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "3200",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:6400",
+      "id": "6400",
+      "display_name": "ISO 6400",
+      "localized_name": "ISO 6400",
+      "category": "iso_sensitivity",
+      "subcategory": "very_high",
+      "definition": "ISO 6400 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 6400 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 6400,
+        "sensitivity_regime": "very_high"
+      },
+      "visual_traits": [
+        "ISO 6400 sensitivity as a visual-control token; pronounced luminance and chroma noise with reduced color stability in darker regions, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:6400:trait:1",
+          "text": "ISO 6400 sensitivity as a visual-control token; pronounced luminance and chroma noise with reduced color stability in darker regions, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "6400",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:12800",
+      "id": "12800",
+      "display_name": "ISO 12800",
+      "localized_name": "ISO 12800",
+      "category": "iso_sensitivity",
+      "subcategory": "very_high",
+      "definition": "ISO 12800 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 12800 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 12800,
+        "sensitivity_regime": "very_high"
+      },
+      "visual_traits": [
+        "ISO 12800 sensitivity as a visual-control token; pronounced luminance and chroma noise with reduced color stability in darker regions, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:12800:trait:1",
+          "text": "ISO 12800 sensitivity as a visual-control token; pronounced luminance and chroma noise with reduced color stability in darker regions, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "12800",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:25600",
+      "id": "25600",
+      "display_name": "ISO 25600",
+      "localized_name": "ISO 25600",
+      "category": "iso_sensitivity",
+      "subcategory": "extreme",
+      "definition": "ISO 25600 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 25600 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 25600,
+        "sensitivity_regime": "extreme"
+      },
+      "visual_traits": [
+        "ISO 25600 sensitivity as a visual-control token; coarse noise, mottled shadow color, and reduced fine tonal separation as a plausible high-sensitivity rendering, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:25600:trait:1",
+          "text": "ISO 25600 sensitivity as a visual-control token; coarse noise, mottled shadow color, and reduced fine tonal separation as a plausible high-sensitivity rendering, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "25600",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "iso:102400",
+      "id": "102400",
+      "display_name": "ISO 102400",
+      "localized_name": "ISO 102400",
+      "category": "iso_sensitivity",
+      "subcategory": "extreme",
+      "definition": "ISO 102400 sensitivity token translated into a plausible image-noise tendency rather than a deterministic camera specification.",
+      "historical_context": "ISO 102400 只提供合理的感光與雜訊傾向，不保證任何攝影機產生固定結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "iso_value": 102400,
+        "sensitivity_regime": "extreme"
+      },
+      "visual_traits": [
+        "ISO 102400 sensitivity as a visual-control token; coarse noise, mottled shadow color, and reduced fine tonal separation as a plausible high-sensitivity rendering, conditional on sensor, processing, exposure, and scene"
+      ],
+      "controls": [
+        "iso_sensitivity",
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "iso:102400:trait:1",
+          "text": "ISO 102400 sensitivity as a visual-control token; coarse noise, mottled shadow color, and reduced fine tonal separation as a plausible high-sensitivity rendering, conditional on sensor, processing, exposure, and scene",
+          "dimension": "general"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item",
+        "do not infer a specific camera, exposure, aperture, shutter speed, or deterministic noise amount from ISO alone"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "iso",
+        "legacy_id": "102400",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:minus_3ev",
+      "id": "minus_3ev",
+      "display_name": "-3 EV",
+      "localized_name": "-3 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately three stops darker, strongly protecting highlights while deepening midtones and shadows.",
+      "historical_context": "-3 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": -3
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately three stops darker, strongly protecting highlights while deepening midtones and shadows."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:minus_3ev:trait:1",
+          "text": "Place the overall exposure approximately three stops darker, strongly protecting highlights while deepening midtones and shadows.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "minus_3ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:minus_2ev",
+      "id": "minus_2ev",
+      "display_name": "-2 EV",
+      "localized_name": "-2 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately two stops darker, protecting highlights and shifting midtones downward.",
+      "historical_context": "-2 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": -2
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately two stops darker, protecting highlights and shifting midtones downward."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:minus_2ev:trait:1",
+          "text": "Place the overall exposure approximately two stops darker, protecting highlights and shifting midtones downward.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "minus_2ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:minus_1ev",
+      "id": "minus_1ev",
+      "display_name": "-1 EV",
+      "localized_name": "-1 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately one stop darker with modest highlight protection and deeper midtones.",
+      "historical_context": "-1 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": -1
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately one stop darker with modest highlight protection and deeper midtones."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:minus_1ev:trait:1",
+          "text": "Place the overall exposure approximately one stop darker with modest highlight protection and deeper midtones.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "minus_1ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:zero_ev",
+      "id": "zero_ev",
+      "display_name": "0 EV",
+      "localized_name": "0 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Use neutral exposure placement without an intentional global brightness offset.",
+      "historical_context": "0 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": 0
+      },
+      "visual_traits": [
+        "Use neutral exposure placement without an intentional global brightness offset."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:zero_ev:trait:1",
+          "text": "Use neutral exposure placement without an intentional global brightness offset.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "zero_ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:plus_1ev",
+      "id": "plus_1ev",
+      "display_name": "+1 EV",
+      "localized_name": "+1 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately one stop brighter with lifted midtones and increased highlight pressure.",
+      "historical_context": "+1 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": 1
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately one stop brighter with lifted midtones and increased highlight pressure."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:plus_1ev:trait:1",
+          "text": "Place the overall exposure approximately one stop brighter with lifted midtones and increased highlight pressure.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "plus_1ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:plus_2ev",
+      "id": "plus_2ev",
+      "display_name": "+2 EV",
+      "localized_name": "+2 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately two stops brighter with luminous midtones and a visible risk of highlight clipping.",
+      "historical_context": "+2 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": 2
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately two stops brighter with luminous midtones and a visible risk of highlight clipping."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:plus_2ev:trait:1",
+          "text": "Place the overall exposure approximately two stops brighter with luminous midtones and a visible risk of highlight clipping.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "plus_2ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_compensation:plus_3ev",
+      "id": "plus_3ev",
+      "display_name": "+3 EV",
+      "localized_name": "+3 EV",
+      "category": "exposure_compensation",
+      "subcategory": "foundational",
+      "definition": "Place the overall exposure approximately three stops brighter, strongly lifting tones and allowing deliberate highlight clipping where scene brightness supports it.",
+      "historical_context": "+3 EV控制整體曝光位置，不等同高調或低調佈光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null,
+        "ev_offset": 3
+      },
+      "visual_traits": [
+        "Place the overall exposure approximately three stops brighter, strongly lifting tones and allowing deliberate highlight clipping where scene brightness supports it."
+      ],
+      "controls": [
+        "exposure_compensation"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_compensation:plus_3ev:trait:1",
+          "text": "Place the overall exposure approximately three stops brighter, strongly lifting tones and allowing deliberate highlight clipping where scene brightness supports it.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Exposure Bracketing, the Creative Insurance Policy",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/exposure-bracketing-the-creative-insurance-policy",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_compensation",
+        "legacy_id": "plus_3ev",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:source_neutral",
+      "id": "source_neutral",
+      "display_name": "Source-Neutral White Balance",
+      "localized_name": "光源匹配中性白平衡",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Neutralize the dominant light-source cast so white and gray surfaces render perceptually neutral.",
+      "historical_context": "光源匹配中性白平衡控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Neutralize the dominant light-source cast so white and gray surfaces render perceptually neutral."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:source_neutral:trait:1",
+          "text": "Neutralize the dominant light-source cast so white and gray surfaces render perceptually neutral.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "source_neutral",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:tungsten_3200k",
+      "id": "tungsten_3200k",
+      "display_name": "3200 K Tungsten Balance",
+      "localized_name": "3200 K 鎢絲燈平衡",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Balance a tungsten-lit scene near 3200 K toward neutral; under daylight this setting may produce a visibly cool blue cast.",
+      "historical_context": "3200 K 鎢絲燈平衡控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Balance a tungsten-lit scene near 3200 K toward neutral; under daylight this setting may produce a visibly cool blue cast."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:tungsten_3200k:trait:1",
+          "text": "Balance a tungsten-lit scene near 3200 K toward neutral; under daylight this setting may produce a visibly cool blue cast.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "tungsten_3200k",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:daylight_5500k",
+      "id": "daylight_5500k",
+      "display_name": "5500 K Daylight Balance",
+      "localized_name": "5500 K 日光平衡",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Balance approximate midday daylight near 5500 K toward neutral while preserving source-specific local color.",
+      "historical_context": "5500 K 日光平衡控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Balance approximate midday daylight near 5500 K toward neutral while preserving source-specific local color."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:daylight_5500k:trait:1",
+          "text": "Balance approximate midday daylight near 5500 K toward neutral while preserving source-specific local color.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "daylight_5500k",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:cloudy_warm",
+      "id": "cloudy_warm",
+      "display_name": "Cloudy Warm Bias",
+      "localized_name": "陰天暖色偏移",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Apply a controlled warm yellow-to-amber balance that counteracts cool overcast illumination.",
+      "historical_context": "陰天暖色偏移控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Apply a controlled warm yellow-to-amber balance that counteracts cool overcast illumination."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:cloudy_warm:trait:1",
+          "text": "Apply a controlled warm yellow-to-amber balance that counteracts cool overcast illumination.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "cloudy_warm",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:shade_warm_magenta",
+      "id": "shade_warm_magenta",
+      "display_name": "Open-Shade Warm / Magenta Bias",
+      "localized_name": "開放陰影暖洋紅偏移",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Counter a blue open-shade cast with a warm balance and slight magenta correction.",
+      "historical_context": "開放陰影暖洋紅偏移控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Counter a blue open-shade cast with a warm balance and slight magenta correction."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:shade_warm_magenta:trait:1",
+          "text": "Counter a blue open-shade cast with a warm balance and slight magenta correction.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "shade_warm_magenta",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:cool_blue_bias",
+      "id": "cool_blue_bias",
+      "display_name": "Cool Blue White-Balance Bias",
+      "localized_name": "冷藍白平衡偏移",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Shift the overall neutral axis visibly toward blue without changing the underlying light placement.",
+      "historical_context": "冷藍白平衡偏移控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Shift the overall neutral axis visibly toward blue without changing the underlying light placement."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:cool_blue_bias:trait:1",
+          "text": "Shift the overall neutral axis visibly toward blue without changing the underlying light placement.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "cool_blue_bias",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:green_tint",
+      "id": "green_tint",
+      "display_name": "Green Tint Bias",
+      "localized_name": "綠色色偏",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Shift neutral and low-saturation regions toward green on the green-magenta tint axis.",
+      "historical_context": "綠色色偏控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Shift neutral and low-saturation regions toward green on the green-magenta tint axis."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:green_tint:trait:1",
+          "text": "Shift neutral and low-saturation regions toward green on the green-magenta tint axis.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "green_tint",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:magenta_tint",
+      "id": "magenta_tint",
+      "display_name": "Magenta Tint Bias",
+      "localized_name": "洋紅色色偏",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Shift neutral and low-saturation regions toward magenta on the green-magenta tint axis.",
+      "historical_context": "洋紅色色偏控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Shift neutral and low-saturation regions toward magenta on the green-magenta tint axis."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:magenta_tint:trait:1",
+          "text": "Shift neutral and low-saturation regions toward magenta on the green-magenta tint axis.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "magenta_tint",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "white_balance:mixed_source_separation",
+      "id": "mixed_source_separation",
+      "display_name": "Mixed-Source Color Separation",
+      "localized_name": "混合光源色溫分區",
+      "category": "white_balance",
+      "subcategory": "foundational",
+      "definition": "Preserve spatially distinct warm and cool source regions instead of forcing one global neutral correction.",
+      "historical_context": "混合光源色溫分區控制色溫或綠－洋紅色偏，不改變光源位置。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Preserve spatially distinct warm and cool source regions instead of forcing one global neutral correction."
+      ],
+      "controls": [
+        "white_balance",
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "white_balance:mixed_source_separation:trait:1",
+          "text": "Preserve spatially distinct warm and cool source regions instead of forcing one global neutral correction.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Setting White Balance",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "white_balance",
+        "legacy_id": "mixed_source_separation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:neutral_corrected",
+      "id": "neutral_corrected",
+      "display_name": "Neutral Corrected Lens Character",
+      "localized_name": "中性校正鏡頭性格",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Use restrained optical character with straight geometry, even contrast, and unobtrusive out-of-focus rendering.",
+      "historical_context": "中性校正鏡頭性格控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use restrained optical character with straight geometry, even contrast, and unobtrusive out-of-focus rendering."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:neutral_corrected:trait:1",
+          "text": "Use restrained optical character with straight geometry, even contrast, and unobtrusive out-of-focus rendering.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "neutral_corrected",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:veiling_flare",
+      "id": "veiling_flare",
+      "display_name": "Veiling Flare",
+      "localized_name": "霧化耀光",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Let a strong bright source create a broad translucent veil that lifts blacks and lowers contrast and saturation across part of the frame.",
+      "historical_context": "霧化耀光控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Let a strong bright source create a broad translucent veil that lifts blacks and lowers contrast and saturation across part of the frame."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:veiling_flare:trait:1",
+          "text": "Let a strong bright source create a broad translucent veil that lifts blacks and lowers contrast and saturation across part of the frame.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "veiling_flare",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:anamorphic_streak_flare",
+      "id": "anamorphic_streak_flare",
+      "display_name": "Anamorphic Streak Flare",
+      "localized_name": "變形寬銀幕條紋耀斑",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Render a bright point source with a distinct horizontal streak flare while leaving unrelated highlights unchanged.",
+      "historical_context": "變形寬銀幕條紋耀斑控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render a bright point source with a distinct horizontal streak flare while leaving unrelated highlights unchanged."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:anamorphic_streak_flare:trait:1",
+          "text": "Render a bright point source with a distinct horizontal streak flare while leaving unrelated highlights unchanged.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "anamorphic_streak_flare",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:swirly_bokeh",
+      "id": "swirly_bokeh",
+      "display_name": "Swirly Bokeh",
+      "localized_name": "旋轉散景",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Curve out-of-focus background detail into a rotational swirl around the sharper central subject region.",
+      "historical_context": "旋轉散景控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Curve out-of-focus background detail into a rotational swirl around the sharper central subject region."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:swirly_bokeh:trait:1",
+          "text": "Curve out-of-focus background detail into a rotational swirl around the sharper central subject region.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "swirly_bokeh",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:soap_bubble_bokeh",
+      "id": "soap_bubble_bokeh",
+      "display_name": "Soap-Bubble Bokeh",
+      "localized_name": "泡泡散景",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Render out-of-focus highlights as bright-edged circular discs with comparatively dimmer centers.",
+      "historical_context": "泡泡散景控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render out-of-focus highlights as bright-edged circular discs with comparatively dimmer centers."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:soap_bubble_bokeh:trait:1",
+          "text": "Render out-of-focus highlights as bright-edged circular discs with comparatively dimmer centers.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "soap_bubble_bokeh",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:cat_eye_bokeh",
+      "id": "cat_eye_bokeh",
+      "display_name": "Cat-Eye Edge Bokeh",
+      "localized_name": "貓眼邊緣散景",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Compress out-of-focus highlight discs near frame edges into clipped cat-eye shapes while central discs remain rounder.",
+      "historical_context": "貓眼邊緣散景控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Compress out-of-focus highlight discs near frame edges into clipped cat-eye shapes while central discs remain rounder."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:cat_eye_bokeh:trait:1",
+          "text": "Compress out-of-focus highlight discs near frame edges into clipped cat-eye shapes while central discs remain rounder.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "cat_eye_bokeh",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:oval_bokeh",
+      "id": "oval_bokeh",
+      "display_name": "Anamorphic Oval Bokeh",
+      "localized_name": "變形橢圓散景",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Render out-of-focus point highlights as vertically stretched ovals without automatically adding flare or bloom.",
+      "historical_context": "變形橢圓散景控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render out-of-focus point highlights as vertically stretched ovals without automatically adding flare or bloom."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:oval_bokeh:trait:1",
+          "text": "Render out-of-focus point highlights as vertically stretched ovals without automatically adding flare or bloom.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "oval_bokeh",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optics:soft_microcontrast",
+      "id": "soft_microcontrast",
+      "display_name": "Soft Microcontrast Lens Character",
+      "localized_name": "柔和微對比鏡頭性格",
+      "category": "lens_character",
+      "subcategory": "foundational",
+      "definition": "Slightly soften fine edge contrast while preserving overall focus placement and recognizable texture.",
+      "historical_context": "柔和微對比鏡頭性格控制可觀察的鏡頭成像性格，不指定器材品牌。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Slightly soften fine edge contrast while preserving overall focus placement and recognizable texture."
+      ],
+      "controls": [
+        "lens_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optics:soft_microcontrast:trait:1",
+          "text": "Slightly soften fine edge contrast while preserving overall focus placement and recognizable texture.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optics",
+        "legacy_id": "soft_microcontrast",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:barrel",
+      "id": "barrel",
+      "display_name": "Barrel Distortion",
+      "localized_name": "桶狀變形",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Bow straight lines outward from the image center, expanding edge geometry.",
+      "historical_context": "桶狀變形只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Bow straight lines outward from the image center, expanding edge geometry."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:barrel:trait:1",
+          "text": "Bow straight lines outward from the image center, expanding edge geometry.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "barrel",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:pincushion",
+      "id": "pincushion",
+      "display_name": "Pincushion Distortion",
+      "localized_name": "枕狀變形",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Bend straight lines inward toward the image center, pulling edge geometry toward the middle.",
+      "historical_context": "枕狀變形只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Bend straight lines inward toward the image center, pulling edge geometry toward the middle."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:pincushion:trait:1",
+          "text": "Bend straight lines inward toward the image center, pulling edge geometry toward the middle.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "pincushion",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:lateral_chromatic_aberration",
+      "id": "lateral_chromatic_aberration",
+      "display_name": "Lateral Chromatic Aberration",
+      "localized_name": "橫向色差",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Add red-cyan or blue-yellow color fringes to high-contrast edges near the frame perimeter, independent of focus direction.",
+      "historical_context": "橫向色差只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add red-cyan or blue-yellow color fringes to high-contrast edges near the frame perimeter, independent of focus direction."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:lateral_chromatic_aberration:trait:1",
+          "text": "Add red-cyan or blue-yellow color fringes to high-contrast edges near the frame perimeter, independent of focus direction.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "lateral_chromatic_aberration",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:longitudinal_chromatic_aberration",
+      "id": "longitudinal_chromatic_aberration",
+      "display_name": "Longitudinal Chromatic Aberration",
+      "localized_name": "縱向色差",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Add magenta and green color fringes on opposite sides of the focus plane around bright high-contrast detail.",
+      "historical_context": "縱向色差只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add magenta and green color fringes on opposite sides of the focus plane around bright high-contrast detail."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:longitudinal_chromatic_aberration:trait:1",
+          "text": "Add magenta and green color fringes on opposite sides of the focus plane around bright high-contrast detail.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "longitudinal_chromatic_aberration",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:coma",
+      "id": "coma",
+      "display_name": "Coma",
+      "localized_name": "彗形像差",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Stretch small point lights near frame corners into asymmetric winged or comet-like tails.",
+      "historical_context": "彗形像差只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Stretch small point lights near frame corners into asymmetric winged or comet-like tails."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:coma:trait:1",
+          "text": "Stretch small point lights near frame corners into asymmetric winged or comet-like tails.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "coma",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:vignetting",
+      "id": "vignetting",
+      "display_name": "Optical Vignetting",
+      "localized_name": "光學暗角",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Darken frame corners progressively relative to the center without changing subject lighting direction.",
+      "historical_context": "光學暗角只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Darken frame corners progressively relative to the center without changing subject lighting direction."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:vignetting:trait:1",
+          "text": "Darken frame corners progressively relative to the center without changing subject lighting direction.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "vignetting",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_distortion:moire_aliasing",
+      "id": "moire_aliasing",
+      "display_name": "Moiré and Aliasing",
+      "localized_name": "摩爾紋與取樣鋸齒",
+      "category": "optical_distortion",
+      "subcategory": "foundational",
+      "definition": "Render fine repeating structures with visible interference color, false patterning, or jagged sampling edges.",
+      "historical_context": "摩爾紋與取樣鋸齒只控制指定的光學或取樣瑕疵，不加入其他鏡頭效果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render fine repeating structures with visible interference color, false patterning, or jagged sampling edges."
+      ],
+      "controls": [
+        "optical_distortion"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_distortion:moire_aliasing:trait:1",
+          "text": "Render fine repeating structures with visible interference color, false patterning, or jagged sampling edges.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_distortion",
+        "legacy_id": "moire_aliasing",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_filter:circular_polarizer",
+      "id": "circular_polarizer",
+      "display_name": "Circular Polarizer Effect",
+      "localized_name": "圓形偏光鏡效果",
+      "category": "optical_filter",
+      "subcategory": "foundational",
+      "definition": "Reduce non-metallic glare and surface reflections only where polarization geometry supports it, with any sky or foliage saturation remaining scene-dependent.",
+      "historical_context": "圓形偏光鏡效果只在符合場景幾何與光源條件時產生可見結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Reduce non-metallic glare and surface reflections only where polarization geometry supports it, with any sky or foliage saturation remaining scene-dependent."
+      ],
+      "controls": [
+        "optical_filter"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_filter:circular_polarizer:trait:1",
+          "text": "Reduce non-metallic glare and surface reflections only where polarization geometry supports it, with any sky or foliage saturation remaining scene-dependent.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_filter",
+        "legacy_id": "circular_polarizer",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_filter:graduated_neutral_density",
+      "id": "graduated_neutral_density",
+      "display_name": "Graduated Neutral-Density Effect",
+      "localized_name": "漸層中性密度效果",
+      "category": "optical_filter",
+      "subcategory": "foundational",
+      "definition": "Darken one broad region with a smooth transition so a bright sky or comparable zone can balance against a darker foreground.",
+      "historical_context": "漸層中性密度效果只在符合場景幾何與光源條件時產生可見結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Darken one broad region with a smooth transition so a bright sky or comparable zone can balance against a darker foreground."
+      ],
+      "controls": [
+        "optical_filter"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_filter:graduated_neutral_density:trait:1",
+          "text": "Darken one broad region with a smooth transition so a bright sky or comparable zone can balance against a darker foreground.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_filter",
+        "legacy_id": "graduated_neutral_density",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "optical_filter:cross_screen_star",
+      "id": "cross_screen_star",
+      "display_name": "Cross-Screen Star Filter",
+      "localized_name": "星芒濾鏡",
+      "category": "optical_filter",
+      "subcategory": "foundational",
+      "definition": "Transform scene-present small bright point sources into deliberate multi-ray star shapes while leaving broad highlights comparatively unchanged.",
+      "historical_context": "星芒濾鏡只在符合場景幾何與光源條件時產生可見結果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Transform scene-present small bright point sources into deliberate multi-ray star shapes while leaving broad highlights comparatively unchanged."
+      ],
+      "controls": [
+        "optical_filter"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "optical_filter:cross_screen_star:trait:1",
+          "text": "Transform scene-present small bright point sources into deliberate multi-ray star shapes while leaving broad highlights comparatively unchanged.",
+          "dimension": "optics"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Adobe Camera Raw: Correct Lens Distortions",
+          "url": "https://helpx.adobe.com/ca/camera-raw/desktop/using/correct-lens-distortions-camera-raw.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "optical_filter",
+        "legacy_id": "cross_screen_star",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:fine_film_grain",
+      "id": "fine_film_grain",
+      "display_name": "Fine Film Grain",
+      "localized_name": "細膠片顆粒",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Apply fine, irregular monochrome-to-subtly chromatic grain across tonal regions without erasing fine structure.",
+      "historical_context": "細膠片顆粒控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Apply fine, irregular monochrome-to-subtly chromatic grain across tonal regions without erasing fine structure."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:fine_film_grain:trait:1",
+          "text": "Apply fine, irregular monochrome-to-subtly chromatic grain across tonal regions without erasing fine structure.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "fine_film_grain",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:coarse_film_grain",
+      "id": "coarse_film_grain",
+      "display_name": "Coarse Film Grain",
+      "localized_name": "粗膠片顆粒",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Apply larger, more visible irregular grain with stronger texture in midtones and shadows.",
+      "historical_context": "粗膠片顆粒控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Apply larger, more visible irregular grain with stronger texture in midtones and shadows."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:coarse_film_grain:trait:1",
+          "text": "Apply larger, more visible irregular grain with stronger texture in midtones and shadows.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "coarse_film_grain",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:luminance_noise",
+      "id": "luminance_noise",
+      "display_name": "Luminance Noise",
+      "localized_name": "亮度雜訊",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Add random brightness variation without strong hue shifts, most visible in smooth tones and shadows.",
+      "historical_context": "亮度雜訊控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add random brightness variation without strong hue shifts, most visible in smooth tones and shadows."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:luminance_noise:trait:1",
+          "text": "Add random brightness variation without strong hue shifts, most visible in smooth tones and shadows.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "luminance_noise",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:chroma_noise",
+      "id": "chroma_noise",
+      "display_name": "Chroma Noise",
+      "localized_name": "彩色雜訊",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Add small red, green, and blue color variations in shadows and low-detail regions.",
+      "historical_context": "彩色雜訊控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add small red, green, and blue color variations in shadows and low-detail regions."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:chroma_noise:trait:1",
+          "text": "Add small red, green, and blue color variations in shadows and low-detail regions.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "chroma_noise",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:fixed_pattern_noise",
+      "id": "fixed_pattern_noise",
+      "display_name": "Fixed-Pattern Noise",
+      "localized_name": "固定圖樣雜訊",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Add repeatable horizontal, vertical, or pixel-grid noise structure distinct from random grain.",
+      "historical_context": "固定圖樣雜訊控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add repeatable horizontal, vertical, or pixel-grid noise structure distinct from random grain."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:fixed_pattern_noise:trait:1",
+          "text": "Add repeatable horizontal, vertical, or pixel-grid noise structure distinct from random grain.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "fixed_pattern_noise",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "grain_noise:shadow_mottle",
+      "id": "shadow_mottle",
+      "display_name": "Shadow Mottle",
+      "localized_name": "陰影斑駁雜訊",
+      "category": "grain_noise",
+      "subcategory": "foundational",
+      "definition": "Render deep shadow regions with uneven blotchy tone and color while preserving brighter-region structure.",
+      "historical_context": "陰影斑駁雜訊控制雜訊的形態與分布，不宣稱固定 ISO 因果。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render deep shadow regions with uneven blotchy tone and color while preserving brighter-region structure."
+      ],
+      "controls": [
+        "grain_noise"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "grain_noise:shadow_mottle:trait:1",
+          "text": "Render deep shadow regions with uneven blotchy tone and color while preserving brighter-region structure.",
+          "dimension": "texture"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Nikon: Understanding ISO Sensitivity",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-iso-sensitivity",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "grain_noise",
+        "legacy_id": "shadow_mottle",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:hard_clipping",
+      "id": "hard_clipping",
+      "display_name": "Hard Highlight Clipping",
+      "localized_name": "硬式高光裁切",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Let overexposed highlights terminate abruptly at flat white with limited shoulder transition.",
+      "historical_context": "硬式高光裁切控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Let overexposed highlights terminate abruptly at flat white with limited shoulder transition."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:hard_clipping:trait:1",
+          "text": "Let overexposed highlights terminate abruptly at flat white with limited shoulder transition.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "hard_clipping",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:soft_shoulder",
+      "id": "soft_shoulder",
+      "display_name": "Soft Highlight Shoulder",
+      "localized_name": "柔和高光肩部",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Compress bright tones gradually before white so highlight texture rolls off smoothly.",
+      "historical_context": "柔和高光肩部控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Compress bright tones gradually before white so highlight texture rolls off smoothly."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:soft_shoulder:trait:1",
+          "text": "Compress bright tones gradually before white so highlight texture rolls off smoothly.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "soft_shoulder",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:halation",
+      "id": "halation",
+      "display_name": "Warm Halation",
+      "localized_name": "暖色光暈染",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Add a thin warm red-orange halo around high-contrast bright boundaries without creating global bloom.",
+      "historical_context": "暖色光暈染控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add a thin warm red-orange halo around high-contrast bright boundaries without creating global bloom."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:halation:trait:1",
+          "text": "Add a thin warm red-orange halo around high-contrast bright boundaries without creating global bloom.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "halation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:highlight_bloom",
+      "id": "highlight_bloom",
+      "display_name": "Highlight Bloom",
+      "localized_name": "高光泛光",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Spread saturated highlights into a soft neutral glow while preserving non-highlight edge structure.",
+      "historical_context": "高光泛光控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Spread saturated highlights into a soft neutral glow while preserving non-highlight edge structure."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:highlight_bloom:trait:1",
+          "text": "Spread saturated highlights into a soft neutral glow while preserving non-highlight edge structure.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "highlight_bloom",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:specular_bloom",
+      "id": "specular_bloom",
+      "display_name": "Specular Bloom",
+      "localized_name": "鏡面高光泛光",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Expand only intense specular reflections into controlled luminous halos while matte regions remain unaffected.",
+      "historical_context": "鏡面高光泛光控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Expand only intense specular reflections into controlled luminous halos while matte regions remain unaffected."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:specular_bloom:trait:1",
+          "text": "Expand only intense specular reflections into controlled luminous halos while matte regions remain unaffected.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "specular_bloom",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "highlight:diffraction_starburst",
+      "id": "diffraction_starburst",
+      "display_name": "Diffraction Starburst",
+      "localized_name": "繞射星芒",
+      "category": "highlight_behavior",
+      "subcategory": "foundational",
+      "definition": "Render scene-present small bright sources with directional diffraction rays rather than flare ghosts.",
+      "historical_context": "繞射星芒控制高亮區域如何過渡或擴散，不改變整體曝光。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render scene-present small bright sources with directional diffraction rays rather than flare ghosts."
+      ],
+      "controls": [
+        "highlight_behavior"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "highlight:diffraction_starburst:trait:1",
+          "text": "Render scene-present small bright sources with directional diffraction rays rather than flare ghosts.",
+          "dimension": "highlight"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "highlight",
+        "legacy_id": "diffraction_starburst",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:analog_scanlines",
+      "id": "analog_scanlines",
+      "display_name": "Analog Scanlines",
+      "localized_name": "類比掃描線",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Overlay fine horizontal scanline structure with controlled spacing and intensity.",
+      "historical_context": "類比掃描線是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Overlay fine horizontal scanline structure with controlled spacing and intensity."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:analog_scanlines:trait:1",
+          "text": "Overlay fine horizontal scanline structure with controlled spacing and intensity.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "analog_scanlines",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:chroma_misalignment",
+      "id": "chroma_misalignment",
+      "display_name": "Chroma Misalignment",
+      "localized_name": "色度錯位",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Offset color information slightly from luminance edges, producing visible color bleed.",
+      "historical_context": "色度錯位是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Offset color information slightly from luminance edges, producing visible color bleed."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:chroma_misalignment:trait:1",
+          "text": "Offset color information slightly from luminance edges, producing visible color bleed.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "chroma_misalignment",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:tracking_noise",
+      "id": "tracking_noise",
+      "display_name": "Tape Tracking Noise",
+      "localized_name": "磁帶追蹤雜訊",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Add unstable horizontal tracking bands and local signal tearing near frame regions.",
+      "historical_context": "磁帶追蹤雜訊是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add unstable horizontal tracking bands and local signal tearing near frame regions."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:tracking_noise:trait:1",
+          "text": "Add unstable horizontal tracking bands and local signal tearing near frame regions.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "tracking_noise",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:signal_ghosting",
+      "id": "signal_ghosting",
+      "display_name": "Signal Ghosting",
+      "localized_name": "訊號殘影",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Repeat bright edges as faint offset echoes along the signal-scan direction.",
+      "historical_context": "訊號殘影是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Repeat bright edges as faint offset echoes along the signal-scan direction."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:signal_ghosting:trait:1",
+          "text": "Repeat bright edges as faint offset echoes along the signal-scan direction.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "signal_ghosting",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:tape_dropout",
+      "id": "tape_dropout",
+      "display_name": "Tape Dropout",
+      "localized_name": "磁帶掉訊",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Insert sparse short streaks or missing-signal flecks without converting the whole image into a glitch collage.",
+      "historical_context": "磁帶掉訊是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Insert sparse short streaks or missing-signal flecks without converting the whole image into a glitch collage."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:tape_dropout:trait:1",
+          "text": "Insert sparse short streaks or missing-signal flecks without converting the whole image into a glitch collage.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "tape_dropout",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:digital_macroblocking",
+      "id": "digital_macroblocking",
+      "display_name": "Digital Macroblocking",
+      "localized_name": "數位方塊化",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Break low-detail or fast-changing regions into visible rectangular compression blocks.",
+      "historical_context": "數位方塊化是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Break low-detail or fast-changing regions into visible rectangular compression blocks."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:digital_macroblocking:trait:1",
+          "text": "Break low-detail or fast-changing regions into visible rectangular compression blocks.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "digital_macroblocking",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:compression_ringing",
+      "id": "compression_ringing",
+      "display_name": "Compression Ringing",
+      "localized_name": "壓縮振鈴",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Add faint bright-dark halos around high-contrast edges as a compression artifact.",
+      "historical_context": "壓縮振鈴是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add faint bright-dark halos around high-contrast edges as a compression artifact."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:compression_ringing:trait:1",
+          "text": "Add faint bright-dark halos around high-contrast edges as a compression artifact.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "compression_ringing",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:banding_posterization",
+      "id": "banding_posterization",
+      "display_name": "Banding and Posterization",
+      "localized_name": "色階斷裂與色調分層",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Reduce smooth gradients into visible tonal steps or bands.",
+      "historical_context": "色階斷裂與色調分層是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Reduce smooth gradients into visible tonal steps or bands."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:banding_posterization:trait:1",
+          "text": "Reduce smooth gradients into visible tonal steps or bands.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "banding_posterization",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:gate_weave",
+      "id": "gate_weave",
+      "display_name": "Gate Weave",
+      "localized_name": "片門晃動",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Introduce slight frame-to-frame image-gate positional instability as an analog motion artifact.",
+      "historical_context": "片門晃動是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Introduce slight frame-to-frame image-gate positional instability as an analog motion artifact."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:gate_weave:trait:1",
+          "text": "Introduce slight frame-to-frame image-gate positional instability as an analog motion artifact.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "gate_weave",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "image_character:exposure_flicker",
+      "id": "exposure_flicker",
+      "display_name": "Exposure Flicker",
+      "localized_name": "曝光閃爍",
+      "category": "image_character",
+      "subcategory": "foundational",
+      "definition": "Introduce subtle frame-to-frame brightness fluctuation as a temporal imaging artifact.",
+      "historical_context": "曝光閃爍是獨立可見的影像訊號或媒材特性。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Introduce subtle frame-to-frame brightness fluctuation as a temporal imaging artifact."
+      ],
+      "controls": [
+        "image_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "image_character:exposure_flicker:trait:1",
+          "text": "Introduce subtle frame-to-frame brightness fluctuation as a temporal imaging artifact.",
+          "dimension": "effect"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve 19 New Features Guide",
+          "url": "https://documents.blackmagicdesign.com/au/SupportNotes/DaVinci_Resolve_19_New_Features_Guide.pdf",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "image_character",
+        "legacy_id": "exposure_flicker",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "lighting_pattern:clamshell",
+      "id": "clamshell",
+      "display_name": "Clamshell Lighting",
+      "localized_name": "蚌殼式佈光",
+      "category": "lighting_pattern",
+      "subcategory": "foundational",
+      "definition": "Place a main light above and a fill or reflector below the subject to create even facial illumination with controlled under-chin fill.",
+      "historical_context": "蚌殼式佈光控制主光、補光與空間關係。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place a main light above and a fill or reflector below the subject to create even facial illumination with controlled under-chin fill."
+      ],
+      "controls": [
+        "lighting_pattern"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "lighting_pattern:clamshell:trait:1",
+          "text": "Place a main light above and a fill or reflector below the subject to create even facial illumination with controlled under-chin fill.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "lighting_pattern",
+        "legacy_id": "clamshell",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "lighting_pattern:balanced_key_fill",
+      "id": "balanced_key_fill",
+      "display_name": "Balanced Key-to-Fill",
+      "localized_name": "平衡主補光",
+      "category": "lighting_pattern",
+      "subcategory": "foundational",
+      "definition": "Use a clear key direction with moderate fill so form remains visible without deep shadow loss.",
+      "historical_context": "平衡主補光控制主光、補光與空間關係。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a clear key direction with moderate fill so form remains visible without deep shadow loss."
+      ],
+      "controls": [
+        "lighting_pattern"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "lighting_pattern:balanced_key_fill:trait:1",
+          "text": "Use a clear key direction with moderate fill so form remains visible without deep shadow loss.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "lighting_pattern",
+        "legacy_id": "balanced_key_fill",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "lighting_pattern:low_fill_high_ratio",
+      "id": "low_fill_high_ratio",
+      "display_name": "Low Fill / High Key-to-Fill Ratio",
+      "localized_name": "低補光高反差主補比",
+      "category": "lighting_pattern",
+      "subcategory": "foundational",
+      "definition": "Keep fill substantially below the key so the shadow side remains deep and sculptural.",
+      "historical_context": "低補光高反差主補比控制主光、補光與空間關係。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Keep fill substantially below the key so the shadow side remains deep and sculptural."
+      ],
+      "controls": [
+        "lighting_pattern"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "lighting_pattern:low_fill_high_ratio:trait:1",
+          "text": "Keep fill substantially below the key so the shadow side remains deep and sculptural.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "lighting_pattern",
+        "legacy_id": "low_fill_high_ratio",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "lighting_pattern:flat_one_to_one",
+      "id": "flat_one_to_one",
+      "display_name": "Near 1:1 Key-to-Fill Ratio",
+      "localized_name": "近 1:1 低反差主補比",
+      "category": "lighting_pattern",
+      "subcategory": "foundational",
+      "definition": "Bring key and fill levels close together for low facial or object-form contrast while preserving source direction.",
+      "historical_context": "近 1:1 低反差主補比控制主光、補光與空間關係。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Bring key and fill levels close together for low facial or object-form contrast while preserving source direction."
+      ],
+      "controls": [
+        "lighting_pattern"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "lighting_pattern:flat_one_to_one:trait:1",
+          "text": "Bring key and fill levels close together for low facial or object-form contrast while preserving source direction.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "lighting_pattern",
+        "legacy_id": "flat_one_to_one",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "lighting_pattern:cross_key",
+      "id": "cross_key",
+      "display_name": "Cross-Key Lighting",
+      "localized_name": "交叉主光",
+      "category": "lighting_pattern",
+      "subcategory": "foundational",
+      "definition": "Use opposing directional keys so each subject is keyed from one side and separated from the background.",
+      "historical_context": "交叉主光控制主光、補光與空間關係。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use opposing directional keys so each subject is keyed from one side and separated from the background."
+      ],
+      "controls": [
+        "lighting_pattern"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "lighting_pattern:cross_key:trait:1",
+          "text": "Use opposing directional keys so each subject is keyed from one side and separated from the background.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "lighting_pattern",
+        "legacy_id": "cross_key",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_direction:front_light",
+      "id": "front_light",
+      "display_name": "Front Light",
+      "localized_name": "正面光",
+      "category": "light_direction",
+      "subcategory": "foundational",
+      "definition": "Aim the dominant light near the camera axis to reduce visible side shadows and emphasize frontal surface color.",
+      "historical_context": "正面光只控制主導光線方向。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Aim the dominant light near the camera axis to reduce visible side shadows and emphasize frontal surface color."
+      ],
+      "controls": [
+        "light_direction"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_direction:front_light:trait:1",
+          "text": "Aim the dominant light near the camera axis to reduce visible side shadows and emphasize frontal surface color.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_direction",
+        "legacy_id": "front_light",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_direction:three_quarter_key",
+      "id": "three_quarter_key",
+      "display_name": "Three-Quarter Key Light",
+      "localized_name": "四分之三主光",
+      "category": "light_direction",
+      "subcategory": "foundational",
+      "definition": "Place the key roughly forty-five degrees off camera and above the subject to model form with readable light and shadow sides.",
+      "historical_context": "四分之三主光只控制主導光線方向。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the key roughly forty-five degrees off camera and above the subject to model form with readable light and shadow sides."
+      ],
+      "controls": [
+        "light_direction"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_direction:three_quarter_key:trait:1",
+          "text": "Place the key roughly forty-five degrees off camera and above the subject to model form with readable light and shadow sides.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_direction",
+        "legacy_id": "three_quarter_key",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_direction:backlight",
+      "id": "backlight",
+      "display_name": "Backlight",
+      "localized_name": "逆光",
+      "category": "light_direction",
+      "subcategory": "foundational",
+      "definition": "Place the dominant source behind the subject so edges glow or the subject falls toward silhouette depending on exposure.",
+      "historical_context": "逆光只控制主導光線方向。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the dominant source behind the subject so edges glow or the subject falls toward silhouette depending on exposure."
+      ],
+      "controls": [
+        "light_direction"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_direction:backlight:trait:1",
+          "text": "Place the dominant source behind the subject so edges glow or the subject falls toward silhouette depending on exposure.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_direction",
+        "legacy_id": "backlight",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_direction:underlight",
+      "id": "underlight",
+      "display_name": "Underlight",
+      "localized_name": "底光",
+      "category": "light_direction",
+      "subcategory": "foundational",
+      "definition": "Place the dominant source below the subject so shadows rise upward and facial or object planes invert their usual lighting pattern.",
+      "historical_context": "底光只控制主導光線方向。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place the dominant source below the subject so shadows rise upward and facial or object planes invert their usual lighting pattern."
+      ],
+      "controls": [
+        "light_direction"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_direction:underlight:trait:1",
+          "text": "Place the dominant source below the subject so shadows rise upward and facial or object planes invert their usual lighting pattern.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_direction",
+        "legacy_id": "underlight",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_direction:crosslight",
+      "id": "crosslight",
+      "display_name": "Crosslight",
+      "localized_name": "交叉側光",
+      "category": "light_direction",
+      "subcategory": "foundational",
+      "definition": "Send strong light laterally across the subject to emphasize texture, relief, and side-to-side contrast.",
+      "historical_context": "交叉側光只控制主導光線方向。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Send strong light laterally across the subject to emphasize texture, relief, and side-to-side contrast."
+      ],
+      "controls": [
+        "light_direction"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_direction:crosslight:trait:1",
+          "text": "Send strong light laterally across the subject to emphasize texture, relief, and side-to-side contrast.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_direction",
+        "legacy_id": "crosslight",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:hard_small_source",
+      "id": "hard_small_source",
+      "display_name": "Small Hard Source",
+      "localized_name": "小型硬光源",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Use a small apparent source that creates crisp shadow edges and narrow concentrated specular highlights.",
+      "historical_context": "小型硬光源控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a small apparent source that creates crisp shadow edges and narrow concentrated specular highlights."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:hard_small_source:trait:1",
+          "text": "Use a small apparent source that creates crisp shadow edges and narrow concentrated specular highlights.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "hard_small_source",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:fill_flash",
+      "id": "fill_flash",
+      "display_name": "Fill Flash",
+      "localized_name": "補光閃光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Add frontal or near-axis flash just strong enough to open existing shadows while retaining ambient direction and background exposure.",
+      "historical_context": "補光閃光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Add frontal or near-axis flash just strong enough to open existing shadows while retaining ambient direction and background exposure."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:fill_flash:trait:1",
+          "text": "Add frontal or near-axis flash just strong enough to open existing shadows while retaining ambient direction and background exposure.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "fill_flash",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:off_camera_strobe",
+      "id": "off_camera_strobe",
+      "display_name": "Off-Camera Strobe",
+      "localized_name": "離機閃光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Use a directional strobe separated from the camera axis to create modeled flash shadows and controlled subject-background separation.",
+      "historical_context": "離機閃光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a directional strobe separated from the camera axis to create modeled flash shadows and controlled subject-background separation."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:off_camera_strobe:trait:1",
+          "text": "Use a directional strobe separated from the camera axis to create modeled flash shadows and controlled subject-background separation.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "off_camera_strobe",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:diffused_strobe",
+      "id": "diffused_strobe",
+      "display_name": "Diffused Strobe",
+      "localized_name": "柔化閃光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Spread strobe light through a large diffusion surface to broaden highlights and soften shadow transitions.",
+      "historical_context": "柔化閃光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Spread strobe light through a large diffusion surface to broaden highlights and soften shadow transitions."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:diffused_strobe:trait:1",
+          "text": "Spread strobe light through a large diffusion surface to broaden highlights and soften shadow transitions.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "diffused_strobe",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:warm_practical_cool_window",
+      "id": "warm_practical_cool_window",
+      "display_name": "Warm Practical / Cool Window Mix",
+      "localized_name": "暖實景燈與冷窗光混合",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Keep warm practical-light zones and cool daylight-window zones spatially distinct instead of applying one global two-color grade.",
+      "historical_context": "暖實景燈與冷窗光混合控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Keep warm practical-light zones and cool daylight-window zones spatially distinct instead of applying one global two-color grade."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:warm_practical_cool_window:trait:1",
+          "text": "Keep warm practical-light zones and cool daylight-window zones spatially distinct instead of applying one global two-color grade.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "warm_practical_cool_window",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:cool_ambient_warm_key",
+      "id": "cool_ambient_warm_key",
+      "display_name": "Cool Ambient / Warm Key Mix",
+      "localized_name": "冷環境與暖主光混合",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Use cool ambient illumination in the environment with a separately placed warm key on the subject.",
+      "historical_context": "冷環境與暖主光混合控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use cool ambient illumination in the environment with a separately placed warm key on the subject."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:cool_ambient_warm_key:trait:1",
+          "text": "Use cool ambient illumination in the environment with a separately placed warm key on the subject.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "cool_ambient_warm_key",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:fluorescent_tungsten_mix",
+      "id": "fluorescent_tungsten_mix",
+      "display_name": "Fluorescent / Tungsten Mix",
+      "localized_name": "螢光與鎢絲混合光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Preserve a localized green fluorescent cast alongside a separate warm tungsten region.",
+      "historical_context": "螢光與鎢絲混合光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Preserve a localized green fluorescent cast alongside a separate warm tungsten region."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:fluorescent_tungsten_mix:trait:1",
+          "text": "Preserve a localized green fluorescent cast alongside a separate warm tungsten region.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "fluorescent_tungsten_mix",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:narrow_specular",
+      "id": "narrow_specular",
+      "display_name": "Narrow Specular Control",
+      "localized_name": "狹窄鏡面高光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Shape reflective surfaces with a narrow hard highlight band while keeping diffuse body tone separate.",
+      "historical_context": "狹窄鏡面高光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Shape reflective surfaces with a narrow hard highlight band while keeping diffuse body tone separate."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:narrow_specular:trait:1",
+          "text": "Shape reflective surfaces with a narrow hard highlight band while keeping diffuse body tone separate.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "narrow_specular",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:broad_specular",
+      "id": "broad_specular",
+      "display_name": "Broad Specular Control",
+      "localized_name": "寬廣鏡面高光",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Shape reflective surfaces with a broad soft highlight that reveals curvature without clipping the entire surface.",
+      "historical_context": "寬廣鏡面高光控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Shape reflective surfaces with a broad soft highlight that reveals curvature without clipping the entire surface."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:broad_specular:trait:1",
+          "text": "Shape reflective surfaces with a broad soft highlight that reveals curvature without clipping the entire surface.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "broad_specular",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "light_quality:controlled_edge_reflection",
+      "id": "controlled_edge_reflection",
+      "display_name": "Controlled Edge Reflection",
+      "localized_name": "受控邊緣反射",
+      "category": "light_quality",
+      "subcategory": "foundational",
+      "definition": "Place a clean reflected highlight along a product or subject edge to define silhouette and material curvature.",
+      "historical_context": "受控邊緣反射控制光源大小、閃光、混合色溫或鏡面反射形狀。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Place a clean reflected highlight along a product or subject edge to define silhouette and material curvature."
+      ],
+      "controls": [
+        "light_quality"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "light_quality:controlled_edge_reflection:trait:1",
+          "text": "Place a clean reflected highlight along a product or subject edge to define silhouette and material curvature.",
+          "dimension": "lighting"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Rosco: The Basics of Film Lighting",
+          "url": "https://spectrum.rosco.com/the-basics-of-film-lighting",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Nikon: Flash Points, the Control of Light",
+          "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/flash-points-the-control-of-light",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "light_quality",
+        "legacy_id": "controlled_edge_reflection",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_character:protected_highlights",
+      "id": "protected_highlights",
+      "display_name": "Protected Highlights",
+      "localized_name": "高光保護曝光",
+      "category": "exposure_character",
+      "subcategory": "foundational",
+      "definition": "Hold bright regions below clipping with visible highlight texture while keeping midtone placement natural.",
+      "historical_context": "高光保護曝光控制明暗落點，不等同佈光方式。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Hold bright regions below clipping with visible highlight texture while keeping midtone placement natural."
+      ],
+      "controls": [
+        "exposure_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_character:protected_highlights:trait:1",
+          "text": "Hold bright regions below clipping with visible highlight texture while keeping midtone placement natural.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_character",
+        "legacy_id": "protected_highlights",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_character:lifted_shadow_exposure",
+      "id": "lifted_shadow_exposure",
+      "display_name": "Lifted Shadow Exposure",
+      "localized_name": "抬升陰影曝光",
+      "category": "exposure_character",
+      "subcategory": "foundational",
+      "definition": "Raise dark-region visibility without flattening the key-to-fill lighting relationship.",
+      "historical_context": "抬升陰影曝光控制明暗落點，不等同佈光方式。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Raise dark-region visibility without flattening the key-to-fill lighting relationship."
+      ],
+      "controls": [
+        "exposure_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_character:lifted_shadow_exposure:trait:1",
+          "text": "Raise dark-region visibility without flattening the key-to-fill lighting relationship.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_character",
+        "legacy_id": "lifted_shadow_exposure",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "exposure_character:crushed_shadow_exposure",
+      "id": "crushed_shadow_exposure",
+      "display_name": "Crushed Shadow Exposure",
+      "localized_name": "壓黑陰影曝光",
+      "category": "exposure_character",
+      "subcategory": "foundational",
+      "definition": "Let selected deep shadow regions collapse toward black while preserving intended highlight and midtone structure.",
+      "historical_context": "壓黑陰影曝光控制明暗落點，不等同佈光方式。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Let selected deep shadow regions collapse toward black while preserving intended highlight and midtone structure."
+      ],
+      "controls": [
+        "exposure_character"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "exposure_character:crushed_shadow_exposure:trait:1",
+          "text": "Let selected deep shadow regions collapse toward black while preserving intended highlight and midtone structure.",
+          "dimension": "exposure"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "exposure_character",
+        "legacy_id": "crushed_shadow_exposure",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_response:neutral_response",
+      "id": "neutral_response",
+      "display_name": "Neutral Color Response",
+      "localized_name": "中性色彩反應",
+      "category": "color_response",
+      "subcategory": "foundational",
+      "definition": "Render neutrals without a deliberate warm, cool, green, or magenta bias and preserve moderate natural saturation.",
+      "historical_context": "中性色彩反應控制色彩反應，不保證來自特定相機。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render neutrals without a deliberate warm, cool, green, or magenta bias and preserve moderate natural saturation."
+      ],
+      "controls": [
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_response:neutral_response:trait:1",
+          "text": "Render neutrals without a deliberate warm, cool, green, or magenta bias and preserve moderate natural saturation.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_response",
+        "legacy_id": "neutral_response",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_response:soft_saturation_rolloff",
+      "id": "soft_saturation_rolloff",
+      "display_name": "Soft Saturation Rolloff",
+      "localized_name": "柔和飽和度滾降",
+      "category": "color_response",
+      "subcategory": "foundational",
+      "definition": "Reduce saturation gradually in very bright and very dark regions while keeping midtone color separation readable.",
+      "historical_context": "柔和飽和度滾降控制色彩反應，不保證來自特定相機。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Reduce saturation gradually in very bright and very dark regions while keeping midtone color separation readable."
+      ],
+      "controls": [
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_response:soft_saturation_rolloff:trait:1",
+          "text": "Reduce saturation gradually in very bright and very dark regions while keeping midtone color separation readable.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_response",
+        "legacy_id": "soft_saturation_rolloff",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_response:strong_color_separation",
+      "id": "strong_color_separation",
+      "display_name": "Strong Color Separation",
+      "localized_name": "強色彩分離",
+      "category": "color_response",
+      "subcategory": "foundational",
+      "definition": "Keep adjacent hues distinctly separated without globally increasing saturation or contrast.",
+      "historical_context": "強色彩分離控制色彩反應，不保證來自特定相機。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Keep adjacent hues distinctly separated without globally increasing saturation or contrast."
+      ],
+      "controls": [
+        "color_response"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "grain_noise",
+        "highlight_behavior",
+        "color_grade",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_response:strong_color_separation:trait:1",
+          "text": "Keep adjacent hues distinctly separated without globally increasing saturation or contrast.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_response",
+        "legacy_id": "strong_color_separation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:neutral_grade",
+      "id": "neutral_grade",
+      "display_name": "Neutral Grade",
+      "localized_name": "中性調色",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Use a neutral tonal and color transform with natural contrast, restrained saturation, and no intentional split-tone bias.",
+      "historical_context": "中性調色控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a neutral tonal and color transform with natural contrast, restrained saturation, and no intentional split-tone bias."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:neutral_grade:trait:1",
+          "text": "Use a neutral tonal and color transform with natural contrast, restrained saturation, and no intentional split-tone bias.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "neutral_grade",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:restrained_saturation",
+      "id": "restrained_saturation",
+      "display_name": "Restrained Saturation",
+      "localized_name": "受控低飽和",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Reduce overall saturation while retaining hue separation and believable skin or material color relationships.",
+      "historical_context": "受控低飽和控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Reduce overall saturation while retaining hue separation and believable skin or material color relationships."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:restrained_saturation:trait:1",
+          "text": "Reduce overall saturation while retaining hue separation and believable skin or material color relationships.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "restrained_saturation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:vivid_saturation",
+      "id": "vivid_saturation",
+      "display_name": "Vivid Saturation",
+      "localized_name": "鮮明飽和",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Increase chroma clearly while protecting neutral surfaces and avoiding uniform color clipping.",
+      "historical_context": "鮮明飽和控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Increase chroma clearly while protecting neutral surfaces and avoiding uniform color clipping."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:vivid_saturation:trait:1",
+          "text": "Increase chroma clearly while protecting neutral surfaces and avoiding uniform color clipping.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "vivid_saturation",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:matte_black_curve",
+      "id": "matte_black_curve",
+      "display_name": "Matte Black Curve",
+      "localized_name": "抬黑霧面曲線",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Lift the darkest tonal floor and compress deep contrast into a controlled matte black response.",
+      "historical_context": "抬黑霧面曲線控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Lift the darkest tonal floor and compress deep contrast into a controlled matte black response."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:matte_black_curve:trait:1",
+          "text": "Lift the darkest tonal floor and compress deep contrast into a controlled matte black response.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "matte_black_curve",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:filmic_s_curve",
+      "id": "filmic_s_curve",
+      "display_name": "Filmic S-Curve",
+      "localized_name": "膠片式 S 曲線",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Use a gentle S-shaped contrast curve with denser shadows, open midtones, and a soft highlight shoulder.",
+      "historical_context": "膠片式 S 曲線控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Use a gentle S-shaped contrast curve with denser shadows, open midtones, and a soft highlight shoulder."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:filmic_s_curve:trait:1",
+          "text": "Use a gentle S-shaped contrast curve with denser shadows, open midtones, and a soft highlight shoulder.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "filmic_s_curve",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:warm_highlights_cool_shadows",
+      "id": "warm_highlights_cool_shadows",
+      "display_name": "Warm Highlights / Cool Shadows",
+      "localized_name": "暖高光冷陰影",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Bias highlight regions warm and shadow regions cool while keeping midtone object colors recognizable.",
+      "historical_context": "暖高光冷陰影控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Bias highlight regions warm and shadow regions cool while keeping midtone object colors recognizable."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:warm_highlights_cool_shadows:trait:1",
+          "text": "Bias highlight regions warm and shadow regions cool while keeping midtone object colors recognizable.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "warm_highlights_cool_shadows",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:cool_highlights_warm_shadows",
+      "id": "cool_highlights_warm_shadows",
+      "display_name": "Cool Highlights / Warm Shadows",
+      "localized_name": "冷高光暖陰影",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Bias highlight regions cool and shadow regions warm while preserving spatial lighting logic.",
+      "historical_context": "冷高光暖陰影控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Bias highlight regions cool and shadow regions warm while preserving spatial lighting logic."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:cool_highlights_warm_shadows:trait:1",
+          "text": "Bias highlight regions cool and shadow regions warm while preserving spatial lighting logic.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "cool_highlights_warm_shadows",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:neutral_monochrome",
+      "id": "neutral_monochrome",
+      "display_name": "Neutral Monochrome",
+      "localized_name": "中性黑白",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Remove hue while preserving neutral grayscale separation and a natural tonal curve.",
+      "historical_context": "中性黑白控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Remove hue while preserving neutral grayscale separation and a natural tonal curve."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:neutral_monochrome:trait:1",
+          "text": "Remove hue while preserving neutral grayscale separation and a natural tonal curve.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "neutral_monochrome",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:warm_monochrome",
+      "id": "warm_monochrome",
+      "display_name": "Warm-Toned Monochrome",
+      "localized_name": "暖調單色",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Render a monochrome image with a controlled warm brown-to-amber tonal bias.",
+      "historical_context": "暖調單色控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render a monochrome image with a controlled warm brown-to-amber tonal bias."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:warm_monochrome:trait:1",
+          "text": "Render a monochrome image with a controlled warm brown-to-amber tonal bias.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "warm_monochrome",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
+    },
+    {
+      "key": "color_grade:cool_monochrome",
+      "id": "cool_monochrome",
+      "display_name": "Cool-Toned Monochrome",
+      "localized_name": "冷調單色",
+      "category": "color_grade",
+      "subcategory": "foundational",
+      "definition": "Render a monochrome image with a controlled cool blue-gray tonal bias.",
+      "historical_context": "冷調單色控制可觀察的調色軸，不使用空泛品質形容詞。",
+      "physical_traits": {
+        "focal_range": null,
+        "aperture_limit": null,
+        "reference_format_required": false,
+        "perspective_causality": null
+      },
+      "visual_traits": [
+        "Render a monochrome image with a controlled cool blue-gray tonal bias."
+      ],
+      "controls": [
+        "color_grade"
+      ],
+      "does_not_control": [
+        "scene_subject",
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "composition",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance",
+        "field_of_view",
+        "projection",
+        "camera_movement",
+        "photographic_technique",
+        "shutter_speed",
+        "focus_behavior",
+        "lens_character",
+        "aperture_depth_of_field",
+        "optical_distortion",
+        "optical_filter",
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "iso_sensitivity",
+        "exposure_compensation",
+        "lighting",
+        "exposure_character",
+        "white_balance",
+        "color_response",
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "aspect_ratio",
+        "output_fidelity"
+      ],
+      "compatible_with": [],
+      "conflicts_with": [],
+      "suppresses": [],
+      "requires": [],
+      "era": "unspecified",
+      "capture_medium": "unspecified",
+      "projection_type": "rectilinear_or_unspecified",
+      "semantic_traits": [
+        {
+          "id": "color_grade:cool_monochrome:trait:1",
+          "text": "Render a monochrome image with a controlled cool blue-gray tonal bias.",
+          "dimension": "color"
+        }
+      ],
+      "negative_semantics": [
+        "do not invent scene subjects, motion, light sources, or equipment that are not supported by explicit scene intent or selected controls",
+        "do not depict the named equipment as a scene object unless Literal Gear Token is enabled",
+        "do not infer output resolution or generic quality claims from this item"
+      ],
+      "literal_name_safe": true,
+      "compatibility_profile": "neutral",
+      "source": [
+        {
+          "title": "Blackmagic Design: DaVinci Resolve Color",
+          "url": "https://www.blackmagicdesign.com/products/davinciresolve/color",
+          "accessed": "2026-08-26"
+        },
+        {
+          "title": "Adobe Lightroom Classic: Image Tone and Color",
+          "url": "https://helpx.adobe.com/uk/lightroom-classic/help/image-tone-color.html",
+          "accessed": "2026-08-26"
+        }
+      ],
+      "confidence": "medium",
+      "uncertainty": [],
+      "deprecated": false,
+      "duplicate_of": null,
+      "audit": {
+        "status": "audited",
+        "legacy_category": "color_grade",
+        "legacy_id": "cool_monochrome",
+        "category_changed": false,
+        "semantics_corrected": false,
+        "quality_noise_removed": false,
+        "literal_gear_risk_removed": false,
+        "label_corrected": false,
+        "inspected_on": "2026-08-26"
+      }
     }
-  ]
+  ],
+  "ui_category_groups": {
+    "camera_capture": {
+      "display_name": "Camera / Capture",
+      "localized_name": "攝影機與感光",
+      "categories": [
+        "capture_system",
+        "capture_medium",
+        "imaging_modality",
+        "film_sensor_character",
+        "iso_sensitivity",
+        "exposure_compensation"
+      ]
+    },
+    "lens_optics": {
+      "display_name": "Lens / Optics",
+      "localized_name": "鏡頭與光學",
+      "categories": [
+        "primary_lens",
+        "field_of_view",
+        "aperture_depth_of_field",
+        "focus_behavior",
+        "projection",
+        "lens_character",
+        "optical_distortion",
+        "optical_filter"
+      ]
+    },
+    "camera_geometry": {
+      "display_name": "Camera Geometry / Viewpoint",
+      "localized_name": "相機幾何與視點",
+      "categories": [
+        "shot_size",
+        "shot_purpose",
+        "subject_arrangement",
+        "subject_orientation",
+        "camera_height",
+        "camera_pitch",
+        "camera_roll",
+        "camera_position",
+        "camera_distance"
+      ]
+    },
+    "photographic_technique": {
+      "display_name": "Photographic Technique",
+      "localized_name": "攝影手法",
+      "categories": [
+        "shutter_speed",
+        "camera_movement",
+        "photographic_technique"
+      ]
+    },
+    "composition": {
+      "display_name": "Composition",
+      "localized_name": "構圖",
+      "categories": [
+        "composition"
+      ]
+    },
+    "lighting": {
+      "display_name": "Lighting",
+      "localized_name": "燈光",
+      "categories": [
+        "lighting_pattern",
+        "light_direction",
+        "light_quality",
+        "exposure_character"
+      ]
+    },
+    "color_grading": {
+      "display_name": "Color & Grading",
+      "localized_name": "色彩與調色",
+      "categories": [
+        "white_balance",
+        "color_response",
+        "film_process",
+        "color_grade"
+      ]
+    },
+    "image_character_effects": {
+      "display_name": "Image Character & Effects",
+      "localized_name": "影像質感與效果",
+      "categories": [
+        "grain_noise",
+        "highlight_behavior",
+        "image_character",
+        "post_visual_effect",
+        "creative_preset"
+      ]
+    }
+  }
 };
 });

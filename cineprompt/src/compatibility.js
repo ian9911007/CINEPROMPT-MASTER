@@ -127,6 +127,15 @@
                     'The later canonical authority is retained and the conflicting item is suppressed.', [item.key, conflict]
                 ));
             }
+            for (const suppressed of item.suppresses || []) {
+                if (!selectedKeys.has(suppressed) || suppressedKeys.has(suppressed)) continue;
+                suppressedKeys.add(suppressed);
+                warnings.push(warning(
+                    'semantic_suppression', 'info', 'Umbrella effect suppresses a duplicate component',
+                    `${item.display_name} already includes the selected component effect.`,
+                    'The umbrella asset is retained and its duplicate component is omitted from the compiled prompt.', [item.key, suppressed]
+                ));
+            }
         }
     }
 
@@ -139,6 +148,74 @@
                 'Scientific or machine imaging is combined with analog film character.',
                 'The combination remains allowed; modality evidence has authority over normal color response.', items.filter((item) => ['scientific_machine_imaging', 'analog_film'].includes(item.compatibility_profile)).map((item) => item.key)
             ));
+        }
+    }
+
+    function compareTechniqueInteractions(items, suppressedKeys, semanticOverrides, warnings) {
+        const shutter = items.find((item) => item.category === 'shutter_speed');
+        const techniques = items.filter((item) => item.category === 'photographic_technique');
+        const techniqueIds = new Set(techniques.map((item) => item.id));
+        const regime = shutter && shutter.physical_traits && shutter.physical_traits.exposure_regime;
+        const slowRegimes = new Set(['extreme_long', 'long', 'slow']);
+        const fastRegimes = new Set(['fast', 'ultra_fast']);
+
+        function interaction(title, detail, resolution, keys) {
+            warnings.push(warning('technique_interaction', 'info', title, detail, resolution, keys));
+        }
+
+        const needsIntegratedMotion = [...techniqueIds].some((id) => /^(?:panning|long_exposure|extreme_long_exposure|light_trails|light_painting|intentional_camera_movement|rear_curtain_sync|slow_sync_flash)$/.test(id));
+        if (shutter && needsIntegratedMotion && fastRegimes.has(regime)) {
+            interaction(
+                'Fast shutter limits integrated-motion technique',
+                `${shutter.display_name} reduces the motion integration expected by the selected technique.`,
+                'Both selections remain available as an intentional creative combination; use a slower exposure time for stronger trails or directional blur.',
+                [shutter.key, ...techniques.map((item) => item.key)]
+            );
+        }
+
+        if (shutter && techniqueIds.has('star_trails') && fastRegimes.has(regime)) {
+            interaction(
+                'Fast shutter is treated as a stacked star-trail source frame',
+                `${shutter.display_name} is too brief for a continuous single-frame star trail but can describe one frame in a multi-frame stack.`,
+                'The star-trail technique remains authoritative for the final composite; the selected shutter is not presented as one continuous exposure.',
+                [shutter.key, ...techniques.filter((item) => item.id === 'star_trails').map((item) => item.key)]
+            );
+        }
+
+        if (shutter && techniqueIds.has('exposure_bracket_merge')) {
+            interaction(
+                'Selected shutter is the exposure-bracket baseline',
+                `${shutter.display_name} is treated as the baseline frame while the bracket varies exposure time around it and keeps aperture behavior stable.`,
+                'The final image describes the merged tonal result rather than claiming every source frame used the same shutter.',
+                [shutter.key, ...techniques.filter((item) => item.id === 'exposure_bracket_merge').map((item) => item.key)]
+            );
+        }
+
+        const needsFrozenMotion = techniqueIds.has('freeze_motion') || techniqueIds.has('high_speed_photography');
+        if (shutter && needsFrozenMotion && slowRegimes.has(regime)) {
+            interaction(
+                'Slow shutter limits motion-freezing technique',
+                `${shutter.display_name} integrates subject movement instead of freezing it unless a brief flash or strobe supplies the effective exposure.`,
+                'The combination remains allowed for deliberate ambient trails plus flash-frozen detail; otherwise choose a faster shutter.',
+                [shutter.key, ...techniques.filter((item) => ['freeze_motion', 'high_speed_photography'].includes(item.id)).map((item) => item.key)]
+            );
+        }
+
+        if (techniqueIds.has('focus_stacking')) {
+            const aperture = items.find((item) => item.category === 'aperture_depth_of_field');
+            const fNumber = aperture && Number.parseFloat(String(aperture.id).replace('f/', ''));
+            if (aperture && Number.isFinite(fNumber) && fNumber <= 2.8) {
+                suppressedKeys.add(aperture.key);
+                semanticOverrides.focus_stack = {
+                    text: 'focus-stacked composite depth with multiple focus planes rendered sharp; this composite focus authority overrides single-exposure shallow-depth-of-field rendering'
+                };
+                interaction(
+                    'Focus stacking overrides shallow-depth-of-field rendering',
+                    `${aperture.display_name} normally implies shallow depth of field, while focus stacking combines multiple focus planes.`,
+                    'The selected aperture remains stored, but its ordinary shallow-depth-of-field semantic is suppressed for this composite technique.',
+                    [aperture.key, ...techniques.filter((item) => item.id === 'focus_stacking').map((item) => item.key)]
+                );
+            }
         }
     }
 
@@ -166,6 +243,7 @@
         compareProjection(resolved.items, suppressedKeys, warnings);
         compareDirectRelations(resolved.items, suppressedKeys, warnings);
         compareCreativeCombination(resolved.items, warnings);
+        compareTechniqueInteractions(resolved.items, suppressedKeys, semanticOverrides, warnings);
 
         return {
             requested_items: resolved.items,

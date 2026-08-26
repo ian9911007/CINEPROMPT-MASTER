@@ -12,7 +12,13 @@ const SINGLE_FIELDS = [
     ['primary_lens', '鏡頭', 'Focus'],
     ['field_of_view', '焦距', 'Scan'],
     ['aperture_depth_of_field', '光圈', 'Aperture'],
+    ['shutter_speed', '快門', 'Timer'],
+    ['focus_behavior', '焦點與焦平面', 'Crosshair'],
+    ['iso_sensitivity', 'ISO 感光度', 'Gauge'],
+    ['exposure_compensation', '曝光補償', 'Sun'],
     ['shot_size', '景別', 'Frame'],
+    ['shot_purpose', '鏡頭用途', 'Clapperboard'],
+    ['subject_arrangement', '主體配置', 'Users'],
     ['subject_orientation', '主體朝向', 'UserRound'],
     ['camera_height', '機位高度', 'MoveVertical'],
     ['camera_pitch', '鏡頭俯仰', 'MoveDiagonal'],
@@ -20,18 +26,33 @@ const SINGLE_FIELDS = [
     ['camera_position', '相機位置', 'MapPin'],
     ['projection', '投影方式', 'Orbit'],
     ['imaging_modality', '成像模態', 'Microscope'],
+    ['white_balance', '白平衡與色溫', 'Thermometer'],
     ['color_response', '色彩反應', 'Palette'],
     ['film_sensor_character', '底片與感光元件特性', 'Film'],
     ['film_process', '底片沖印流程', 'FlaskConical'],
-    ['color_grade', '調色', 'SlidersHorizontal'],
     ['aspect_ratio', '畫面比例', 'Monitor']
 ];
 
+function multiCategories(groupId, fallback) {
+    const configured = library.ui_category_groups && library.ui_category_groups[groupId];
+    return (configured ? configured.categories : fallback).filter((category) => library.categories[category] && library.categories[category].selection_mode === 'multi');
+}
+
 const MULTI_GROUPS = [
-    { label: '構圖', categories: ['composition', 'shot_purpose', 'camera_movement'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-sky-500/25' },
-    { label: '燈光', categories: ['lighting_pattern', 'light_direction', 'light_quality', 'exposure_character'], limit: 4, tone: 'text-[#5e98f9]', border: 'border-amber-500/25' },
-    { label: '光學與效果', categories: ['lens_character', 'optical_distortion', 'optical_filter', 'highlight_behavior', 'post_visual_effect'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-fuchsia-500/25' },
-    { label: '影像特性與預設', categories: ['grain_noise', 'image_character', 'creative_preset'], limit: 3, tone: 'text-[#5e98f9]', border: 'border-violet-500/25' }
+    { id: 'lens_optics', label: '鏡頭特性與濾鏡', categories: multiCategories('lens_optics', ['lens_character', 'optical_distortion', 'optical_filter']), limit: 3, tone: 'text-[#61f7f7]', border: 'border-cyan-500/25' },
+    { id: 'photographic_technique', label: '攝影手法', categories: multiCategories('photographic_technique', ['photographic_technique', 'camera_movement']), limit: 4, tone: 'text-[#5e98f9]', border: 'border-sky-500/25' },
+    { id: 'composition', label: '構圖', categories: multiCategories('composition', ['composition']), limit: 4, tone: 'text-[#5e98f9]', border: 'border-indigo-500/25' },
+    { id: 'lighting', label: '燈光', categories: multiCategories('lighting', ['lighting_pattern', 'light_direction', 'light_quality', 'exposure_character']), limit: 5, tone: 'text-[#5e98f9]', border: 'border-amber-500/25' },
+    { id: 'color_grading', label: '色彩與調色', categories: multiCategories('color_grading', ['color_grade']), limit: 3, tone: 'text-[#5e98f9]', border: 'border-rose-500/25' },
+    { id: 'image_character_effects', label: '影像質感與效果', categories: multiCategories('image_character_effects', ['grain_noise', 'highlight_behavior', 'image_character', 'post_visual_effect', 'creative_preset']), limit: 4, tone: 'text-[#5e98f9]', border: 'border-violet-500/25' }
+];
+
+const PRIMARY_FIELDS = ['capture_system', 'primary_lens', 'field_of_view', 'aperture_depth_of_field', 'shutter_speed'];
+const FRAMING_FIELDS = ['shot_size', 'shot_purpose', 'subject_arrangement', 'subject_orientation', 'camera_height', 'camera_pitch', 'camera_roll', 'camera_position', 'camera_distance'];
+const ADVANCED_FIELD_GROUPS = [
+    { label: '攝影機與感光', categories: ['capture_medium', 'imaging_modality', 'film_sensor_character', 'iso_sensitivity', 'exposure_compensation'] },
+    { label: '鏡頭與光學', categories: ['projection', 'focus_behavior'] },
+    { label: '色彩與調色', categories: ['white_balance', 'color_response', 'film_process'] }
 ];
 
 const byKey = new Map(library.items.map((item) => [item.key, item]));
@@ -43,14 +64,15 @@ const loadInitialShots = () => storageApi.loadInitialShots(localStorage);
 
 const CATEGORY_COPY = {
     capture_system: '拍攝系統', capture_medium: '拍攝媒介', primary_lens: '主要鏡頭',
-    field_of_view: '視野與焦距', aperture_depth_of_field: '光圈與景深', shot_size: '景別',
-    shot_purpose: '鏡頭用途', subject_orientation: '主體朝向', composition: '構圖',
+    field_of_view: '視野與焦距', aperture_depth_of_field: '光圈與景深', shutter_speed: '快門與曝光時間',
+    focus_behavior: '焦點與焦平面', iso_sensitivity: 'ISO 感光度', exposure_compensation: '曝光補償', shot_size: '景別',
+    shot_purpose: '鏡頭用途', subject_arrangement: '主體配置', subject_orientation: '主體朝向', composition: '構圖',
     camera_height: '機位高度', camera_pitch: '鏡頭俯仰', camera_roll: '鏡頭滾轉',
     camera_position: '相機位置', camera_distance: '相機與主體距離', projection: '投影方式',
-    camera_movement: '運鏡', lens_character: '鏡頭特性', optical_distortion: '光學變形',
+    camera_movement: '運鏡', photographic_technique: '攝影手法', lens_character: '鏡頭特性', optical_distortion: '光學變形',
     optical_filter: '光學濾鏡', imaging_modality: '成像模態', lighting_pattern: '佈光方式',
     light_direction: '光線方向', light_quality: '光質', exposure_character: '曝光特性',
-    color_response: '色彩反應', film_sensor_character: '底片與感光元件特性', film_process: '底片沖印流程',
+    white_balance: '白平衡與色溫', color_response: '色彩反應', film_sensor_character: '底片與感光元件特性', film_process: '底片沖印流程',
     grain_noise: '顆粒與雜訊', highlight_behavior: '高光表現', color_grade: '調色',
     image_character: '影像特性', post_visual_effect: '後期與視覺效果', aspect_ratio: '畫面比例',
     creative_preset: '創意預設'
@@ -58,10 +80,11 @@ const CATEGORY_COPY = {
 
 const CATEGORY_TONE = {
     capture_system: 'text-[#5e98f9]', capture_medium: 'text-[#5e98f9]', primary_lens: 'text-[#5e98f9]',
-    field_of_view: 'text-[#5e98f9]', aperture_depth_of_field: 'text-[#5e98f9]', shot_size: 'text-[#5e98f9]',
+    field_of_view: 'text-[#5e98f9]', aperture_depth_of_field: 'text-[#5e98f9]', shutter_speed: 'text-[#5e98f9]',
+    focus_behavior: 'text-[#5e98f9]', iso_sensitivity: 'text-[#5e98f9]', exposure_compensation: 'text-[#5e98f9]', shot_size: 'text-[#5e98f9]',
     subject_orientation: 'text-[#5e98f9]', camera_height: 'text-[#5e98f9]', camera_pitch: 'text-[#5e98f9]',
     camera_roll: 'text-[#5e98f9]', camera_position: 'text-[#5e98f9]', projection: 'text-[#5e98f9]',
-    imaging_modality: 'text-[#5e98f9]', color_response: 'text-[#5e98f9]', film_sensor_character: 'text-[#5e98f9]',
+    imaging_modality: 'text-[#5e98f9]', white_balance: 'text-[#5e98f9]', color_response: 'text-[#5e98f9]', film_sensor_character: 'text-[#5e98f9]',
     film_process: 'text-[#5e98f9]', color_grade: 'text-[#5e98f9]', aspect_ratio: 'text-[#5e98f9]'
 };
 
@@ -79,7 +102,7 @@ const FORMAT_COPY = {
 
 function localizedName(item) {
     if (item.localized_name && item.localized_name !== item.display_name) return `${item.display_name}｜${item.localized_name}`;
-    if (['field_of_view', 'aperture_depth_of_field', 'aspect_ratio'].includes(item.category)) return item.display_name;
+    if (['field_of_view', 'aperture_depth_of_field', 'shutter_speed', 'iso_sensitivity', 'exposure_compensation', 'aspect_ratio'].includes(item.category)) return item.display_name;
     return item.display_name;
 }
 
@@ -161,6 +184,16 @@ function localizedWarning(entry) {
         title: '跨媒介影像組合',
         detail: '科學或機器成像與類比底片特性同時選用，會形成實驗性視覺效果。',
         resolution: '此組合可以保留，成像模態會優先決定一般色彩規則。'
+    };
+    if (entry.type === 'technique_interaction') return {
+        title: '攝影手法與技術設定需協調',
+        detail: `${selectedNames || '目前選取的設定'} 仍可作為創意組合，但快門、閃光或景深語意不會自動假設為一般拍攝條件。`,
+        resolution: '可依目標調整快門、閃光或景深；系統會保留創意組合並避免輸出互相矛盾的物理敘述。'
+    };
+    if (entry.type === 'semantic_suppression') return {
+        title: '重複效果已合併',
+        detail: `${selectedNames || '目前選取的效果'} 含有相同的可見成分，提示詞只保留一份。`,
+        resolution: '儲存狀態仍保留原選項，可移除其中一項以簡化設定。'
     };
     if (entry.type === 'evidence_gap') return {
         title: '此選項暫不寫入提示詞',
@@ -379,8 +412,6 @@ function App() {
     };
     const pointerUp = () => { setDragIndex(null); dragOverIndex.current = null; };
 
-    const coreCategories = ['capture_system', 'primary_lens', 'field_of_view', 'aperture_depth_of_field', 'shot_size', 'aspect_ratio'];
-    const advancedCategories = SINGLE_FIELDS.filter(([category]) => !coreCategories.includes(category));
     const fov = result.metadata && result.metadata.horizontal_fov_degrees;
 
     return (
@@ -390,7 +421,7 @@ function App() {
                     <header className="flex items-center justify-between px-2 pt-2 gap-3">
                         <div className="flex items-center gap-3 min-w-0">
                             <div className="bg-blue-600 p-2 rounded-xl shadow-lg border border-blue-400/20"><Icon name="Clapperboard" size={24} className="text-white" /></div>
-                            <div className="min-w-0"><h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none truncate">CINEPROMPT MASTER</h1><p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V4.0 · CINEMATOGRAPHY ONTOLOGY COMPILER</p></div>
+                            <div className="min-w-0"><h1 className="text-lg font-black tracking-tighter text-white uppercase leading-none truncate">CINEPROMPT MASTER</h1><p className="text-[9px] text-gray-500 uppercase tracking-widest font-bold mt-1">V4.1 · CINEMATOGRAPHY ONTOLOGY COMPILER</p></div>
                         </div>
                         <div className="shrink-0 text-[8px] text-green-400 bg-green-400/5 px-2 py-1 rounded-full border border-green-400/20 font-bold">{library.audit_summary.audited_entries} AUDITED</div>
                     </header>
@@ -409,17 +440,9 @@ function App() {
                                 </select>
                             </div>
                             <div className="space-y-1.5">
-                                <label className="text-xs font-black text-[#5e98f9] uppercase flex items-center gap-1 tracking-wider"><Icon name="ScanLine" size={13} /> 片幅</label>
-                                <select value={state.reference_format} onChange={(event) => setState((previous) => ({ ...previous, reference_format: event.target.value }))} className="w-full bg-[#1c1c1e] border border-gray-800 rounded-xl h-11 px-3 text-gray-300">
-                                    {library.reference_formats.map((format) => <option key={format.id} value={format.id} title={`將同一焦距換算為 ${FORMAT_COPY[format.id] || '參考片幅'} 的水平視野角度；此角度會寫入提示詞，不改變主體透視。`}>{format.name}｜{FORMAT_COPY[format.id] || '參考片幅'}</option>)}
-                                </select>
+                                <SelectControl category="aspect_ratio" label="畫面比例" icon="Monitor" value={state.selections.aspect_ratio} onChange={selectItem} />
                             </div>
                         </div>
-
-                        <label className="flex items-center justify-between bg-[#18181b] border border-gray-800 rounded-xl px-3 py-2.5 cursor-pointer">
-                            <span><span className="block text-xs font-black text-gray-300 uppercase">輸出攝影器材名稱</span><span className="block text-[11px] text-gray-500">關閉時只使用已確認的視覺結果，開啟後允許在提示詞中實驗性保留攝影器材名稱。</span></span>
-                            <input type="checkbox" checked={state.literal_gear_token} onChange={(event) => setState((previous) => ({ ...previous, literal_gear_token: event.target.checked }))} />
-                        </label>
 
                         <div className="bg-[#18181b] border border-blue-900/20 rounded-2xl p-4">
                             <div className="flex justify-between items-center mb-2 gap-2">
@@ -436,21 +459,44 @@ function App() {
                             <div className="grid grid-cols-2 gap-y-3 gap-x-6">
                                 {Object.entries({ person: '人物參考', product: '產品參考', environment: '環境參考', style: '風格參考' }).map(([key, label]) => <label key={key} className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={state.references[key]} onChange={(event) => changeReference(key, event.target.checked)} /><span className="text-[13px] font-bold text-gray-400">{label}</span></label>)}
                             </div>
+                            <label className="flex items-center justify-between border-t border-gray-800 pt-3 cursor-pointer gap-4">
+                                <span><span className="block text-xs font-black text-gray-300 uppercase">輸出攝影器材名稱</span><span className="block text-[11px] text-gray-500">關閉時只使用已確認的視覺結果；開啟後才實驗性保留器材名稱。</span></span>
+                                <input type="checkbox" checked={state.literal_gear_token} onChange={(event) => setState((previous) => ({ ...previous, literal_gear_token: event.target.checked }))} />
+                            </label>
                         </div>
 
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                            {SINGLE_FIELDS.filter(([category]) => coreCategories.includes(category)).map(([category, label, icon]) => <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />)}
+                            {SINGLE_FIELDS.filter(([category]) => PRIMARY_FIELDS.includes(category)).flatMap(([category, label, icon]) => category === 'primary_lens' ? [
+                                <div key="reference_format" className="space-y-1.5 min-w-0">
+                                    <label className="mobile-label text-xs font-black text-[#5e98f9] uppercase flex items-center gap-1 tracking-wider"><Icon name="ScanLine" size={13} /> 片幅</label>
+                                    <select value={state.reference_format} onChange={(event) => setState((previous) => ({ ...previous, reference_format: event.target.value }))} className="w-full bg-[#1c1c1e] border border-gray-700 rounded-xl h-12 px-3 text-gray-200">
+                                        {library.reference_formats.map((format) => <option key={format.id} value={format.id} title={`將同一焦距換算為 ${FORMAT_COPY[format.id] || '參考片幅'} 的水平視野角度；此角度會寫入提示詞，不改變主體透視。`}>{format.name}｜{FORMAT_COPY[format.id] || '參考片幅'}</option>)}
+                                    </select>
+                                </div>,
+                                <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />
+                            ] : [<SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />])}
                         </div>
 
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            {SINGLE_FIELDS.filter(([category]) => FRAMING_FIELDS.includes(category)).map(([category, label, icon]) => <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />)}
+                        </div>
+
+                        <ChipPicker group={MULTI_GROUPS[0]} selectedKeys={state.tags} effectiveKeys={result.effective_item_keys} suppressedKeys={result.suppressed_item_keys} warnings={result.warnings} onAdd={addTag} onRemove={removeTag} />
+
                         <details className="bg-[#18181b] border border-gray-800 rounded-2xl">
-                            <summary className="cursor-pointer px-4 py-3 text-xs font-black text-[#61f7f7] uppercase tracking-widest"> 進階物理與影像反應控制 </summary>
-                            <div className="p-4 pt-1 grid grid-cols-2 md:grid-cols-3 gap-3">
-                                {advancedCategories.map(([category, label, icon]) => <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />)}
+                            <summary className="cursor-pointer px-4 py-3 text-xs font-black text-[#61f7f7] uppercase tracking-widest"> 分類進階控制 </summary>
+                            <div className="p-4 pt-1 space-y-5">
+                                {ADVANCED_FIELD_GROUPS.map((group) => <section key={group.label} className="space-y-2">
+                                    <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{group.label}</h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                        {SINGLE_FIELDS.filter(([category]) => group.categories.includes(category)).map(([category, label, icon]) => <SelectControl key={category} category={category} label={label} icon={icon} value={state.selections[category]} onChange={selectItem} />)}
+                                    </div>
+                                </section>)}
                             </div>
                         </details>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {MULTI_GROUPS.map((group) => <ChipPicker key={group.label} group={group} selectedKeys={state.tags} effectiveKeys={result.effective_item_keys} suppressedKeys={result.suppressed_item_keys} warnings={result.warnings} onAdd={addTag} onRemove={removeTag} />)}
+                            {MULTI_GROUPS.slice(1).map((group) => <ChipPicker key={group.id} group={group} selectedKeys={state.tags} effectiveKeys={result.effective_item_keys} suppressedKeys={result.suppressed_item_keys} warnings={result.warnings} onAdd={addTag} onRemove={removeTag} />)}
                         </div>
 
                         <LibraryExplorer state={state} onSelect={selectItem} onAddTag={addTag} onRemoveTag={removeTag} />

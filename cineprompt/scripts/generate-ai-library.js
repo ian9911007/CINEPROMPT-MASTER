@@ -13,6 +13,7 @@ const index = {
     retrieval_policy: library.retrieval_policy,
     precedence: library.precedence,
     categories: library.categories,
+    ui_category_groups: library.ui_category_groups,
     reference_formats: library.reference_formats,
     audit_summary: library.audit_summary,
     items: library.items.map((item) => ({
@@ -75,6 +76,10 @@ ${library.precedence.map((entry, index) => `${index + 1}. \`${entry}\``).join('\
 | Category | Display name | Selection | Audited entries |
 | --- | --- | --- | ---: |
 ${categoryRows}
+
+## User-facing category groups
+
+${Object.entries(library.ui_category_groups).map(([id, group]) => `- \`${id}\` — ${group.display_name} / ${group.localized_name}: ${group.categories.map((category) => `\`${category}\``).join(', ')}`).join('\n')}
 
 ## Audit summary
 

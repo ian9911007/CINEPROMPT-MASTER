@@ -8,6 +8,7 @@
         ['composition', 'Composition'],
         ['camera_geometry', 'Camera'],
         ['optics', 'Optics'],
+        ['photographic_technique', 'Photographic Technique'],
         ['lighting', 'Lighting'],
         ['capture_image_character', 'Capture / Image Character'],
         ['materials_image_character', 'Materials / Effects'],
@@ -43,6 +44,8 @@
         if (camera.length) parts.push(sentence(`Use camera geometry that creates ${camera.join(', ')}`));
         const optics = limit(semantic.sections.optics, 5);
         if (optics.length) parts.push(sentence(`Render the optics with ${optics.join(', ')}`));
+        const technique = limit(semantic.sections.photographic_technique, 5);
+        if (technique.length) parts.push(sentence(`Render motion and exposure through ${technique.join(', ')}`));
         const lighting = limit(semantic.sections.lighting, 6);
         if (lighting.length) parts.push(sentence(`Light the scene with ${lighting.join(', ')}`));
         const character = limit([...semantic.sections.capture_image_character, ...semantic.sections.materials_image_character], 7);

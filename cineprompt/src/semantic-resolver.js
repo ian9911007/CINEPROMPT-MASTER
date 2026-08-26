@@ -6,6 +6,7 @@
     const SECTION_BY_CATEGORY = {
         shot_size: 'composition',
         shot_purpose: 'composition',
+        subject_arrangement: 'composition',
         subject_orientation: 'composition',
         composition: 'composition',
         camera_height: 'camera_geometry',
@@ -14,13 +15,16 @@
         camera_position: 'camera_geometry',
         camera_distance: 'camera_geometry',
         field_of_view: 'camera_geometry',
-        camera_movement: 'camera_geometry',
+        camera_movement: 'photographic_technique',
         primary_lens: 'optics',
         lens_character: 'optics',
         projection: 'optics',
         aperture_depth_of_field: 'optics',
+        focus_behavior: 'optics',
         optical_distortion: 'optics',
         optical_filter: 'optics',
+        shutter_speed: 'photographic_technique',
+        photographic_technique: 'photographic_technique',
         lighting_pattern: 'lighting',
         light_direction: 'lighting',
         light_quality: 'lighting',
@@ -28,6 +32,9 @@
         capture_system: 'capture_image_character',
         capture_medium: 'capture_image_character',
         imaging_modality: 'capture_image_character',
+        iso_sensitivity: 'capture_image_character',
+        exposure_compensation: 'capture_image_character',
+        white_balance: 'capture_image_character',
         color_response: 'capture_image_character',
         film_sensor_character: 'capture_image_character',
         film_process: 'capture_image_character',
@@ -47,6 +54,8 @@
         if (/halation|highlight bloom|diffusion bloom|glowing highlight/.test(value)) return 'highlight_diffusion';
         if (/swirly bokeh|spiral background|vortex-like background/.test(value)) return 'swirly_bokeh';
         if (/lens flare|horizontal flare|streak flare/.test(value)) return 'flare';
+        if (/motion trail|motion streak|directional motion blur/.test(value)) return 'motion_rendering';
+        if (/film grain|digital noise|luminance noise|chroma noise/.test(value)) return 'grain_noise';
         if (/high contrast|strong contrast/.test(value)) return 'high_contrast';
         if (/low contrast|soft contrast/.test(value)) return 'low_contrast';
         return value.replace(/[^a-z0-9]+/g, ' ').trim();
@@ -85,6 +94,7 @@
             composition: [],
             camera_geometry: [],
             optics: [],
+            photographic_technique: [],
             lighting: [],
             capture_image_character: [],
             materials_image_character: [],
@@ -118,6 +128,9 @@
 
         if (compatibility.semantic_overrides.aperture) {
             sections.optics.push(compatibility.semantic_overrides.aperture.text);
+        }
+        if (compatibility.semantic_overrides.focus_stack) {
+            sections.optics.push(compatibility.semantic_overrides.focus_stack.text);
         }
         if (compatibility.semantic_overrides.lens_focal_conflict) {
             sections.constraints.push('retain only focal-independent optical character from the selected lens reference');

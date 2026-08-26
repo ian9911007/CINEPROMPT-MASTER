@@ -37,11 +37,45 @@
         };
     }
 
+    function canonicalizeState(library, value) {
+        const next = normalizeState(value);
+        const byKey = new Map(library.items.map((item) => [item.key, item]));
+        const tags = new Set(next.tags);
+
+        for (const [savedCategory, savedKey] of Object.entries({ ...next.selections })) {
+            const savedItem = byKey.get(savedKey);
+            if (!savedItem) continue;
+            const canonicalKey = savedItem.deprecated && savedItem.duplicate_of ? savedItem.duplicate_of : savedItem.key;
+            const item = byKey.get(canonicalKey) || savedItem;
+            const mode = library.categories[item.category] && library.categories[item.category].selection_mode;
+            if (savedCategory !== item.category || mode === 'multi') delete next.selections[savedCategory];
+            if (mode === 'multi') tags.add(item.key);
+            else next.selections[item.category] = item.key;
+        }
+
+        for (const savedKey of [...tags]) {
+            const savedItem = byKey.get(savedKey);
+            if (!savedItem) continue;
+            const canonicalKey = savedItem.deprecated && savedItem.duplicate_of ? savedItem.duplicate_of : savedItem.key;
+            const item = byKey.get(canonicalKey) || savedItem;
+            if (canonicalKey !== savedKey) tags.delete(savedKey);
+            const mode = library.categories[item.category] && library.categories[item.category].selection_mode;
+            if (mode === 'single') {
+                tags.delete(savedKey);
+                if (!next.selections[item.category]) next.selections[item.category] = item.key;
+            } else {
+                tags.add(item.key);
+            }
+        }
+        next.tags = [...tags];
+        return next;
+    }
+
     function forLibrary(library) {
         const byKey = new Map(library.items.map((item) => [item.key, item]));
 
         function migrateLegacyRecord(record) {
-            const next = normalizeState({
+            const next = canonicalizeState(library, {
                 action: record && record.action || '',
                 references: {
                     person: Boolean(record && record.refPerson),
@@ -74,14 +108,14 @@
 
         function loadInitialState(storage) {
             const current = safeParse(storage.getItem(`${STORAGE_KEY}_cfg`), null);
-            if (current) return normalizeState(current);
+            if (current) return canonicalizeState(library, current);
             const legacy = safeParse(storage.getItem(`${LEGACY_KEY}_cfg`), null);
-            return legacy ? migrateLegacyRecord(legacy) : normalizeState(DEFAULT_STATE);
+            return legacy ? migrateLegacyRecord(legacy) : canonicalizeState(library, DEFAULT_STATE);
         }
 
         function loadInitialShots(storage) {
             const current = safeParse(storage.getItem(`${STORAGE_KEY}_list`), null);
-            if (Array.isArray(current)) return current;
+            if (Array.isArray(current)) return current.map((shot) => shot && shot.state_snapshot ? { ...shot, state_snapshot: canonicalizeState(library, shot.state_snapshot) } : shot);
             const legacy = safeParse(storage.getItem(`${LEGACY_KEY}_list`), []);
             if (!Array.isArray(legacy)) return [];
             return legacy.map((shot, index) => ({
@@ -95,8 +129,8 @@
             }));
         }
 
-        return { migrateLegacyRecord, loadInitialState, loadInitialShots };
+        return { migrateLegacyRecord, loadInitialState, loadInitialShots, canonicalizeState: (value) => canonicalizeState(library, value) };
     }
 
-    return { STORAGE_KEY, LEGACY_KEY, DEFAULT_STATE, safeParse, normalizeState, forLibrary };
+    return { STORAGE_KEY, LEGACY_KEY, DEFAULT_STATE, safeParse, normalizeState, canonicalizeState, forLibrary };
 });
