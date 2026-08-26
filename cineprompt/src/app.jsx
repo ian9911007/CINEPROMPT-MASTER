@@ -553,15 +553,17 @@ function App() {
 
     const reset = () => {
         if (window.confirm('確定要重置所有控制與參考圖設定嗎？')) {
-            setState({
+            setState((previous) => ({
                 ...DEFAULT_STATE,
+                model_profile: previous.model_profile || DEFAULT_STATE.model_profile,
+                reference_format: previous.reference_format || DEFAULT_STATE.reference_format,
                 action: '',
-                selections: {},
+                selections: previous.selections && previous.selections.aspect_ratio ? { aspect_ratio: previous.selections.aspect_ratio } : { ...DEFAULT_STATE.selections },
                 tags: [],
                 references: { person: false, product: false, environment: false, style: false },
                 literal_gear_token: false,
                 migration_warnings: []
-            });
+            }));
         }
     };
     const clearShots = () => {

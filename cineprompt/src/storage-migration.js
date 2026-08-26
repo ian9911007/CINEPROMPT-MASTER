@@ -10,7 +10,7 @@
         model_profile: 'generic',
         reference_format: 'full_frame_35mm',
         literal_gear_token: false,
-        selections: {},
+        selections: { aspect_ratio: 'aspectRatios:16:9' },
         tags: [],
         references: { person: false, product: false, environment: false, style: false },
         migration_warnings: []
