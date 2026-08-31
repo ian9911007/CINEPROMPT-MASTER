@@ -391,7 +391,7 @@ function SelectControl({ category, label, icon, value, onChange }) {
                 <Icon name={icon} size={13} /> {label}
             </label>
             <select value={value || ''} onChange={(event) => onChange(category, event.target.value)} className="w-full bg-[#1c1c1e] border border-gray-700 rounded-xl h-12 px-3 outline-none cursor-pointer text-gray-200">
-                <option value="" title="不指定此項控制，交由其他已選影像條件決定。">N / A</option>
+                <option value="" title="不指定此項控制，交由其他已選影像條件決定。"></option>
                 {options.map((item) => (
                     <option key={item.key} value={item.key} title={localizedDescription(item)}>{localizedName(item)}</option>
                 ))}
@@ -412,7 +412,7 @@ function ChipPicker({ group, selectedKeys, effectiveKeys, suppressedKeys, warnin
             <div className="flex items-center justify-between gap-3">
                 <label className={`text-xs font-black uppercase tracking-widest flex items-center gap-1.5 ${group.tone}`}><Icon name={group.icon} size={13} /> {group.label}</label>
                 <select disabled={atLimit} value="" onChange={(event) => { if (event.target.value) onAdd(event.target.value); }} className={`max-w-[58%] bg-[#111113] border rounded-lg h-10 px-3 text-sm text-blue-300 disabled:cursor-not-allowed disabled:text-gray-600 ${atLimit ? 'border-amber-500/40' : 'border-gray-700'}`}>
-                    <option value="" title={`新增一項「${group.label.split('｜')[1]}」控制。`}>+ ADD</option>
+                    <option value="" title={`新增一項「${group.label.split('｜')[1]}」控制。`}></option>
                     {options.filter((item) => !selectedKeys.includes(item.key)).map((item) => <option key={item.key} value={item.key} title={localizedDescription(item)}>{localizedName(item)}</option>)}
                 </select>
             </div>
@@ -463,7 +463,7 @@ function LibraryExplorer({ state, onSelect, onAddTag, onRemoveTag }) {
         <details className="bg-[#121214] border border-gray-800 rounded-2xl overflow-hidden">
             <summary className="cursor-pointer px-4 py-3 text-[10px] font-black text-[#61f7f7] uppercase tracking-widest flex items-center gap-2"><Icon name="Library" size={14} />資料庫瀏覽器</summary>
             <div className="p-4 pt-1 space-y-3">
-                <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search equipment, optics, process, modality, effect...｜搜尋器材、光學、流程、成像模態與效果…" className="w-full bg-[#18181b] border border-gray-800 rounded-xl h-10 px-3 text-xs outline-none focus:border-violet-500/50 select-text" />
+                <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜尋器材、光學、流程、成像模態與效果…" className="w-full bg-[#18181b] border border-gray-800 rounded-xl h-10 px-3 text-xs outline-none focus:border-violet-500/50 select-text" />
                 <div className="max-h-72 overflow-y-auto custom-scrollbar space-y-2">
                     {results.map((item) => {
                         const mode = library.categories[item.category].selection_mode;
@@ -622,7 +622,7 @@ function App() {
                         <div className="bg-[#18181b] border border-blue-900/20 rounded-2xl p-4">
                             <div className="flex justify-between items-center mb-2 gap-2">
                                 <div><label className="text-xs font-black text-blue-400 uppercase tracking-widest flex items-center gap-2"><Icon name="Brain" size={12} />即時提示詞</label>{fov != null && <span className="text-[11px] text-gray-500">視野換算：{fov}° 水平視野，{FORMAT_COPY[result.metadata.reference_format.id] || result.metadata.reference_format.name}。</span>}</div>
-                                <div className="flex gap-2"><button onClick={addShot} disabled={!state.action.trim()} className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600"><Icon name="Plus" size={11} /> ADD</button><button onClick={() => copyText(result.prompt, () => { setCopyId('live'); setTimeout(() => setCopyId(null), 1500); })} disabled={!state.action.trim()} className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600">{copyId === 'live' ? 'COPIED｜已複製' : 'COPY'}</button></div>
+                                <div className="flex gap-2"><button onClick={addShot} disabled={!state.action.trim()} className="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600 flex items-center gap-1"><Icon name="Plus" size={11} /> ADD</button><button onClick={() => copyText(result.prompt, () => { setCopyId('live'); setTimeout(() => setCopyId(null), 1500); })} disabled={!state.action.trim()} className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-full disabled:bg-gray-800 disabled:text-gray-600 flex items-center gap-1">{copyId === 'live' ? <><Icon name="Check" size={11} /> COPIED</> : <><Icon name="Copy" size={11} /> COPY</>}</button></div>
                             </div>
                             <div className="font-mono text-xs leading-relaxed text-gray-300 max-h-[170px] overflow-y-auto custom-scrollbar select-text">{result.prompt}</div>
                         </div>

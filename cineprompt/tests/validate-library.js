@@ -266,7 +266,8 @@ run('menus use concise values, visual Traditional-Chinese descriptions, and visi
     assert.ok(app.includes('function localizedDescription(item)'));
     assert.ok(app.includes('title={localizedDescription(item)}'));
     assert.ok(app.includes('>{localizedName(item)}</option>'));
-    assert.ok(app.includes('+ ADD'));
+    assert.ok(!app.includes('+ ADD'));
+    assert.ok(!app.includes('>N / A<'));
     assert.ok(app.includes('構圖'));
     assert.ok(app.includes('item.historical_context || item.definition'));
     assert.ok(app.includes('function normalizeChinesePunctuation(value)'));
